@@ -1,5 +1,4 @@
 const { validationResult } = require('express-validator');
-const { ValidationError } = require('sequelize/types');
 
 const handleValidationErrors = (req, _res, next) => {
     const validationErrors = validationResult(req);
