@@ -70,13 +70,3 @@ const sessionReducer = (state = initialState, action) => {
     }
 
 export default sessionReducer;
-
-
-// window.store.dispatch(window.sessionActions.signUpUser({
-//     firstName: 'NewUser',
-//     lastName: 'Userman',
-//     email: 'new@user.io',
-//     password: 'Aa1!11',
-//     vaxCardImg: 'img.png',
-//     userPhoto: null
-//   }));
