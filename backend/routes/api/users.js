@@ -19,12 +19,17 @@ const validateSignup = [
         .withMessage('Please provide your last name.')
         .isLength({ min: 2, max: 30 })
         .withMessage('Last name must be a minimum of 2 characters and a maximum of 30 characters long.'),
-    // must check for unique username
+        // must check for unique username
     check('email')
         .exists({ checkFalsy: true })
         .withMessage('Please provide an email address.')
         .isEmail()
-        .withMessage('Please provide a valid email address.'),
+        .withMessage('Please provide a valid email address.')
+        .custom(async (email) => {
+            const user = await User.findOne({ where: { email } });
+            if (!user) return false;
+        })
+        .withMessage('Email already in use'),
     check('password')
         .exists({ checkFalsy: true })
         .isLength({ min: 6 })
