@@ -35,6 +35,22 @@ export const restoreUser = () => async (dispatch) => {
     }
 }
 
+export const signUpUser = (user) => async (dispatch) => {
+    const { firstName, lastName, email, password, vaxCardImg, userPhoto } = user;
+    const response = await csrfFetch('/api/users', {
+        method: 'POST',
+        body: JSON.stringify({
+            firstName, lastName, email, password, vaxCardImg, userPhoto
+        })
+    });
+
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(setUser(data.user));
+        return response;
+    }
+}
+
 const initialState = { user: null };
 
 const sessionReducer = (state = initialState, action) => {
@@ -54,3 +70,13 @@ const sessionReducer = (state = initialState, action) => {
     }
 
 export default sessionReducer;
+
+
+// window.store.dispatch(window.sessionActions.signUpUser({
+//     firstName: 'NewUser',
+//     lastName: 'Userman',
+//     email: 'new@user.io',
+//     password: 'Aa1!11',
+//     vaxCardImg: 'img.png',
+//     userPhoto: null
+//   }));

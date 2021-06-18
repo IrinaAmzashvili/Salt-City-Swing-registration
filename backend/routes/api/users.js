@@ -24,12 +24,12 @@ const validateSignup = [
         .exists({ checkFalsy: true })
         .withMessage('Please provide an email address.')
         .isEmail()
-        .withMessage('Please provide a valid email address.')
-        .custom(async (email) => {
-            const user = await User.findOne({ where: { email } });
-            if (!user) return false;
-        })
-        .withMessage('Email already in use'),
+        .withMessage('Please provide a valid email address.'),
+        // .custom(async (email) => {
+        //     const user = await User.findOne({ where: { email } });
+        //     if (!user) return false;
+        // })
+        // .withMessage('Email already in use'),
     check('password')
         .exists({ checkFalsy: true })
         .isLength({ min: 6 })
