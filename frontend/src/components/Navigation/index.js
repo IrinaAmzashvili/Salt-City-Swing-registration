@@ -1,15 +1,15 @@
 import { NavLink } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
+import './Navigation.css';
 
-const Navigation = () => {
+const Navigation = ({ isLoaded }) => {
   const sessionUser = useSelector((store) => store.session.user)
 
   let sessionLinks;
   if (sessionUser) {
       sessionLinks = (
           <ProfileButton user={sessionUser} />
-        //   logout button?
       );
   } else {
       sessionLinks = (
