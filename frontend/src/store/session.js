@@ -30,7 +30,9 @@ export const restoreUser = () => async (dispatch) => {
 
     if (response.ok) {
         const data = await response.json();
-        dispatch(setUser(data.body));
+        console.log(data)
+
+        dispatch(setUser(data.user ?? null));
         return response;
     }
 }
@@ -70,3 +72,13 @@ const sessionReducer = (state = initialState, action) => {
     }
 
 export default sessionReducer;
+
+
+// window.store.dispatch(window.sessionActions.signUpUser({
+//     firstName: 'user',
+//     lastName: 'newman',
+//     email: 'new@new.io',
+//     password: 'Aa1!11',
+//     vaxCardImg: 'img.png',
+//     userPhoto: '',
+// }));

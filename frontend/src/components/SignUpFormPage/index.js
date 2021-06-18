@@ -65,7 +65,7 @@ const SignUpFormPage = () => {
         </div>
         <div>
           <label>
-            First Name:
+            First Name
             <input
               type='text'
               value={firstName}
@@ -75,7 +75,7 @@ const SignUpFormPage = () => {
         </div>
         <div>
           <label>
-            Last Name:
+            Last Name
             <input
               type='text'
               value={lastName}
@@ -85,7 +85,7 @@ const SignUpFormPage = () => {
         </div>
         <div>
           <label>
-            Email:
+            Email
             <input
               type='email'
               value={email}
@@ -95,7 +95,7 @@ const SignUpFormPage = () => {
         </div>
         <div>
           <label>
-            Password:
+            Password
             <input
               type='password'
               value={password}
@@ -105,7 +105,7 @@ const SignUpFormPage = () => {
         </div>
         <div>
           <label>
-            Confirm Password:
+            Confirm Password
             <input
               type='password'
               value={confirmPassword}
@@ -115,9 +115,9 @@ const SignUpFormPage = () => {
         </div>
         <div>
           <label>
-            Upload Vaccination Card:
+            Upload Vaccination Card
             <input
-              type='file'
+              type='text'
               value={vaxCardImg}
               onChange={(e) => setVaxCardImg(e.target.value)}
             />
@@ -125,14 +125,20 @@ const SignUpFormPage = () => {
         </div>
         <div>
           <label>
-            Upload a Profile Photo:
+            Upload a Profile Photo
             <input
-              type='file'
+              type='text'
               value={userPhoto}
               onChange={(e) => setUserPhoto(e.target.value)}
             />
           </label>
         </div>
+        {/* <div>
+          <label>
+            <input type='checkbox' />
+            Add me to your mailing list
+          </label>
+        </div> */}
         <button type='submit'>Sign Up</button>
       </form>
     </div>
