@@ -11,8 +11,8 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, {});
   Ticket.associate = function(models) {
-    Like.belongsTo(models.User, { foreignKey: 'userId' });
-    Like.belongsTo(models.Class, { foreignKey: 'classId' });
+    Ticket.belongsTo(models.User, { foreignKey: 'userId' });
+    Ticket.belongsTo(models.Class, { foreignKey: 'classId' });
   };
   return Ticket;
 };

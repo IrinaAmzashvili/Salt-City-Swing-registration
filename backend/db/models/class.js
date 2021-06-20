@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     image: {
       allowNull: false,
-      type: Sequelize.TEXT
+      type: DataTypes.TEXT
     },
   }, {});
   Class.associate = function(models) {
