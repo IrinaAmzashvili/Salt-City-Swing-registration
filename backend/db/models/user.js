@@ -36,10 +36,10 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     vaxCardImg: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
-    userPhoto: DataTypes.STRING,
+    userPhoto: DataTypes.TEXT,
   },
   {
     defaultScope: {
@@ -58,7 +58,8 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   User.associate = function(models) {
-    // associations can be defined here
+    User.hasMany(models.Like, { foreignKey: 'userId' });
+    User.hasMany(models.Ticket, { foreignKey: 'userId' });
   };
 
   User.prototype.toSafeObject = function() { // remember, this cannot be an arrow function
