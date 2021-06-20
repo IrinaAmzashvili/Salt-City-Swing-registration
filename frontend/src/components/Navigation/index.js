@@ -23,9 +23,10 @@ const Navigation = ({ isLoaded }) => {
 
   return (
     <nav>
-      <ul>
-        <NavLink exact to="/">Home</NavLink>
-        {isLoaded && sessionLinks}
+      <div className={styles.logo}>Logo</div>
+        <ul className={styles.navlinks}>
+          <NavLink exact to="/">Home</NavLink>
+          {isLoaded && sessionLinks}
       </ul>
     </nav>
   );
