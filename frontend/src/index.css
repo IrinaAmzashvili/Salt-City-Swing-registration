@@ -3,14 +3,14 @@
     margin: 0;
     padding: 0;
 }
-/* 
+/*
 #page-container {
     position: relative;
     min-height: 100vh;
 } */
 
 #root {
-    /* padding-top: 3.5rem; - navbar */
+    padding-top: 5rem;
     padding-bottom: 2.5rem;
 }
 

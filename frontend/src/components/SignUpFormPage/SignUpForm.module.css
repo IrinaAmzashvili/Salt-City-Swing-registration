@@ -1,0 +1,37 @@
+.formContainer {
+    /* margin: auto; */
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin: 30px auto;
+    width: 300px;
+
+    border-radius: 5px;
+    width: 380px;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    box-shadow: 0.0625rem 0.0625rem 0.625rem -2px #46574D;
+}
+
+.form > div {
+    padding: 10px 0;
+    align-self: stretch;
+    margin: 0 30px;
+}
+
+.form > h2 {
+    text-align: center;
+}
+
+input {
+    border: none;
+    border-bottom: 1px solid black;
+    width: 100%;
+}
+
+.submitButton {
+    margin: 30px;
+}

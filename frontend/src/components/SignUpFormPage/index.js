@@ -56,8 +56,9 @@ const SignUpFormPage = () => {
 //   }, [dispatch]);
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div className={styles.formContainer}>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <h2>Sign Up</h2>
         <div>
           <ul>
             {errors.map((error, i) => <li key={i}>{error}</li>)}
@@ -65,9 +66,9 @@ const SignUpFormPage = () => {
         </div>
         <div>
           <label>
-            First Name
             <input
               type='text'
+              placeholder='First Name'
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
             />
@@ -75,9 +76,9 @@ const SignUpFormPage = () => {
         </div>
         <div>
           <label>
-            Last Name
             <input
               type='text'
+              placeholder='Last Name'
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
             />
@@ -85,9 +86,9 @@ const SignUpFormPage = () => {
         </div>
         <div>
           <label>
-            Email
             <input
               type='email'
+              placeholder='Email'
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -95,9 +96,9 @@ const SignUpFormPage = () => {
         </div>
         <div>
           <label>
-            Password
             <input
               type='password'
+              placeholder='Password'
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
@@ -105,9 +106,9 @@ const SignUpFormPage = () => {
         </div>
         <div>
           <label>
-            Confirm Password
             <input
               type='password'
+              placeholder='Confirm Password'
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
@@ -115,9 +116,9 @@ const SignUpFormPage = () => {
         </div>
         <div>
           <label>
-            Upload Vaccination Card
             <input
               type='text'
+              placeholder='Upload Vaccination Card'
               value={vaxCardImg}
               onChange={(e) => setVaxCardImg(e.target.value)}
             />
@@ -125,9 +126,9 @@ const SignUpFormPage = () => {
         </div>
         <div>
           <label>
-            Upload a Profile Photo
             <input
               type='text'
+              placeholder='Upload a Profile Photo'
               value={userPhoto}
               onChange={(e) => setUserPhoto(e.target.value)}
             />
@@ -139,7 +140,7 @@ const SignUpFormPage = () => {
             Add me to your mailing list
           </label>
         </div> */}
-        <button type='submit'>Sign Up</button>
+        <button className={styles.submitButton} type='submit'>Sign Up</button>
       </form>
     </div>
   );
