@@ -32,6 +32,16 @@ module.exports = {
       userPhoto: {
         type: Sequelize.TEXT
       },
+      mailingList: {
+        // allowNull: false,
+        type: Sequelize.BOOLEAN,
+        // defaultValue: false
+      },
+      admin: {
+        // allowNull: false,
+        type: Sequelize.BOOLEAN,
+        // defaultValue: false
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
