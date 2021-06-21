@@ -1,9 +1,11 @@
-import { useState, useEffect } from 'react';
-import { Route, Switch } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import * as sessionActions from './store/session';
-import SignUpFormPage from './components/SignUpFormPage';
-import Navigation from './components/Navigation';
+import { useState, useEffect } from "react";
+import { Route, Switch } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import * as sessionActions from "./store/session";
+import SignUpFormPage from "./components/SignUpFormPage";
+import Navigation from "./components/Navigation";
+import ClassesComponent from "./components/ClassesComponent";
+import SingleClassComponent from "./components/SingleClassComponent";
 
 function App() {
   const dispatch = useDispatch();
@@ -18,8 +20,14 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route path='/signup'>
+          <Route exact path='/'>
+            <ClassesComponent />
+          </Route>
+          <Route path="/signup">
             <SignUpFormPage />
+          </Route>
+          <Route path="/classes/:classId">
+            <SingleClassComponent />
           </Route>
         </Switch>
       )}

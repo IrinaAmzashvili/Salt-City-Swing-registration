@@ -6,6 +6,7 @@ import './index.css';
 import { restoreCSRF, csrfFetch } from './store/csrf';
 import configureStore from './store';
 import * as sessionActions from './store/session';
+import * as classActions from './store/classes';
 import App from './App';
 import { ModalProvider } from './context/Modal';
 
@@ -17,6 +18,7 @@ if (process.env.NODE_ENV !== 'production') {
   window.csrfFetch = csrfFetch;
   window.store = store;
   window.sessionActions = sessionActions;
+  window.classActions = classActions;
 }
 
 const Root = () => {
