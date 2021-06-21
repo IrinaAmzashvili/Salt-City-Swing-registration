@@ -43,9 +43,9 @@ const ProfileButton = ({ user }) => {
         {showMenu && (
           <div className={styles.dropdownDiv}>
             <ul className={styles.profileDropdown}>
-              <a href="">My Classes</a>
-              <a href="">Liked</a>
-              <a href="">Account Settings</a>
+              <a href={`/user/${user.id}`}>My Classes</a>
+              {/* <a href={`/user/${user.id}`}>Liked</a> */}
+              <a href={`/user/${user.id}/account`}>Account Settings</a>
               <button
                 className={`link-button ${styles.logoutButton}`}
                 onClick={logout}
