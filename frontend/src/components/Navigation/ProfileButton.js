@@ -46,12 +46,12 @@ const ProfileButton = ({ user }) => {
               <a href={`/user/${user.id}`}>My Classes</a>
               {/* <a href={`/user/${user.id}`}>Liked</a> */}
               <a href={`/user/${user.id}/account`}>Account Settings</a>
-              <a
+              <div
                 className={`${styles.logoutButton}`}
                 onClick={logout}
               >
                 Log Out
-              </a>
+              </div>
             </ul>
           </div>
         )}
