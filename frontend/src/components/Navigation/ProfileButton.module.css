@@ -1,11 +1,11 @@
-.userButton, .logoutButton {
+/* .userButton, .logoutButton {
     padding: 0;
     border: none;
     font: inherit;
     color: inherit;
     background-color: transparent;
     cursor: pointer;
-}
+} */
 
 .userButton > * {
     padding: 10px;
@@ -41,7 +41,7 @@
     border-bottom: 1px solid white;
 }
 
-a {
+ul.profileDropdown a {
     color: white;
 }
 

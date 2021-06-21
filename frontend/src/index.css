@@ -16,4 +16,28 @@
 
 a {
     text-decoration: none;
+    color: black;
+}
+
+input {
+    border: none;
+    border-bottom: 1px solid black;
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    caret-color: transparent;
+}
+
+input:focus {
+    outline: none;
+    background-color: #e1e1e1;
+}
+
+.link-button {
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    cursor: pointer;
 }

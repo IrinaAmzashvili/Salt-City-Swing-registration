@@ -31,7 +31,7 @@ const ProfileButton = ({ user }) => {
   return (
     <div>
       <button
-        className={styles.userButton}
+        className={`link-button ${styles.userButton}`}
         onClick={openMenu}
         // onMouseOver={openMenu}
         // onMouseLeave={() => setShowMenu(false)}
@@ -52,7 +52,7 @@ const ProfileButton = ({ user }) => {
               <a href=''>Account Settings</a>
             </li>
             <li>
-              <button className={styles.logoutButton} onClick={logout}>Log Out</button>
+              <button className={`link-button ${styles.logoutButton}`} onClick={logout}>Log Out</button>
             </li>
           </ul>
         </div>

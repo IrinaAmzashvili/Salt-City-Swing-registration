@@ -77,7 +77,6 @@ const SignUpFormPage = () => {
           <div>
             <label>
               <input
-                className={styles.input}
                 type="text"
                 placeholder="First Name"
                 value={firstName}
@@ -88,7 +87,6 @@ const SignUpFormPage = () => {
           <div>
             <label>
               <input
-                className={styles.input}
                 type="text"
                 placeholder="Last Name"
                 value={lastName}
@@ -100,7 +98,6 @@ const SignUpFormPage = () => {
         <div>
           <label>
             <input
-              className={styles.input}
               type="email"
               placeholder="Email"
               value={email}
@@ -111,7 +108,6 @@ const SignUpFormPage = () => {
         <div>
           <label>
             <input
-              className={styles.input}
               type="password"
               placeholder="Password"
               value={password}
@@ -122,7 +118,6 @@ const SignUpFormPage = () => {
         <div>
           <label>
             <input
-              className={styles.input}
               type="password"
               placeholder="Confirm Password"
               value={confirmPassword}
@@ -133,7 +128,6 @@ const SignUpFormPage = () => {
         <div>
           <label>
             <input
-              className={styles.input}
               type="text"
               placeholder="Upload Vaccination Card"
               value={vaxCardImg}
@@ -144,7 +138,6 @@ const SignUpFormPage = () => {
         <div>
           <label>
             <input
-              className={styles.input}
               type="text"
               placeholder="Upload a Profile Photo"
               value={userPhoto}
@@ -154,19 +147,23 @@ const SignUpFormPage = () => {
         </div>
         <div className={styles.checkboxDiv}>
           <input
+            className={styles.checkboxInput}
             id='mailing-list'
             type='checkbox'
             value='mailing-list'
             checked={mailingList}
             onChange={() => setMailingList(prev => !prev)}
           />
-          <label for='mailing-list'>
+          <label htmlFor='mailing-list'>
             Add me to your mailing list
           </label>
         </div>
         <button className={styles.submitButton} type="submit">
           Sign Up
         </button>
+        <div className={styles.switch}>
+          <button className='link-button' onClick={() => console.log('hi')}>Already have an account? Log in here!</button>
+        </div>
       </form>
     </div>
   );
