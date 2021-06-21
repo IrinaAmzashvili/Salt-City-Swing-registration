@@ -1,0 +1,67 @@
+.formContainer {
+    /* margin: auto; */
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin: 30px auto;
+    width: 450px;
+
+    border-radius: 15px;
+    padding: 20px 0;
+    box-shadow: 0.0625rem 0.0625rem 0.625rem -2px #46574D;
+}
+
+.form > div {
+    padding: 10px 0;
+    align-self: stretch;
+    margin: 0 30px;
+}
+
+.errorsDiv > ul {
+    padding-left: 20px;
+}
+
+.form > h2 {
+    text-align: center;
+}
+
+.nameInputDiv {
+    display: flex;
+    justify-content: space-between;
+}
+
+.checkboxDiv {
+    height: 40px;
+    display: flex;
+    align-items: flex-end;
+}
+
+.checkboxDiv > * {
+    padding: 0 10px;
+}
+
+.checkboxInput {
+    width: auto;
+}
+
+.checkboxInput:focus {
+    outline: black solid 1px;
+}
+
+.submitButton {
+    margin: 25px auto;
+    width: 75%;
+    border-radius: 30px;
+    height: 40px;
+}
+
+div.switch {
+    align-self: center;
+}
+
+.switch *:hover {
+    border-bottom: 1px solid #cdcdcd;
+}

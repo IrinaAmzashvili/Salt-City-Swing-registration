@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
+import styles from "./ProfileButton.module.css";
 
 const ProfileButton = ({ user }) => {
   const dispatch = useDispatch();
@@ -28,20 +29,34 @@ const ProfileButton = ({ user }) => {
   };
 
   return (
-    <div>
-      <button onClick={openMenu}>
+    <button
+      className={`link-button ${styles.userButton}`}
+      onClick={openMenu}
+      // onMouseOver={openMenu}
+      // onMouseLeave={() => setShowMenu(false)}
+    >
+      <div className={styles.userIconWelcome}>
         <i className="fas fa-user-circle"></i>
-      </button>
-      {showMenu && (
-        <ul className="profile-dropdown">
-          <li>{`${user.firstName} ${user.lastName}`}</li>
-          <li>{user.email}</li>
-          <li>
-            <button onClick={logout}>Log Out</button>
-          </li>
-        </ul>
-      )}
-    </div>
+        <span className={styles.welcomeMessage}>
+          Welcome, {user.firstName}!
+        </span>
+        {showMenu && (
+          <div className={styles.dropdownDiv}>
+            <ul className={styles.profileDropdown}>
+              <a href={`/user/${user.id}`}>My Classes</a>
+              {/* <a href={`/user/${user.id}`}>Liked</a> */}
+              <a href={`/user/${user.id}/account`}>Account Settings</a>
+              <button
+                className={`link-button ${styles.logoutButton}`}
+                onClick={logout}
+              >
+                Log Out
+              </button>
+            </ul>
+          </div>
+        )}
+      </div>
+    </button>
   );
 };
 

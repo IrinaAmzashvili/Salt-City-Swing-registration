@@ -1,0 +1,59 @@
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(74, 5, 6);
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 6rem;
+}
+
+.logoDiv {
+    height: auto;
+    width: 15%;
+    margin: 0 20px;
+    color: white;
+    font-size: 50px;
+    flex-grow: 1;
+}
+
+.logo {
+    height: 180px;
+    margin-top: 20px;
+}
+
+.searchDiv {
+    flex-grow: 2;
+}
+
+ul.navlinks {
+    list-style-type: disc;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 0;
+
+    flex-grow: 1;
+    align-self: baseline;
+    width: 15%;
+    height: 100%;
+    margin: 0 20px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    color: white;
+}
+
+ul.navlinks > * {
+    /* flex-grow: 1; */
+    color: white;
+    height: 100%;
+    padding: 38px 18px;
+    transition: background-color .3s;
+}
+
+ul.navlinks > *:hover {
+    background-color: rgb(122, 8, 10);
+}
