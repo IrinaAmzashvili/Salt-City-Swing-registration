@@ -12,6 +12,18 @@ const removeUser = () => ({
     type: REMOVE_USER,
 });
 
+export const loginDemo = () => async (dispatch) => {
+    const response = await csrfFetch('/api/session/loginDemo', {
+        method: 'POST'
+    });
+
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(setUser(data.demoUser));
+        return response;
+    }
+}
+
 export const login = ({ credential, password }) => async (dispatch) => {
     const response = await csrfFetch('/api/session', {
         method: 'POST',
@@ -30,7 +42,6 @@ export const restoreUser = () => async (dispatch) => {
 
     if (response.ok) {
         const data = await response.json();
-        console.log(data)
 
         dispatch(setUser(data.user ?? null));
         return response;
@@ -80,13 +91,3 @@ const sessionReducer = (state = initialState, action) => {
     }
 
 export default sessionReducer;
-
-
-// window.store.dispatch(window.sessionActions.signUpUser({
-//     firstName: 'user',
-//     lastName: 'newman',
-//     email: 'new@new.io',
-//     password: 'Aa1!11',
-//     vaxCardImg: 'img.png',
-//     userPhoto: '',
-// }));
