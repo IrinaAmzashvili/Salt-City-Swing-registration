@@ -14,6 +14,7 @@ const SignUpFormPage = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [vaxCardImg, setVaxCardImg] = useState("");
   const [userPhoto, setUserPhoto] = useState("");
+  const [mailingList, setMailingList] = useState(false);
   const [errors, setErrors] = useState([]);
 
   if (sessionUser) return <Redirect to="/" />;
@@ -28,7 +29,10 @@ const SignUpFormPage = () => {
       password,
       vaxCardImg,
       userPhoto,
+      mailingList,
     };
+
+    console.log(newUser);
 
     if (password === confirmPassword) {
       setErrors([]);
@@ -61,7 +65,7 @@ const SignUpFormPage = () => {
       <form className={styles.form} onSubmit={handleSubmit}>
         <h2>Create Account</h2>
         {errors && (
-          <div>
+          <div className={styles.errorsDiv}>
             <ul>
               {errors.map((error, i) => (
                 <li key={i}>{error}</li>
@@ -149,8 +153,14 @@ const SignUpFormPage = () => {
           </label>
         </div>
         <div className={styles.checkboxDiv}>
-          <input type='checkbox' />
-          <label>
+          <input
+            id='mailing-list'
+            type='checkbox'
+            value='mailing-list'
+            checked={mailingList}
+            onChange={() => setMailingList(prev => !prev)}
+          />
+          <label for='mailing-list'>
             Add me to your mailing list
           </label>
         </div>
