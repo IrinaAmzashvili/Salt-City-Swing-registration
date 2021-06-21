@@ -32,19 +32,23 @@
     padding-inline-start: 0;
 }
 
-.profileDropdown > li {
+.profileDropdown > * {
     list-style-type: none;
     padding: 20px;
 }
 
-.profileDropdown > li:not(:last-child) {
+.profileDropdown > *:not(:last-child) {
     border-bottom: 1px solid white;
 }
 
-ul.profileDropdown a {
+ul.profileDropdown * {
     color: white;
 }
 
-.profileDropdown > li:hover {
+.profileDropdown > *:hover {
     background-color: rgb(122, 8, 10);
+}
+
+.logoutButton {
+    text-align: left;
 }
