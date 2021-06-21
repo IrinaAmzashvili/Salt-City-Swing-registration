@@ -26,6 +26,7 @@ const Navigation = ({ isLoaded }) => {
           <img className={styles.logo} src='logo/Salt-City-Swing-Shadow-sans-slogan-trans.png' alt='Salt City Swing Logo'></img>
         </a>
       </div>
+      <div className={styles.searchDiv}></div>
       <ul className={styles.navlinks}>
         <NavLink exact to="/">
           Home

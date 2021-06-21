@@ -1,14 +1,5 @@
-/* .userButton, .logoutButton {
-    padding: 0;
-    border: none;
-    font: inherit;
-    color: inherit;
-    background-color: transparent;
-    cursor: pointer;
-} */
-
-.userButton > * {
-    padding: 10px;
+.userIconWelcome > i {
+    padding-right: 10px;
 }
 
 .dropdownDiv {
@@ -24,7 +15,7 @@
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     /* padding: 12px 16px; */
     z-index: 1;
-    right: -40px;
+    right: -20px;
     margin-top: 2.6rem;
     display: flex;
     flex-direction: column;
@@ -35,20 +26,14 @@
 .profileDropdown > * {
     list-style-type: none;
     padding: 20px;
+    color: white;
+    text-align: left;
 }
 
 .profileDropdown > *:not(:last-child) {
     border-bottom: 1px solid white;
 }
 
-ul.profileDropdown * {
-    color: white;
-}
-
 .profileDropdown > *:hover {
     background-color: rgb(122, 8, 10);
-}
-
-.logoutButton {
-    text-align: left;
 }

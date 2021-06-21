@@ -15,11 +15,16 @@ nav {
     margin: 0 20px;
     color: white;
     font-size: 50px;
+    flex-grow: 1;
 }
 
 .logo {
     height: 180px;
     margin-top: 20px;
+}
+
+.searchDiv {
+    flex-grow: 2;
 }
 
 ul.navlinks {
@@ -30,15 +35,25 @@ ul.navlinks {
     margin-inline-end: 0px;
     padding-inline-start: 0;
 
+    flex-grow: 1;
+    align-self: baseline;
     width: 15%;
-    height: auto;
+    height: 100%;
     margin: 0 20px;
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-end;
     align-items: center;
     color: white;
 }
 
 ul.navlinks > * {
+    /* flex-grow: 1; */
     color: white;
+    height: 100%;
+    padding: 38px 18px;
+    transition: background-color .3s;
+}
+
+ul.navlinks > *:hover {
+    background-color: rgb(122, 8, 10);
 }

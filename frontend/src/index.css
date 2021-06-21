@@ -1,4 +1,8 @@
 /* TODO Add site wide styles */
+* {
+    box-sizing: border-box;
+}
+
 #body {
     margin: 0;
     padding: 0;
@@ -29,8 +33,8 @@ input {
 }
 
 input:focus {
+    background-color: #ededed;
     outline: none;
-    background-color: #e1e1e1;
 }
 
 .link-button {

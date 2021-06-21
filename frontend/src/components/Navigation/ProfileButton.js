@@ -29,32 +29,34 @@ const ProfileButton = ({ user }) => {
   };
 
   return (
-    <div>
-      <button
-        className={`link-button ${styles.userButton}`}
-        onClick={openMenu}
-        // onMouseOver={openMenu}
-        // onMouseLeave={() => setShowMenu(false)}
-      >
+    <button
+      className={`link-button ${styles.userButton}`}
+      onClick={openMenu}
+      // onMouseOver={openMenu}
+      // onMouseLeave={() => setShowMenu(false)}
+    >
+      <div className={styles.userIconWelcome}>
         <i className="fas fa-user-circle"></i>
-        <span>Welcome, {user.firstName}!</span>
-      </button>
-      {showMenu && (
-        <div className={styles.dropdownDiv}>
-          <ul className={styles.profileDropdown}>
-            <a href="">My Classes</a>
-            <a href="">Liked</a>
-            <a href="">Account Settings</a>
-            <button
-              className={`link-button ${styles.logoutButton}`}
-              onClick={logout}
-            >
-              Log Out
-            </button>
-          </ul>
-        </div>
-      )}
-    </div>
+        <span className={styles.welcomeMessage}>
+          Welcome, {user.firstName}!
+        </span>
+        {showMenu && (
+          <div className={styles.dropdownDiv}>
+            <ul className={styles.profileDropdown}>
+              <a href="">My Classes</a>
+              <a href="">Liked</a>
+              <a href="">Account Settings</a>
+              <button
+                className={`link-button ${styles.logoutButton}`}
+                onClick={logout}
+              >
+                Log Out
+              </button>
+            </ul>
+          </div>
+        )}
+      </div>
+    </button>
   );
 };
 

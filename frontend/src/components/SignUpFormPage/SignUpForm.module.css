@@ -47,6 +47,10 @@
     width: auto;
 }
 
+.checkboxInput:focus {
+    outline: black solid 1px;
+}
+
 .submitButton {
     margin: 25px auto;
     width: 75%;
