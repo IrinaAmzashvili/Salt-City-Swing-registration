@@ -7,12 +7,10 @@
     flex-direction: column;
     align-items: stretch;
     margin: 30px auto;
-    width: 300px;
+    width: 450px;
 
-    border-radius: 5px;
-    width: 380px;
-    padding-top: 20px;
-    padding-bottom: 40px;
+    border-radius: 15px;
+    padding: 20px 0;
     box-shadow: 0.0625rem 0.0625rem 0.625rem -2px #46574D;
 }
 
@@ -26,12 +24,34 @@
     text-align: center;
 }
 
-input {
+.nameInputDiv {
+    display: flex;
+    justify-content: space-between;
+}
+
+.input {
     border: none;
     border-bottom: 1px solid black;
     width: 100%;
+    height: 40px;
+    caret-color: transparent;
+}
+
+input:focus {
+    outline: none;
+    background-color: #e1e1e1;
+}
+
+.checkboxDiv {
+    height: 40px;
+    display: flex;
+    align-items: flex-end;
 }
 
 .submitButton {
-    margin: 30px;
+    margin: 40px auto;
+    margin-top: 50px;
+    width: 75%;
+    border-radius: 30px;
+    height: 40px;
 }
