@@ -17,11 +17,11 @@ const ClassesComponent = () => {
       <h2 className={styles.h2Header}>Upcoming Classes</h2>
       <div className={styles.classCardContainer}>
         {classes.map((obj, i) => (
-          <div className={styles.classCard}>
-            <a key={i} href={`/classes/${obj.id}`}>
+          <div key={i} className={styles.classCard}>
+            <a href={`/classes/${obj.id}`}>
               <div className={styles.classCardContent}>
                 <div className={styles.cardTop}>
-                  <img className={styles.classImage} src={obj.image} />
+                  <img className={styles.classImage} alt='A couple dancing Lindy Hop' src={obj.image} />
                 </div>
                 <div className={styles.cardBottom}>
                   <p className={styles.classTitle}>{obj.title}</p>

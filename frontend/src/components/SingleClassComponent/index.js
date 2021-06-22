@@ -10,24 +10,25 @@ const SingleClassComponent = () => {
     const { classId } = useParams();
     const classes = useSelector(state => Object.values(state.classes))
 
-    const classObj = classes.find(obj => obj.id === +classId);
-    // console.log('---->',classObj)
-
     useEffect(() => {
         dispatch(getClasses());
-        setCurrentClass(classObj)
     }, [dispatch]);
 
-    return currentClass && (
+    useEffect(() => {
+        let classObj = classes.find(obj => obj.id === +classId);
+        setCurrentClass(classObj)
+    }, [classes, classId])
+
+    return (
         <div>
-            <h2>{currentClass.title}</h2>
             <div>
-                <img src={currentClass.image} />
+                <img className={styles.classImage} src={currentClass?.image} alt='A couple dancing Lindy Hop'/>
             </div>
+            <h2>{currentClass?.title}</h2>
             <div>
-                <p>{currentClass.description}</p>
-                <p>{`$${currentClass.cost}`}</p>
-                <p>{currentClass.date}</p>
+                <p>{currentClass?.description}</p>
+                <p>{`$${currentClass?.cost}`}</p>
+                <p>{currentClass?.date}</p>
             </div>
         </div>
     );
