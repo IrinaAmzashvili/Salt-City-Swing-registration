@@ -35,6 +35,9 @@ const Navigation = ({ isLoaded }) => {
   return (
     <nav>
       <div className={styles.bannerDiv}>
+        <div className={styles.bannerImageDiv}>
+          <img className={styles.bannerImage} src='images/dance-image-1.jpg' />
+        </div>
         <div className={styles.logoDiv}>
           <a href="/">
             <img

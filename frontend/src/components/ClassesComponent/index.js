@@ -13,25 +13,35 @@ const ClassesComponent = () => {
   }, [dispatch]);
 
   return (
-    <div className={styles.classCardContainer}>
+    <>
       <h2 className={styles.h2Header}>Upcoming Classes</h2>
-      {classes.map((obj, i) => (
-        <a key={i} href={`/classes/${obj.id}`}>
+      <div className={styles.classCardContainer}>
+        {classes.map((obj, i) => (
           <div className={styles.classCard}>
-            <div className={styles.cardTop}>
-              <img src={obj.image} />
-            </div>
-            <div className={styles.cardBottom}>
-              <p>{obj.title}</p>
-              <p>{obj.date}</p>
-            </div>
-            <div className={styles.likeButton}>
-              <button>Like</button>
-            </div>
+            <a key={i} href={`/classes/${obj.id}`}>
+              <div className={styles.classCardContent}>
+                <div className={styles.cardTop}>
+                  <img className={styles.classImage} src={obj.image} />
+                </div>
+                <div className={styles.cardBottom}>
+                  <p className={styles.classTitle}>{obj.title}</p>
+                  <p className={styles.classDate}>{obj.date}</p>
+                </div>
+              </div>
+              <div className={styles.likeButtonDiv}>
+                <button
+                    className={styles.likeButton}
+                    // onClick={handleLike}
+                >
+                    <i className={`far fa-heart ${styles.heartIconEmpty}`}></i>
+                    {/* <i className={`fas fa-heart ${styles.heartIconFilled}`}></i> */}
+                </button>
+              </div>
+            </a>
           </div>
-        </a>
-      ))}
-    </div>
+        ))}
+      </div>
+    </>
   );
 };
 

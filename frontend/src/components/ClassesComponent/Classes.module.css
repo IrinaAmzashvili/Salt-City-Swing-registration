@@ -1,8 +1,93 @@
 .classCardContainer {
-    /* background-color: pink; */
-    width: 100%
+    margin: 0 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .h2Header {
+    text-align: center;
+}
+
+.classCard {
+    width: 290px;
+    height: 300px;
+    margin: 20px;
+    position: relative;
+}
+
+.classCardContent {
+    display: flex;
+    flex-direction: column;
+    width: 290px;
+    height: 300px;
+    box-shadow: 0 0 64px -64px #240200;
+    transition: box-shadow .2s;
+    cursor: default;
+}
+
+.classCardContent:hover {
+    box-shadow: 0 0 39px -18px #240200;
+}
+
+.cardTop {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    height: 190px;
+}
+
+.classImage {
+    flex: 1;
+    height: 100%;
+}
+
+.cardBottom {
+    flex-grow: 1;
+    padding: 15px;
+    padding-bottom: 25px;
+    height: 25px;
+    background-color: #FAFAFA;
+}
+
+.classTitle {
+    font-weight: bold;
+    font-size: 20px;
     margin: 0;
+}
+
+.classDate {
+    margin: 0;
+    padding: 10px 0;
+}
+
+.likeButtonDiv {
+    position: absolute;
+    top: 164px;
+    right: 20px;
+}
+
+.likeButton {
+    border-radius: 30px;
+    height: 40px;
+    width: 40px;
+    padding: 10px;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 0 2px black;
+    background-color: #FAFAFA;
+}
+
+.likeButton:hover {
+    background-color: #f4f4f4;
+}
+
+.heartIconEmpty {
+    font-size: 16px;
+}
+
+.heartIconFilled {
+    color: #F05537;
 }
