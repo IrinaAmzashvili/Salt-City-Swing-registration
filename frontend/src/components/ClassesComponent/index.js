@@ -28,13 +28,13 @@ const ClassesComponent = () => {
                   <p className={styles.classDate}>{obj.date}</p>
                 </div>
               </div>
-              <div className={styles.likeButtonDiv}>
+              <div className={`${styles.likeButtonDiv} likeButtonDiv`}>
                 <button
-                    className={styles.likeButton}
+                    className='likeButton'
                     // onClick={handleLike}
                 >
-                    <i className={`far fa-heart ${styles.heartIconEmpty}`}></i>
-                    {/* <i className={`fas fa-heart ${styles.heartIconFilled}`}></i> */}
+                    <i className='far fa-heart heartIconEmpty'></i>
+                    {/* <i className='fas fa-heart heartIconFilled'></i> */}
                 </button>
               </div>
             </a>

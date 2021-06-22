@@ -42,7 +42,8 @@ input {
 }
 
 input:focus {
-    background-color: #ededed;
+    /* background-color: #ededed; */
+    /* background-color: var(--graytheme); */
     outline: none;
 }
 
@@ -53,4 +54,33 @@ input:focus {
     color: inherit;
     background-color: transparent;
     cursor: pointer;
+}
+
+/* Like Button */
+.likeButtonDiv {
+    position: absolute;
+}
+
+.likeButton {
+    border-radius: 30px;
+    height: 40px;
+    width: 40px;
+    padding: 10px;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 0 2px black;
+    background-color: var(--backgroundLight);
+    transition: all .2s ease-out;
+}
+
+.likeButton:hover {
+    background-color: #e7e7e7;
+}
+
+.heartIconEmpty {
+    font-size: 16px;
+}
+
+.heartIconFilled {
+    color: #F05537;
 }

@@ -36,24 +36,26 @@ const SingleClassComponent = () => {
             alt="A couple dancing Lindy Hop"
           />
         </div>
-        <div className={styles.classContentContainer}>
-          <div className={styles.likeButtonDiv}>
+        <div className={styles.buttonHeaderDiv}>
+          <div className={`${styles.likeButtonDiv} likeButtonDiv`}>
             <button
-              className={styles.likeButton}
+              className="likeButton"
               // onClick={handleLike}
             >
-              <i className={`far fa-heart ${styles.heartIconEmpty}`}></i>
-              {/* <i className={`fas fa-heart ${styles.heartIconFilled}`}></i> */}
+              <i className="far fa-heart heartIconEmpty"></i>
+              {/* <i className='fas fa-heart heartIconFilled'></i> */}
             </button>
           </div>
-          <div>
-              <button>Purchase class</button>
+          <p className={styles.classCost}>{`$${currentClass?.cost}`}</p>
+          <div className={styles.registerButtonDiv}>
+            <button className={styles.registerButton}>Register</button>
           </div>
-          <h2>{currentClass?.title}</h2>
-          <p>{currentClass?.date}</p>
-          <p>Start date: 6/7/21</p>
-          <p>{currentClass?.description}</p>
-          <p>{`$${currentClass?.cost}`}</p>
+        </div>
+        <div className={styles.classContentContainer}>
+          <h2 className={styles.classTitle}>{currentClass?.title}</h2>
+          <p className={styles.classDates}>{currentClass?.date}</p>
+          <p className={styles.classStartDate}>Start date: 6/7/21</p>
+          <p className={styles.classDescription}>{currentClass?.description}</p>
         </div>
       </div>
     </div>
