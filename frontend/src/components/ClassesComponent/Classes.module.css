@@ -1,3 +1,5 @@
+@import '../../index.css';
+
 .classCardContainer {
     margin: 0 100px;
     display: flex;
@@ -21,13 +23,13 @@
     flex-direction: column;
     width: 290px;
     height: 300px;
-    box-shadow: 0 0 64px -64px #240200;
+    box-shadow: 0 0 64px -64px var(--themeDark);
     transition: box-shadow .2s;
-    cursor: default;
+    cursor: pointer;
 }
 
 .classCardContent:hover {
-    box-shadow: 0 0 39px -18px #240200;
+    box-shadow: 0 0 39px -18px var(--themeDark);
 }
 
 .cardTop {
@@ -49,7 +51,7 @@
     padding: 15px;
     padding-bottom: 25px;
     height: 25px;
-    background-color: #FAFAFA;
+    background-color: var(--backgroundLight);
 }
 
 .classTitle {
@@ -77,11 +79,11 @@
     cursor: pointer;
     border: none;
     box-shadow: 0 0 2px black;
-    background-color: #FAFAFA;
+    background-color: var(--backgroundLight);
 }
 
 .likeButton:hover {
-    background-color: #f4f4f4;
+    background-color: var(--backgroundLighter);
 }
 
 .heartIconEmpty {

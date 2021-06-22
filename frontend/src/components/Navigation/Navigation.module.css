@@ -1,8 +1,10 @@
+@import '../../index.css';
+
 .navDiv {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgb(74, 5, 6);
+    background-color: var(--themeColor);
     /* position: absolute; */
     top: 0;
     width: 100%;
@@ -10,7 +12,7 @@
 }
 
 .bannerDiv {
-    background-color: rgb(74, 5, 6);
+    background-color: var(--themeColor);
     height: 200px;
 }
 
@@ -77,5 +79,5 @@ ul.navlinks > * {
 }
 
 ul.navlinks > *:hover {
-    background-color: rgb(122, 8, 10);
+    background-color: var(--themeLight);
 }
