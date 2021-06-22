@@ -1,12 +1,18 @@
-nav {
+.navDiv {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: rgb(74, 5, 6);
-    position: absolute;
+    /* position: absolute; */
     top: 0;
     width: 100%;
-    height: 6rem;
+    height: 70px;
+}
+
+.bannerDiv {
+    /* background-image: url('/home/irina/app-academy/5-Module/react-solo-project/salt-city-swing-registration/frontend/public/images/dance-image-1.jpg'); */
+    background-color: black;
+    height: 200px;
 }
 
 .logoDiv {
@@ -21,6 +27,7 @@ nav {
 .logo {
     height: 180px;
     margin-top: 20px;
+    padding: 0 50px;
 }
 
 .searchDiv {
@@ -39,7 +46,7 @@ ul.navlinks {
     align-self: baseline;
     width: 15%;
     height: 100%;
-    margin: 0 20px;
+    /* margin: 0 20px; */
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -49,8 +56,8 @@ ul.navlinks {
 ul.navlinks > * {
     /* flex-grow: 1; */
     color: white;
-    height: 100%;
-    padding: 38px 18px;
+    /* height: 100%; */
+    padding: 26px 18px;
     transition: background-color .3s;
 }
 

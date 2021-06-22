@@ -14,7 +14,7 @@ const ClassesComponent = () => {
 
   return (
     <div className={styles.classCardContainer}>
-      <h2>Upcoming Classes</h2>
+      <h2 className={styles.h2Header}>Upcoming Classes</h2>
       {classes.map((obj, i) => (
         <a key={i} href={`/classes/${obj.id}`}>
           <div className={styles.classCard}>

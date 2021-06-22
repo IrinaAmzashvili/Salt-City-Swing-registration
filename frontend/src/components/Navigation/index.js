@@ -11,11 +11,11 @@ const Navigation = ({ isLoaded }) => {
 
   const loginDemoUser = (e) => {
     e.preventDefault();
-    
+
     return dispatch(sessionActions.loginDemo()).catch(async (res) => {
       await res.json();
-    })
-  }
+    });
+  };
 
   let sessionLinks;
   if (sessionUser) {
@@ -25,10 +25,7 @@ const Navigation = ({ isLoaded }) => {
       <>
         <LoginFormModal />
         <NavLink to="/signup">Sign Up</NavLink>
-        <button
-          className='link-button'
-          onClick={loginDemoUser}
-        >
+        <button className="link-button" onClick={loginDemoUser}>
           Demo User
         </button>
       </>
@@ -37,18 +34,28 @@ const Navigation = ({ isLoaded }) => {
 
   return (
     <nav>
-      <div className={styles.logoDiv}>
-        <a href='/'>
-          <img className={styles.logo} src='logo/Salt-City-Swing-Shadow-sans-slogan-trans.png' alt='Salt City Swing Logo'></img>
-        </a>
+      <div className={styles.bannerDiv}>
+        <div className={styles.logoDiv}>
+          <a href="/">
+            <img
+              className={styles.logo}
+              src="logo/Salt-City-Swing-Shadow-sans-slogan-trans.png"
+              alt="Salt City Swing Logo"
+            ></img>
+          </a>
+        </div>
       </div>
-      <div className={styles.searchDiv}></div>
-      <ul className={styles.navlinks}>
-        <NavLink exact to="/">
-          Home
-        </NavLink>
-        {isLoaded && sessionLinks}
-      </ul>
+      <div className={styles.navDiv}>
+        <div className={styles.logoDiv}>
+        </div>
+        <div className={styles.searchDiv}></div>
+        <ul className={styles.navlinks}>
+          <NavLink exact to="/">
+            Home
+          </NavLink>
+          {isLoaded && sessionLinks}
+        </ul>
+      </div>
     </nav>
   );
 };
