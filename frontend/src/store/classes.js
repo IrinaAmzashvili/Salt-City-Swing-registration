@@ -20,13 +20,13 @@ export const getClasses = () => async (dispatch) => {
 const initialState = {};
 
 const classesReducer = (state = initialState, action) => {
+    let newObj = {};
     switch (action.type) {
         case SET_CLASSES:
-            const allClasses = {};
             action.classes.forEach(obj => {
-                allClasses[obj.id] = obj;
+                newObj[obj.id] = obj;
             })
-            return { ...state, ...allClasses };
+            return { ...state, ...newObj };
         default:
             return state;
     }

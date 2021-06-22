@@ -1,8 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getClasses } from "../../store/classes";
-import { Route, Switch } from "react-router-dom";
-import SingleClassComponent from "../SingleClassComponent";
 
 import styles from "./Classes.module.css";
 
@@ -21,7 +19,7 @@ const ClassesComponent = () => {
         <a key={i} href={`/classes/${obj.id}`}>
           <div className={styles.classCard}>
             <div className={styles.cardTop}>
-              <p>{obj.image}</p>
+              <img src={obj.image} />
             </div>
             <div className={styles.cardBottom}>
               <p>{obj.title}</p>

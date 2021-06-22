@@ -12,4 +12,15 @@ router.get(
   })
 );
 
+router.get(
+  "/:classId",
+  asyncHandler(async (req, res) => {
+    const classId = req.params.classId;
+    console.log("----------------->BACKEND<----------------", classId);
+    const classObj = await db.Class.findByPk(classId);
+    console.log(classObj);
+    res.json(classObj);
+  })
+);
+
 module.exports = router;
