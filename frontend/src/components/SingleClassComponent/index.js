@@ -57,7 +57,7 @@ const SingleClassComponent = () => {
         </div>
         <div className={styles.classContentContainer}>
           <h2 className={styles.classTitle}>{currentClass?.title}</h2>
-          <p className={styles.classDates}>{currentClass?.date}</p>
+          <p className={styles.classDates}>{currentClass?.dates}</p>
           <p className={styles.classStartDate}>Start date: 6/7/21</p>
           <p className={styles.classDescription}>{currentClass?.description}</p>
         </div>

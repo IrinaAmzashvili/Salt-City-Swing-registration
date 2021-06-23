@@ -10,7 +10,7 @@ module.exports = {
           description:
             "Level 1 Swing (6-count) starts from the very beginning, focusing on partner connection and 6-count patterns that are essential for any Lindy Hopper. Topics for this class include, but are not limited to the 6-count basic, tuck turns, side passes, 6-count Lindy circle, arm-drape position entrance and exit, and Frankie 6's. No experience or partner required.",
           dates: "July - Wednesdays 7:00pm-8:00pm",
-          startDate: '6/7/2021',
+          startDate: '7/7/2021',
           cost: 45,
           image: "/images/classImages/classImage-1.jpg",
           imageAlt: 'A couple dancing Lindy Hop'
@@ -20,7 +20,7 @@ module.exports = {
           description:
             "Level 2 Connection and Musicality will take a deep dive into the lead/follow aspects of swing and mix up some of the different rhythmic structures that make up Lindy Hop! We'll work on getting your dancing dialed into the music AND with your connection to your partner.",
           dates: "July - Wednesdays 7:00pm-8:00pm",
-          startDate: '6/7/2021',
+          startDate: '7/7/2021',
           cost: 45,
           image: "/images/classImages/classImage-2.jpg",
           imageAlt: 'A couple dancing Lindy Hop'
@@ -29,8 +29,8 @@ module.exports = {
           title: "Level 3 Lindy Hop",
           description:
             "Level 3 classes are for students who have completed both level 1 and level 2 series. If you read through the previous classes and say to yourself, \"psh, this is a breeze,\" then feel free to come talk to one of the instructors and see if this level is right for you. We teach whatever we think is fun and helpful in this series. It's a blast, we promise.",
-          dates: "August - Wednesdays 7:00pm-8:00pm",
-          startDate: '6/7/2021',
+          dates: "July - Wednesdays 7:00pm-8:00pm",
+          startDate: '7/7/2021',
           cost: 45,
           image: "/images/classImages/classImage-3.jpg",
           imageAlt: 'A couple dancing Lindy Hop'
@@ -79,7 +79,7 @@ module.exports = {
           title: "Level 2 Charleston",
           description:
             "Level 2 Swing (Charleston) will be starting from the connection and aesthetics of the basic, and moving quickly on to build on the technique and connection of other patterns in hand to hand and tandem Charleston as well. We cover Charleston patterns and connection in 6-count and 8-count (and more) in this series.",
-          dates: "August - Wednesdays 7:00pm-8:00pm",
+          dates: "September - Wednesdays 7:00pm-8:00pm",
           startDate: '9/8/2021',
           cost: 45,
           image: "/images/classImages/classImage-8.jpg",
@@ -89,7 +89,7 @@ module.exports = {
           title: "Level 3 Lindy Hop",
           description:
             "Level 3 classes are for students who have completed both level 1 and level 2 series. If you read through the previous classes and say to yourself, \"psh, this is a breeze,\" then feel free to come talk to one of the instructors and see if this level is right for you. We teach whatever we think is fun and helpful in this series. It's a blast, we promise.",
-          dates: "August - Wednesdays 7:00pm-8:00pm",
+          dates: "September - Wednesdays 7:00pm-8:00pm",
           startDate: '9/8/2021',
           cost: 45,
           image: "/images/classImages/classImage-9.jpg",
