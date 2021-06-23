@@ -1,0 +1,75 @@
+@import '../../index.css';
+
+.classesPageContainer {
+    padding: 100px 0;
+}
+
+.classCardContainer {
+    margin: 0 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.h2Header {
+    text-align: center;
+}
+
+.classCard {
+    width: 290px;
+    height: 300px;
+    margin: 20px;
+    position: relative;
+}
+
+.classCardContent {
+    display: flex;
+    flex-direction: column;
+    width: 290px;
+    height: 300px;
+    box-shadow: 0 0 64px -64px var(--themeDark);
+    transition: box-shadow .2s;
+    cursor: pointer;
+}
+
+.classCardContent:hover {
+    box-shadow: 0 0 39px -18px var(--themeDark);
+}
+
+.cardTop {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    height: 190px;
+}
+
+.classImage {
+    flex: 1;
+    height: 100%;
+}
+
+.cardBottom {
+    flex-grow: 1;
+    padding: 15px;
+    padding-bottom: 25px;
+    height: 25px;
+    background-color: var(--backgroundLight);
+}
+
+.classTitle {
+    font-weight: bold;
+    font-size: 20px;
+    margin: 0;
+}
+
+.classDate {
+    margin: 0;
+    padding: 10px 0;
+}
+
+.likeButtonDiv {
+    top: 164px;
+    right: 20px;
+}

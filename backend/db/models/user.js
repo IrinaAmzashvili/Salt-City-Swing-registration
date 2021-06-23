@@ -41,14 +41,12 @@ module.exports = (sequelize, DataTypes) => {
     },
     userPhoto: DataTypes.TEXT,
     mailingList: {
-      // allowNull: false,
+      allowNull: false,
       type: DataTypes.BOOLEAN,
-      // defaultValue: false
     },
     admin: {
-      // allowNull: false,
+      allowNull: false,
       type: DataTypes.BOOLEAN,
-      // defaultValue: false
     },
   },
   {

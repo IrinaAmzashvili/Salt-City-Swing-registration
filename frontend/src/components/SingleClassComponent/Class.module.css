@@ -1,0 +1,104 @@
+@import '../../index.css';
+
+.classPageContainer {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.classBackgroundImageContainer {
+    height: 715px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+}
+
+.classBackgroundImage {
+    flex: 1;
+    height: 1300px;
+    max-width: 200%;
+    position: absolute;
+    top: -80px;
+    filter: blur(50px);
+}
+
+.classPageContent {
+    margin: 70px 200px;
+    width: 800px;
+    z-index: 0;
+    position: relative;
+    top: 20px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    background-color: var(--backgroundLighter);
+    border-bottom: 1px solid var(--graytheme);
+}
+
+.classImageContainer {
+    margin: auto;
+    width: 100%;
+}
+
+.classImage {
+    max-width: 100%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.buttonHeaderDiv {
+    border-bottom: 1px solid var(--graytheme);
+    padding: 0px 25px;
+    padding-bottom: 4px;
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+}
+
+.likeButtonDiv {
+    top: 3px;
+    left: 25px;
+}
+
+.registerButton {
+    height: 44px;
+    width: 200px;
+    padding: 0 30px;
+    margin-bottom: 1px;
+    border: 2px solid transparent;
+    line-height: 26px;
+    font-size: 15px;
+    border-radius: 4px;
+    background-color: var(--themeDark);
+    color: white;
+    font-weight: bold;
+    transition: all .2s ease-out;
+    cursor: pointer;
+}
+
+.registerButton:hover {
+    background-color: var(--themeColor);
+}
+
+.classContentContainer {
+    padding: 50px 100px;
+    background-color: var(--backgroundLight);
+    display: flex;
+    flex-direction: column;
+}
+
+.classContentContainer > * {
+    padding: 10px 0 0 0;
+    margin: 0;
+}
+
+.classTitle {
+    padding-bottom: 10px;
+}
+
+.classCost {
+    padding: 0 20px;
+    margin: 0;
+    align-self: center;
+}

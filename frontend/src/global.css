@@ -1,0 +1,82 @@
+* {
+    box-sizing: border-box;
+}
+
+#body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+
+}
+
+#page-container {
+    background-color: var(--themeDark);
+    min-height: 100vh;
+}
+
+#root {
+    max-width: 1200px;
+    min-height: 100vh;
+    overflow: hidden;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    background-color: #FFFFFF;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+input {
+    border: none;
+    border-bottom: 1px solid black;
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    caret-color: transparent;
+}
+
+input:focus {
+    background-color: var(--inputGray);
+    outline: none;
+}
+
+.link-button {
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+/* Like Button */
+.likeButtonDiv {
+    position: absolute;
+}
+
+.likeButton {
+    border-radius: 30px;
+    height: 40px;
+    width: 40px;
+    padding: 10px;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 0 2px black;
+    background-color: var(--backgroundLight);
+    transition: all .2s ease-out;
+}
+
+.likeButton:hover {
+    background-color: #e7e7e7;
+}
+
+.heartIconEmpty {
+    font-size: 16px;
+}
+
+.heartIconFilled {
+    color: #F05537;
+}

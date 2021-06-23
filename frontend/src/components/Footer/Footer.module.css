@@ -1,0 +1,48 @@
+@import '../../index.css';
+
+.footerContainer {
+    background-color: var(--themeColor);
+    height: 140px;
+}
+
+.footerContainer * {
+    color: white;
+}
+
+.footer {
+    height: 100%;
+    padding: 34px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.linksDiv, .designerInfo {
+    display: flex;
+    align-items: baseline;
+}
+
+.scsSite {
+    margin: 10px
+}
+
+.designer {
+    margin: 0;
+    margin-right: 10px;
+}
+
+.icon {
+    font-size: 20px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.facebookIcon {
+    /* color: #4064AC;
+    color: #3D548E; */
+}
+/*
+.iconAnchor {
+    width: 21px;
+    height: 21px;
+} */
