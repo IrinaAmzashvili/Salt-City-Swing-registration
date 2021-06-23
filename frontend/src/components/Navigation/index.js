@@ -4,6 +4,7 @@ import ProfileButton from "./ProfileButton";
 import LoginFormModal from "../LoginFormModal";
 import * as sessionActions from "../../store/session";
 import styles from "./Navigation.module.css";
+import { BannerPic, Logo } from '../../image/image';
 
 const Navigation = ({ isLoaded }) => {
   const dispatch = useDispatch();
@@ -36,21 +37,24 @@ const Navigation = ({ isLoaded }) => {
     <nav>
       <div className={styles.bannerDiv}>
         <div className={styles.bannerImageDiv}>
-          <img className={styles.bannerImage} src='images/dance-image-1.jpg' alt='Banner with dancers'/>
+          <img
+            className={styles.bannerImage}
+            src={BannerPic()}
+            alt="Banner with dancers"
+          />
         </div>
         <div className={styles.logoDiv}>
           <a href="/">
             <img
               className={styles.logo}
-              src="logo/Salt-City-Swing-Shadow-sans-slogan-trans.png"
+              src={Logo()}
               alt="Salt City Swing Logo"
             ></img>
           </a>
         </div>
       </div>
       <div className={styles.navDiv}>
-        <div className={styles.logoDiv}>
-        </div>
+        <div className={styles.logoDiv}></div>
         <div className={styles.searchDiv}></div>
         <ul className={styles.navlinks}>
           <NavLink exact to="/">

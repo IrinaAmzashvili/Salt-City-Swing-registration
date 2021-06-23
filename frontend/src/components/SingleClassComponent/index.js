@@ -24,8 +24,9 @@ const SingleClassComponent = () => {
       <div className={styles.classBackgroundImageContainer}>
         <img
           className={styles.classBackgroundImage}
-          src={currentClass?.image}
-          alt="A couple dancing Lindy Hop"
+        //   src={currentClass?.image}
+        //   src={`${classImages}/${currentClass?.image}`}
+          alt={currentClass?.alt}
         />
       </div>
       <div className={styles.classPageContent}>
@@ -33,7 +34,7 @@ const SingleClassComponent = () => {
           <img
             className={styles.classImage}
             src={currentClass?.image}
-            alt="A couple dancing Lindy Hop"
+            alt={currentClass?.alt}
           />
         </div>
         <div className={styles.buttonHeaderDiv}>

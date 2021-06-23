@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getClasses } from "../../store/classes";
+import { allImages } from '../../image/image';
 
 import styles from "./Classes.module.css";
 
@@ -21,7 +22,12 @@ const ClassesComponent = () => {
             <a href={`/classes/${obj.id}`}>
               <div className={styles.classCardContent}>
                 <div className={styles.cardTop}>
-                  <img className={styles.classImage} alt='A couple dancing Lindy Hop' src={obj.image} />
+                  <img
+                    className={styles.classImage}
+                    alt={obj.alt}
+                    src={allImages['dance-image-1.jpg']}
+                    // src={obj.image}
+                  />
                 </div>
                 <div className={styles.cardBottom}>
                   <p className={styles.classTitle}>{obj.title}</p>
@@ -30,11 +36,11 @@ const ClassesComponent = () => {
               </div>
               <div className={`${styles.likeButtonDiv} likeButtonDiv`}>
                 <button
-                    className='likeButton'
-                    // onClick={handleLike}
+                  className="likeButton"
+                  // onClick={handleLike}
                 >
-                    <i className='far fa-heart heartIconEmpty'></i>
-                    {/* <i className='fas fa-heart heartIconFilled'></i> */}
+                  <i className="far fa-heart heartIconEmpty"></i>
+                  {/* <i className='fas fa-heart heartIconFilled'></i> */}
                 </button>
               </div>
             </a>
