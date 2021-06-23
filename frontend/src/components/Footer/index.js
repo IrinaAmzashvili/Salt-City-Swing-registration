@@ -5,7 +5,7 @@ const Footer = () => {
     <div className={styles.footerContainer}>
       <footer className={styles.footer}>
         <div className={styles.designerDiv}>
-          <i class="far fa-copyright"> 2021 Salt City Swing</i>
+          <i className="far fa-copyright"> 2021 Salt City Swing</i>
           <div className={styles.designerInfo}>
           <p className={styles.designer}>Irina Amzashvili</p>
           <a
@@ -24,7 +24,7 @@ const Footer = () => {
             target="_blank"
             rel="noreferrer"
             >
-            {/* <i class="fab fa-linkedin-in"></i> */}
+            {/* <i className="fab fa-linkedin-in"></i> */}
             <i
               className={`fab fa-linkedin ${
                 (styles.linkedinIcon, styles.icon)

@@ -39,8 +39,7 @@ input {
 }
 
 input:focus {
-    /* background-color: #ededed; */
-    /* background-color: var(--graytheme); */
+    background-color: var(--inputGray);
     outline: none;
 }
 

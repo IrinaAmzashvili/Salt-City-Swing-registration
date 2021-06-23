@@ -1,3 +1,5 @@
+@import '../../index.css';
+
 .formContainer {
     /* margin: auto; */
 }
@@ -6,7 +8,7 @@
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    margin: 30px auto;
+    margin: 50px auto 100px;
     width: 450px;
 
     border-radius: 15px;
