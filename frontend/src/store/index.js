@@ -3,10 +3,12 @@ import thunk from 'redux-thunk';
 
 import sessionReducer from './session';
 import classesReducer from './classes';
+import ticketReducer from './tickets';
 
 const rootReducer = combineReducers({
     session: sessionReducer,
     classes: classesReducer,
+    tickets: ticketReducer,
 });
 
 let enhancer;

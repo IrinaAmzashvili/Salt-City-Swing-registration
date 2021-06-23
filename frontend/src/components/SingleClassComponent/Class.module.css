@@ -61,26 +61,6 @@
     left: 25px;
 }
 
-.registerButton {
-    height: 44px;
-    width: 200px;
-    padding: 0 30px;
-    margin-bottom: 1px;
-    border: 2px solid transparent;
-    line-height: 26px;
-    font-size: 15px;
-    border-radius: 4px;
-    background-color: var(--themeDark);
-    color: white;
-    font-weight: bold;
-    transition: all .2s ease-out;
-    cursor: pointer;
-}
-
-.registerButton:hover {
-    background-color: var(--themeColor);
-}
-
 .classContentContainer {
     padding: 50px 100px;
     background-color: var(--backgroundLight);

@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getClasses } from "../../store/classes";
+import RegisterModal from '../RegisterModal';
 import styles from "./Class.module.css";
 
 const SingleClassComponent = () => {
@@ -42,7 +43,7 @@ const SingleClassComponent = () => {
           </div>
           <p className={styles.classCost}>{`$${currentClass?.cost}`}</p>
           <div className={styles.registerButtonDiv}>
-            <button className={styles.registerButton}>Register</button>
+            <RegisterModal />
           </div>
         </div>
         <div className={styles.classContentContainer}>
