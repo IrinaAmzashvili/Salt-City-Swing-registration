@@ -5,7 +5,6 @@
 #body {
     margin: 0;
     padding: 0;
-    /* height: 100%; */
     min-height: 100vh;
 
 }
@@ -13,13 +12,10 @@
 #page-container {
     background-color: var(--themeDark);
     min-height: 100vh;
-    /* height: 100%; */
 }
 
 #root {
-    /* padding-bottom: 2.5rem; */
     max-width: 1200px;
-    /* min-height: 100%; */
     min-height: 100vh;
     overflow: hidden;
     margin: 0 auto;

@@ -6,6 +6,7 @@ import SignUpFormPage from "./components/SignUpFormPage";
 import Navigation from "./components/Navigation";
 import ClassesComponent from "./components/ClassesComponent";
 import SingleClassComponent from "./components/SingleClassComponent";
+import Footer from './components/Footer';
 
 function App() {
   const dispatch = useDispatch();
@@ -31,6 +32,7 @@ function App() {
           </Route>
         </Switch>
       )}
+      <Footer />
     </>
   );
 }

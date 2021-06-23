@@ -47,17 +47,18 @@
     border-top-right-radius: 5px;
 }
 
-.likeButtonDiv {
-    top: 540px;
-    left: 25px;
-}
-
 .buttonHeaderDiv {
     border-bottom: 1px solid var(--graytheme);
     padding: 0px 25px;
     padding-bottom: 4px;
     display: flex;
     justify-content: flex-end;
+    position: relative;
+}
+
+.likeButtonDiv {
+    top: 3px;
+    left: 25px;
 }
 
 .registerButton {
@@ -73,6 +74,7 @@
     color: white;
     font-weight: bold;
     transition: all .2s ease-out;
+    cursor: pointer;
 }
 
 .registerButton:hover {
