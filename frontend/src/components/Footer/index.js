@@ -4,30 +4,32 @@ const Footer = () => {
   return (
     <div className={styles.footerContainer}>
       <footer className={styles.footer}>
-        <h2>Hello from footer</h2>
         <div className={styles.designerDiv}>
-          <i class="far fa-copyright"> 2021 Irina Amzashvili</i>
+          <i class="far fa-copyright"> 2021 Salt City Swing</i>
+          <div className={styles.designerInfo}>
+          <p className={styles.designer}>Irina Amzashvili</p>
           <a
             className={styles.iconAnchor}
             href="https://github.com/IrinaAmzashvili"
             target="_blank"
-          >
+            >
             <i
               className={`fab fa-github ${(styles.githubIcon, styles.icon)}`}
-            ></i>
+              ></i>
           </a>
           <a
             className={styles.iconAnchor}
             href="https://www.linkedin.com/in/irina-amzashvili-683136211/"
             target="_blank"
-          >
+            >
             {/* <i class="fab fa-linkedin-in"></i> */}
             <i
               className={`fab fa-linkedin ${
                 (styles.linkedinIcon, styles.icon)
               }`}
-            ></i>
+              ></i>
           </a>
+              </div>
         </div>
         <div className={styles.linksDiv}>
           <a

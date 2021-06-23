@@ -10,13 +10,14 @@
 }
 
 .footer {
+    margin: auto 0;
     padding: 18px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
 }
 
-.linksDiv {
+.linksDiv, .designerInfo {
     display: flex;
     align-items: baseline;
 }
@@ -25,9 +26,8 @@
     margin: 10px
 }
 
-.facebookIcon {
-    /* color: #4064AC;
-    color: #3D548E; */
+.designer {
+    margin: 0;
 }
 
 .icon {
@@ -35,12 +35,12 @@
     margin: 10px;
     cursor: pointer;
 }
-/* 
-.iconDiv {
-    width: 21px;
-    height: 21px;
-}
 
+.facebookIcon {
+    /* color: #4064AC;
+    color: #3D548E; */
+}
+/*
 .iconAnchor {
     width: 21px;
     height: 21px;

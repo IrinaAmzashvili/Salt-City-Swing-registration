@@ -27,7 +27,7 @@
 .classPageContent {
     margin: 70px 200px;
     width: 800px;
-    z-index: 1;
+    z-index: 0;
     position: relative;
     top: 20px;
     border-top-left-radius: 8px;
