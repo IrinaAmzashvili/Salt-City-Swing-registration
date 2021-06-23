@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getClasses } from "../../store/classes";
 import styles from "./Class.module.css";
-import { ClassImage } from '../../image/image';
+// import { ClassImage } from '../../image/image';
 
 const SingleClassComponent = () => {
   const dispatch = useDispatch();
@@ -25,9 +25,9 @@ const SingleClassComponent = () => {
       <div className={styles.classBackgroundImageContainer}>
         <img
           className={styles.classBackgroundImage}
-        //   src={currentClass?.image}
+          src={currentClass?.image}
         //   src={`${classImages}/${currentClass?.image}`}
-          src={ClassImage()}
+          // src={ClassImage()}
           alt={currentClass?.alt}
         />
       </div>
@@ -35,8 +35,8 @@ const SingleClassComponent = () => {
         <div className={styles.classImageContainer}>
           <img
             className={styles.classImage}
-            // src={currentClass?.image}
-            src={ClassImage()}
+            src={currentClass?.image}
+            // src={ClassImage()}
             alt={currentClass?.alt}
           />
         </div>

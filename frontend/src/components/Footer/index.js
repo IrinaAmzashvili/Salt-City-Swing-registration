@@ -12,6 +12,7 @@ const Footer = () => {
             className={styles.iconAnchor}
             href="https://github.com/IrinaAmzashvili"
             target="_blank"
+            rel="noreferrer"
             >
             <i
               className={`fab fa-github ${(styles.githubIcon, styles.icon)}`}
@@ -21,6 +22,7 @@ const Footer = () => {
             className={styles.iconAnchor}
             href="https://www.linkedin.com/in/irina-amzashvili-683136211/"
             target="_blank"
+            rel="noreferrer"
             >
             {/* <i class="fab fa-linkedin-in"></i> */}
             <i
@@ -36,6 +38,7 @@ const Footer = () => {
             className={styles.scsSite}
             href="https://saltcityswing.org/"
             target="_blank"
+            rel="noreferrer"
           >
             Salt City Swing website
           </a>
@@ -44,6 +47,7 @@ const Footer = () => {
               className={styles.iconAnchor}
               href="https://www.instagram.com/salt.city.swing/"
               target="_blank"
+              rel="noreferrer"
             >
               <i
                 className={`fab fa-instagram ${
@@ -55,6 +59,7 @@ const Footer = () => {
               className={styles.iconAnchor}
               href="https://www.facebook.com/slcswing"
               target="_blank"
+              rel="noreferrer"
             >
               <i
                 className={`fab fa-facebook-square ${

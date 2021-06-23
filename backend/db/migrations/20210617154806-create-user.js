@@ -33,12 +33,12 @@ module.exports = {
         type: Sequelize.TEXT
       },
       mailingList: {
-        // allowNull: false,
+        allowNull: false,
         type: Sequelize.BOOLEAN,
         // defaultValue: false
       },
       admin: {
-        // allowNull: false,
+        allowNull: false,
         type: Sequelize.BOOLEAN,
         // defaultValue: false
       },

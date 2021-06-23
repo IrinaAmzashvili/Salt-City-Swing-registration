@@ -9,7 +9,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    date: {
+    dates: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    startDate: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -20,6 +24,10 @@ module.exports = (sequelize, DataTypes) => {
     image: {
       allowNull: false,
       type: DataTypes.TEXT
+    },
+    imageAlt: {
+      allowNull: false,
+      type: DataTypes.STRING
     },
   }, {});
   Class.associate = function(models) {

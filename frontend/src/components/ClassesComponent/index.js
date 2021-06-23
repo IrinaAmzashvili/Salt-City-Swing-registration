@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getClasses } from "../../store/classes";
-import { allImages } from '../../image/image';
+// import { allImages } from '../../image/image';
 
 import styles from "./Classes.module.css";
 
@@ -14,7 +14,7 @@ const ClassesComponent = () => {
   }, [dispatch]);
 
   return (
-    <>
+    <div className={styles.classesPageContainer}>
       <h2 className={styles.h2Header}>Upcoming Classes</h2>
       <div className={styles.classCardContainer}>
         {classes.map((obj, i) => (
@@ -24,14 +24,14 @@ const ClassesComponent = () => {
                 <div className={styles.cardTop}>
                   <img
                     className={styles.classImage}
-                    alt={obj.alt}
-                    src={allImages['dance-image-1.jpg']}
-                    // src={obj.image}
+                    alt={obj.imageAlt}
+                    // src={allImages['dance-image-1.jpg']}
+                    src={obj.image}
                   />
                 </div>
                 <div className={styles.cardBottom}>
                   <p className={styles.classTitle}>{obj.title}</p>
-                  <p className={styles.classDate}>{obj.date}</p>
+                  <p className={styles.classDate}>{obj.dates}</p>
                 </div>
               </div>
               <div className={`${styles.likeButtonDiv} likeButtonDiv`}>
@@ -47,7 +47,7 @@ const ClassesComponent = () => {
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 };
 
