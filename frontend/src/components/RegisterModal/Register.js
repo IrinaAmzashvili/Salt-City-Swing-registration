@@ -6,6 +6,7 @@ import { purchaseTicket } from '../../store/tickets';
 import styles from "./Register.module.css";
 
 const Register = () => {
+  const sessionUserId = useSelector((store) => store.session.user.id);
   const dispatch = useDispatch();
   const { classId } = useParams();
   const currentClass = useSelector((state) => state.classes[classId]);
@@ -21,6 +22,8 @@ const Register = () => {
     e.preventDefault();
 
     const newTicket = {
+        userId: sessionUserId,
+        classId: +classId,
         price,
         numOfTickets: +amount,
     }
