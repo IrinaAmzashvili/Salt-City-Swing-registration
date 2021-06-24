@@ -1,12 +1,15 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
-const { Like } = require('../../db/models');
+const { Like, Class } = require('../../db/models');
 
 const router = express.Router();
 
 router.get('/:userId', asyncHandler(async (req, res) => {
     const userId = req.params.userId;
-    const likes = await Like.findAll({ where: { userId } });
+    const likes = await Like.findAll({
+        where: { userId },
+        include: Class,
+    });
     res.json(likes);
 }));
 
