@@ -23,7 +23,6 @@ const validateSignup = [
         .withMessage('Last name must be a minimum of 2 characters long.')
         .isLength({ max: 30 })
         .withMessage('Last name must be no more than 30 characters long.'),
-        // check for unique email
     check('email')
         .exists({ checkFalsy: true })
         .withMessage('Please provide an email address.')
@@ -48,8 +47,9 @@ const validateSignup = [
 ];
 
 router.post('/', validateSignup, asyncHandler(async (req, res) => {
-    const { firstName, lastName, email, password, vaxCardImg, userPhoto, mailingList } = req.body;
-    const user = await User.signup({ firstName, lastName, email, password, vaxCardImg, userPhoto, mailingList });
+    const { firstName, lastName, email, password, vaxCardImg, userPhoto, mailingList, userType } = req.body;
+
+    const user = await User.signup({ firstName, lastName, email, password, vaxCardImg, userPhoto, mailingList, userType });
 
     await setTokenCookie(res, user);
 

@@ -43,16 +43,24 @@ module.exports = (sequelize, DataTypes) => {
     mailingList: {
       allowNull: false,
       type: DataTypes.BOOLEAN,
+      defaultValue: false,
     },
-    admin: {
+    userType: {
       allowNull: false,
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.STRING(15),
+      defaultValue: 'user',
+      validate: {
+        isIn: {
+          args: [['user', 'admin', 'superUser']],
+          msg: 'User type must be either user, admin, or superUser',
+        }
+      }
     },
   },
   {
     defaultScope: {
       attributes: {
-        exclude: ['hashedPassword', 'email', 'createdAt', 'updatedAt']
+        exclude: ['hashedPassword', 'eAmail', 'createdAt', 'updatedAt']
       }
     },
     scopes: {
@@ -97,7 +105,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
 
-  User.signup = async function ({ firstName, lastName, email, password, vaxCardImg, userPhoto }) {
+  User.signup = async function ({ firstName, lastName, email, password, vaxCardImg, userPhoto, mailingList, userType }) {
     const hashedPassword = bcrypt.hashSync(password);
     const user = await User.create({
       firstName,
@@ -105,7 +113,9 @@ module.exports = (sequelize, DataTypes) => {
       email,
       hashedPassword,
       vaxCardImg,
-      userPhoto
+      userPhoto,
+      mailingList,
+      userType,
     });
     return await User.scope('currentUser').findByPk(user.id);
   };
