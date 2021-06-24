@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import Register from "./Register";
 import LoginForm from '../LoginFormModal/LoginForm';
 import { Modal } from "../../context/Modal";
-import styles from "./Register.module.css";
 
 const RegisterModal = () => {
   // need isLoaded?
