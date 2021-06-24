@@ -33,7 +33,7 @@
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
     background-color: var(--backgroundLighter);
-    border-bottom: 1px solid var(--graytheme);
+    border-bottom: 1px solid var(--grayTheme);
 }
 
 .classImageContainer {
@@ -48,7 +48,7 @@
 }
 
 .buttonHeaderDiv {
-    border-bottom: 1px solid var(--graytheme);
+    border-bottom: 1px solid var(--grayTheme);
     padding: 0px 25px;
     padding-bottom: 4px;
     display: flex;

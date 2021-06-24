@@ -1,7 +1,7 @@
 @import '../../index.css';
 
 .classesPageContainer {
-    padding: 100px 0;
+    padding: 50px 0 100px;
 }
 
 .classCardContainer {
@@ -13,6 +13,7 @@
 
 .h2Header {
     text-align: center;
+    font-size: 40px;
 }
 
 .classCard {
@@ -60,13 +61,14 @@
 
 .classTitle {
     font-weight: bold;
-    font-size: 20px;
+    font-size: 18px;
     margin: 0;
 }
 
 .classDate {
     margin: 0;
     padding: 10px 0;
+    font-size: 14px;
 }
 
 .likeButtonDiv {

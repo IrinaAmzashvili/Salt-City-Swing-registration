@@ -10,9 +10,13 @@ const RegisterModal = () => {
   const sessionUser = useSelector((store) => store.session.user);
   const [showModal, setShowModal] = useState(false);
 
+  const closeModal = () => {
+    setShowModal(false);
+  }
+
   let sessionLinks;
   if (sessionUser) {
-      sessionLinks = <Register />
+      sessionLinks = <Register closeModal={closeModal}/>
   } else {
       sessionLinks = <LoginForm />
   }
@@ -20,13 +24,13 @@ const RegisterModal = () => {
   return (
     <>
       <button
-        className={styles.registerButton}
+        className='ctaButton'
         onClick={() => setShowModal(true)}
       >
         Register
       </button>
       {showModal && (
-        <Modal onClose={() => setShowModal(false)}>
+        <Modal onClose={closeModal}>
           {sessionLinks}
         </Modal>
       )}
