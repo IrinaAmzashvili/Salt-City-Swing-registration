@@ -1,0 +1,49 @@
+@import '../../index.css';
+
+.registerPageDiv {
+    height: 300px;
+    width: 510px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+}
+
+.classInfoDiv {
+    text-align: left;
+}
+
+.classTitle {
+    font-weight: 500;
+}
+
+.classDates, .classStartDate {
+    font-size: 14px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.inputDiv {
+    border-top: 1px solid var(--grayTheme);
+    border-bottom: 1px solid var(--grayTheme);
+    display: flex;
+    justify-content: space-between;
+    align-content: baseline;
+    padding: 5px 0;
+    margin: 20px 0;
+}
+
+.form .amountInput {
+    width: 50px;
+    opacity: 1;
+    text-align: center;
+    padding: 5px;
+    margin: 10px;
+}
+
+.purchaseButton {
+    align-self: flex-end;
+}

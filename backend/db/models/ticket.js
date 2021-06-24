@@ -9,6 +9,14 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false
     },
+    price: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    numOfTickets: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
   }, {});
   Ticket.associate = function(models) {
     Ticket.belongsTo(models.User, { foreignKey: 'userId' });

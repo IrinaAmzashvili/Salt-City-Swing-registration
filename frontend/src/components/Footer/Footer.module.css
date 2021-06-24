@@ -17,6 +17,10 @@
     align-items: flex-end;
 }
 
+.footer p {
+    font-size: 12px;
+}
+
 .linksDiv, .designerInfo {
     display: flex;
     align-items: baseline;

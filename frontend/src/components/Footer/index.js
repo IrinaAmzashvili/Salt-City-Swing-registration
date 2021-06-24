@@ -5,7 +5,9 @@ const Footer = () => {
     <div className={styles.footerContainer}>
       <footer className={styles.footer}>
         <div className={styles.designerDiv}>
-          <i className="far fa-copyright"> 2021 Salt City Swing</i>
+          <p>
+            <i className="far fa-copyright"> </i>
+            2021 Salt City Swing</p>
           <div className={styles.designerInfo}>
           <p className={styles.designer}>Irina Amzashvili</p>
           <a

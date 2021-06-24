@@ -18,6 +18,14 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: { model: 'Classes' }
       },
+      price: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+      },
+      numOfTickets: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

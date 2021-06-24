@@ -1,24 +1,18 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getClasses } from "../../store/classes";
+import RegisterModal from '../RegisterModal';
 import styles from "./Class.module.css";
-// import { ClassImage } from '../../image/image';
 
 const SingleClassComponent = () => {
   const dispatch = useDispatch();
-  const [currentClass, setCurrentClass] = useState({});
   const { classId } = useParams();
-  const classes = useSelector((state) => Object.values(state.classes));
+  const currentClass = useSelector((state) => state.classes[classId]);
 
   useEffect(() => {
     dispatch(getClasses());
   }, [dispatch]);
-
-  useEffect(() => {
-    let classObj = classes.find((obj) => obj.id === +classId);
-    setCurrentClass(classObj);
-  }, [classes, classId]);
 
   return (
     <div className={styles.classPageContainer}>
@@ -26,8 +20,6 @@ const SingleClassComponent = () => {
         <img
           className={styles.classBackgroundImage}
           src={currentClass?.image}
-        //   src={`${classImages}/${currentClass?.image}`}
-          // src={ClassImage()}
           alt={currentClass?.alt}
         />
       </div>
@@ -36,7 +28,6 @@ const SingleClassComponent = () => {
           <img
             className={styles.classImage}
             src={currentClass?.image}
-            // src={ClassImage()}
             alt={currentClass?.alt}
           />
         </div>
@@ -52,7 +43,7 @@ const SingleClassComponent = () => {
           </div>
           <p className={styles.classCost}>{`$${currentClass?.cost}`}</p>
           <div className={styles.registerButtonDiv}>
-            <button className={styles.registerButton}>Register</button>
+            <RegisterModal />
           </div>
         </div>
         <div className={styles.classContentContainer}>
