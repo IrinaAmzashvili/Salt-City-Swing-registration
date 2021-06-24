@@ -6,10 +6,10 @@ import styles from "./LikeButton.module.css";
 const LikeButton = ({ currentClass }) => {
   const dispatch = useDispatch();
   const likes = useSelector((state) => Object.values(state.likes));
-  const userId = useSelector((store) => store.session.user.id);
+  const userId = useSelector((store) => store.session.user?.id);
 
   const currLike = likes.find(like => (
-      like.classId === currentClass.id
+      like.classId === currentClass?.id
   ))
 
   const handleLike = (e) => {
