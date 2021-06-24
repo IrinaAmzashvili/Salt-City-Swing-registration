@@ -2,7 +2,8 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getClasses } from "../../store/classes";
-import RegisterModal from '../RegisterModal';
+import LikeButton from '../LikeButton';
+import RegisterModal from "../RegisterModal";
 import styles from "./Class.module.css";
 
 const SingleClassComponent = () => {
@@ -33,13 +34,7 @@ const SingleClassComponent = () => {
         </div>
         <div className={styles.buttonHeaderDiv}>
           <div className={`${styles.likeButtonDiv} likeButtonDiv`}>
-            <button
-              className="likeButton"
-              // onClick={handleLike}
-            >
-              <i className="far fa-heart heartIconEmpty"></i>
-              {/* <i className='fas fa-heart heartIconFilled'></i> */}
-            </button>
+            <LikeButton currentClass={currentClass} />
           </div>
           <p className={styles.classCost}>{`$${currentClass?.cost}`}</p>
           <div className={styles.registerButtonDiv}>

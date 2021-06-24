@@ -35,6 +35,7 @@ export const createLike = (likeInfo) => async (dispatch) => {
         method: 'POST',
         body: JSON.stringify(likeInfo)
     });
+    console.log('----->')
 
     if (res.ok) {
         const like = await res.json();

@@ -11,7 +11,9 @@ router.get('/:userId', asyncHandler(async (req, res) => {
 }));
 
 router.post('/', asyncHandler(async (req, res) => {
+
     const likeInfo = req.body;
+    console.log('------------->', likeInfo)
     const like = await Like.create(likeInfo);
     res.json(like);
 }));
