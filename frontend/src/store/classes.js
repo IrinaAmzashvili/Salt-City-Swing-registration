@@ -23,8 +23,8 @@ const classesReducer = (state = initialState, action) => {
     let newObj = {};
     switch (action.type) {
         case SET_CLASSES:
-            action.classes.forEach(obj => {
-                newObj[obj.id] = obj;
+            action.classes.forEach(classObj => {
+                newObj[classObj.id] = classObj;
             })
             return { ...state, ...newObj };
         default:

@@ -72,6 +72,7 @@
 }
 
 .likeButtonDiv {
+    position: absolute;
     top: 164px;
     right: 20px;
 }
