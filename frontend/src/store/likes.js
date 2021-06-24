@@ -24,7 +24,6 @@ export const getLikes = (userId) => async (dispatch) => {
 
     if (res.ok) {
         const likes = await res.json();
-        console.log(likes)
         dispatch(setLikes(likes));
         return res;
     }
@@ -35,7 +34,6 @@ export const createLike = (likeInfo) => async (dispatch) => {
         method: 'POST',
         body: JSON.stringify(likeInfo)
     });
-    console.log('----->')
 
     if (res.ok) {
         const like = await res.json();

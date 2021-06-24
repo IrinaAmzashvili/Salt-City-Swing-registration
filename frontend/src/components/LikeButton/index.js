@@ -11,8 +11,6 @@ const LikeButton = ({ currentClass }) => {
   const currLike = likes.find(like => (
       like.classId === currentClass.id
   ))
-  // likes are coming in as an array instead of an object
-  // implement delete like function and switch image
 
   const handleLike = (e) => {
       e.preventDefault();
@@ -21,9 +19,8 @@ const LikeButton = ({ currentClass }) => {
           userId,
           classId: currentClass.id,
     };
-          console.log('--->', currLike, likeInfo)
     if (currLike) {
-        dispatch(deleteLike(likeInfo));
+        dispatch(deleteLike(currLike.id));
     } else {
         dispatch(createLike(likeInfo));
     }
