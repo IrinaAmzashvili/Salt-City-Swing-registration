@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import * as sessionActions from "../../store/session";
+import LoginFormModal from "../LoginFormModal";
 import styles from "./SignUpForm.module.css";
 
 const SignUpFormPage = () => {
@@ -15,6 +16,7 @@ const SignUpFormPage = () => {
   const [vaxCardImg, setVaxCardImg] = useState("");
   const [userPhoto, setUserPhoto] = useState("");
   const [mailingList, setMailingList] = useState(false);
+  const [userType, setUserType] = useState("user");
   const [errors, setErrors] = useState([]);
 
   if (sessionUser) return <Redirect to="/" />;
@@ -30,9 +32,8 @@ const SignUpFormPage = () => {
       vaxCardImg,
       userPhoto,
       mailingList,
+      userType,
     };
-
-    console.log(newUser);
 
     if (password === confirmPassword) {
       setErrors([]);
@@ -145,24 +146,58 @@ const SignUpFormPage = () => {
             />
           </label>
         </div>
+        <div className={styles.userType}>
+          <p>User Type</p>
+          <label htmlFor="userType-user">
+            <input
+              type="radio"
+              id="userType-user"
+              value="user"
+              checked={userType === "user"}
+              onChange={(e) => setUserType(e.target.value)}
+            />
+            User
+          </label>
+          <label htmlFor="userType-admin">
+            <input
+              type="radio"
+              id="userType-admin"
+              value="admin"
+              checked={userType === "admin"}
+              onChange={(e) => setUserType(e.target.value)}
+            />
+            Admin
+          </label>
+          <label htmlFor="userType-superUser">
+            <input
+              type="radio"
+              id="userType-superUser"
+              value="superUser"
+              checked={userType === "superUser"}
+              onChange={(e) => setUserType(e.target.value)}
+            />
+            SuperUser
+          </label>
+        </div>
         <div className={styles.checkboxDiv}>
           <input
             className={styles.checkboxInput}
-            id='mailing-list'
-            type='checkbox'
-            value='mailing-list'
+            id="mailing-list"
+            type="checkbox"
+            value="mailing-list"
             checked={mailingList}
-            onChange={() => setMailingList(prev => !prev)}
+            onChange={() => setMailingList((prev) => !prev)}
           />
-          <label htmlFor='mailing-list'>
-            Add me to your mailing list
-          </label>
+          <label htmlFor="mailing-list">Add me to your mailing list</label>
         </div>
         <button className={styles.submitButton} type="submit">
           Sign Up
         </button>
         <div className={styles.switch}>
-          <button className='link-button' onClick={() => console.log('hi')}>Already have an account? Log in here!</button>
+          {/* <button className="link-button" onClick={handle}>
+            Already have an account? Log in here!
+          </button> */}
+          <LoginFormModal />
         </div>
       </form>
     </div>

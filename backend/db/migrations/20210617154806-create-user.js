@@ -35,12 +35,18 @@ module.exports = {
       mailingList: {
         allowNull: false,
         type: Sequelize.BOOLEAN,
-        // defaultValue: false
+        defaultValue: false
       },
-      admin: {
+      userType: {
         allowNull: false,
-        type: Sequelize.BOOLEAN,
-        // defaultValue: false
+        type: Sequelize.STRING(15),
+        defaultValue: 'user',
+        validate: {
+          isIn: {
+            args: [['user', 'admin', 'superUser']],
+            msg: 'User type must be either user, admin, or superUser',
+          }
+        }
       },
       createdAt: {
         allowNull: false,
