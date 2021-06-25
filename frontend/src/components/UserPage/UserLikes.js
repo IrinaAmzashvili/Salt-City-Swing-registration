@@ -20,10 +20,10 @@ const UserLikes = ({ userId }) => {
   }, [dispatch, userId]);
 
   return (
-    <div className={styles.userPageContainer}>
+    <div className={styles.userClassesContainer}>
       <h2 className={styles.h2}>Likes</h2>
       {likes.map((like) => (
-        <a href={`/classes/${like.Class?.id}`}>
+        <a key={like.id} href={`/classes/${like.Class?.id}`}>
           <div className={styles.classContainer} key={like.id}>
             <div className={styles.classInfoContainer}>
               <h3 className={styles.classTitle}>{like.Class?.title}</h3>

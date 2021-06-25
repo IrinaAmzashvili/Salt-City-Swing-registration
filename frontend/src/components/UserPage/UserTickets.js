@@ -17,10 +17,10 @@ const UserTickets = ({ userId }) => {
   }, [dispatch, userId]);
 
   return (
-    <div className={styles.userPageContainer}>
+    <div className={styles.userClassesContainer}>
       <h2 className={styles.h2}>Upcoming Classes</h2>
       {tickets.map((ticket) => (
-        <a href={`/classes/${ticket.Class?.id}`}>
+        <a key={ticket.id} href={`/classes/${ticket.Class?.id}`}>
           <div className={styles.classContainer} key={ticket.id}>
             <div className={styles.classInfoContainer}>
               <h3 className={styles.classTitle}>{ticket.Class?.title}</h3>

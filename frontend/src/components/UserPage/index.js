@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import UserLikes from "./UserLikes";
 import UserTickets from "./UserTickets";
@@ -30,20 +30,29 @@ const UserPage = () => {
       displayedList = <UserTickets userId={userId} dates={"upcoming"} />;
       break;
   }
-  console.log(view, displayedList);
 
   return (
-    <div className="classes list">
-      <button id="upcoming" onClick={handleClick}>
-        Upcoming Classes
-      </button>
-      {/* to implement in the future */}
-      {/* <button id="past" onClick={handleClick}>
+    <div className={styles.userPageContainer}>
+      <div className={styles.userClassesButtonDiv}>
+        <button
+          className={`link-button ${styles.userClassListBtn} ${view === 'upcoming' ? styles.active : null}`}
+          id="upcoming"
+          onClick={handleClick}
+        >
+          Upcoming Classes
+        </button>
+        {/* to implement in the future */}
+        {/* <button className={`link-button ${styles.userClassListBtn} ${view === 'past' ? styles.active : null}`} id="past" onClick={handleClick}>
         Past Classes
-      </button> */}
-      <button id="likes" onClick={handleClick}>
-        Likes
-      </button>
+    </button> */}
+        <button
+          className={`link-button ${styles.userClassListBtn} ${view === 'likes' ? styles.active : null}`}
+          id="likes"
+          onClick={handleClick}
+        >
+          Likes
+        </button>
+      </div>
       {displayedList}
     </div>
   );
