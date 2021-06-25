@@ -6,6 +6,12 @@
     position: relative;
 }
 
+.classContentContainer .backButton {
+    text-align: left;
+    margin-top: 60px;
+    border-bottom: 1px solid var(--grayTheme);
+}
+
 .classBackgroundImageContainer {
     height: 715px;
     overflow: hidden;
@@ -48,6 +54,7 @@
 }
 
 .buttonHeaderDiv {
+    background-color: var(--backgroundLight);
     border-bottom: 1px solid var(--grayTheme);
     padding: 0px 25px;
     padding-bottom: 4px;
