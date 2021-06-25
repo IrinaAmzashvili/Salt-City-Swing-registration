@@ -62,6 +62,10 @@
     left: 25px;
 }
 
+.registerButtonDiv {
+    width: 220px;
+}
+
 .classContentContainer {
     padding: 50px 100px;
     background-color: var(--backgroundLight);

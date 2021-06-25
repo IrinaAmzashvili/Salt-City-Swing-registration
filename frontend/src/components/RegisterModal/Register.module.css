@@ -44,6 +44,7 @@
     margin: 10px;
 }
 
-.purchaseButton {
+.purchaseButtonDiv {
+    width: 220px;
     align-self: flex-end;
 }

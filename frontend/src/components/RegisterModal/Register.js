@@ -56,9 +56,14 @@ const Register = ({ closeModal }) => {
             />
           </label>
         </div>
-        <button className={`ctaButton ${styles.purchaseButton}`} type="submit">
-          Purchase
-        </button>
+        <div className={styles.purchaseButtonDiv}>
+          <button
+            className={`ctaButton ${styles.purchaseButton}`}
+            type="submit"
+          >
+            Purchase
+          </button>
+        </div>
       </form>
     </div>
   );

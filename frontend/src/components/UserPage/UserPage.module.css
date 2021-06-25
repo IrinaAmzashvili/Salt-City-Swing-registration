@@ -1,1 +1,71 @@
 @import '../../index.css';
+
+.userPageContainer {
+    display: flex;
+    flex-direction: column;
+    margin: 50px;
+    margin-bottom: 100px;
+}
+
+.h2 {
+    font-size: 35px;
+    padding: 0 12px;
+}
+
+.classContainer {
+    display: flex;
+    justify-content: space-between;
+    border-radius: 4px;
+    margin: 10px 0;
+    padding: 12px;
+    box-shadow: 0 0 64px -64px var(--themeDark);
+    transition: box-shadow .2s;
+}
+
+.classContainer:hover {
+    box-shadow: 4px 4px 39px -18px var(--themeDark);
+}
+
+.classInfoContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.classInfoContainer > * {
+    margin: 0;
+    padding-top: 5px;
+}
+
+.classTitle {
+    padding: 0;
+}
+
+.classImageContainer {
+    width: 220px;
+}
+
+.classImage {
+    width: 100%;
+}
+
+.buttonsDiv {
+    display: flex;
+    margin: 10px 0;
+}
+
+.likeButtonDiv {
+    margin-right: 10px;
+}
+
+.registerButtonDiv {
+    flex-grow: 2;
+}
+
+.classInfo {
+    font-size: 12px;
+}
+
+.userTicketInfo > p {
+    margin: 0;
+    padding-top: 18px;
+}

@@ -9,37 +9,42 @@ const UserPage = () => {
   const [view, setView] = useState("upcoming");
 
   const handleClick = (e) => {
-      e.preventDefault();
+    e.preventDefault();
 
-      setView(e.target.id);
+    setView(e.target.id);
+  };
+
+  let displayedList;
+
+  switch (view) {
+    case "upcoming":
+      displayedList = <UserTickets userId={userId} dates={"upcoming"} />;
+      break;
+    case "past":
+      displayedList = <UserTickets userId={userId} dates={"past"} />;
+      break;
+    case "likes":
+      displayedList = <UserLikes userId={userId} />;
+      break;
+    default:
+      displayedList = <UserTickets userId={userId} dates={"upcoming"} />;
+      break;
   }
-
-    let displayedList = <UserTickets userId={userId} dates={"upcoming"} />;
-
-  useEffect(() => {
-    switch (view) {
-      case "upcoming":
-        displayedList = <UserTickets userId={userId} dates={"upcoming"} />;
-        break;
-      case "past":
-        displayedList = <UserTickets userId={userId} dates={"past"} />;
-        break;
-      case "likes":
-        displayedList = <UserLikes userId={userId} />;
-        break;
-      default:
-        displayedList = <UserTickets userId={userId} dates={"upcoming"} />;
-        break;
-    }
-    console.log(view, displayedList);
-  }, [view]);
+  console.log(view, displayedList);
 
   return (
-    <div className='classes list'>
-      <button id='upcoming' onClick={handleClick}>Upcoming Classes</button>
-      <button id='past' onClick={handleClick}>Past Classes</button>
-      <button id='likes' onClick={handleClick}>Likes</button>
-      <div>{displayedList}</div>
+    <div className="classes list">
+      <button id="upcoming" onClick={handleClick}>
+        Upcoming Classes
+      </button>
+      {/* to implement in the future */}
+      {/* <button id="past" onClick={handleClick}>
+        Past Classes
+      </button> */}
+      <button id="likes" onClick={handleClick}>
+        Likes
+      </button>
+      {displayedList}
     </div>
   );
 };

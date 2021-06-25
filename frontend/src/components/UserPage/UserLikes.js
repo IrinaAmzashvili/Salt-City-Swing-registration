@@ -1,28 +1,51 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getLikes, createLike, deleteLike } from "../../store/likes";
+import { getLikes } from "../../store/likes";
+import RegisterModal from "../RegisterModal";
+import LikeButton from "../LikeButton";
 import styles from "./UserPage.module.css";
 
 const UserLikes = ({ userId }) => {
   const dispatch = useDispatch();
   const likes = useSelector((state) => Object.values(state.likes));
   console.log(likes);
-  // include purchase option
+
+  const handleClick =(e) => {
+      e.stopPropagation();
+      e.preventDefault();
+  }
 
   useEffect(() => {
     dispatch(getLikes(+userId));
   }, [dispatch, userId]);
 
   return (
-    <div>
-      <h2>Hello from user likes</h2>
+    <div className={styles.userPageContainer}>
+      <h2 className={styles.h2}>Likes</h2>
       {likes.map((like) => (
-        <div key={like.id}>
-          <p>{like.id}</p>
-          <p>{like.userId}</p>
-          <p>{like.classId}</p>
-          <p>{like.Class.title}</p>
-        </div>
+        <a href={`/classes/${like.Class?.id}`}>
+          <div className={styles.classContainer} key={like.id}>
+            <div className={styles.classInfoContainer}>
+              <h3 className={styles.classTitle}>{like.Class?.title}</h3>
+              <p>{like.Class?.startDate}</p>
+              <p>{like.Class?.dates}</p>
+            </div>
+
+            <div className={styles.classImageContainer}>
+              <img className={styles.classImage} src={like.Class?.image} />
+              <div className={styles.buttonsDiv}>
+                <div className={styles.likeButtonDiv}>
+                  <LikeButton currentClass={like.Class} />
+                </div>
+                <div
+                  onClick={handleClick}
+                  className={styles.registerButtonDiv}>
+                  <RegisterModal />
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
       ))}
     </div>
   );
