@@ -67,12 +67,20 @@
     margin: 10px 0;
 }
 
+.likeButtonOuterDiv {
+    display: flex;
+    width: 50px;
+    justify-content: center;
+    align-items: center;
+}
+
 .likeButtonDiv {
     margin-right: 10px;
 }
 
 .registerButtonDiv {
     flex-grow: 2;
+    max-width: 170px;
 }
 
 .classInfo {

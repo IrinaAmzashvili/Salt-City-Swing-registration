@@ -8,21 +8,19 @@ const LikeButton = ({ currentClass }) => {
   const likes = useSelector((state) => Object.values(state.likes));
   const userId = useSelector((store) => store.session.user?.id);
 
-  const currLike = likes.find(like => (
-      like.classId === currentClass?.id
-  ))
+  const currLike = likes.find((like) => like.classId === currentClass?.id);
 
   const handleLike = (e) => {
-      e.preventDefault();
+    e.preventDefault();
 
-      const likeInfo = {
-          userId,
-          classId: currentClass.id,
+    const likeInfo = {
+      userId,
+      classId: currentClass.id,
     };
     if (currLike) {
-        dispatch(deleteLike(currLike.id));
+      dispatch(deleteLike(currLike.id));
     } else {
-        dispatch(createLike(likeInfo));
+      dispatch(createLike(likeInfo));
     }
   };
 
@@ -30,18 +28,19 @@ const LikeButton = ({ currentClass }) => {
     if (userId) dispatch(getLikes(userId));
   }, [dispatch, userId]);
 
-  return (
-    userId ? <button className={styles.likeButton} onClick={handleLike}>
-      <i
-        className={
-          currLike
-            ? `fas fa-heart ${styles.heartIconFilled}`
-            : `far fa-heart ${styles.heartIconEmpty}`
-        }
-      ></i>
-    </button>
-    : null
-  );
+  return userId ? (
+    <div className={styles.likeButtonContainer}>
+      <button className={styles.likeButton} onClick={handleLike}>
+        <i
+          className={
+            currLike
+              ? `fas fa-heart ${styles.heartIconFilled}`
+              : `far fa-heart ${styles.heartIconEmpty}`
+          }
+        ></i>
+      </button>
+    </div>
+  ) : null;
 };
 
 export default LikeButton;

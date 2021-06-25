@@ -1,9 +1,20 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:light,medium,semi-bold,bold,extra-bold,black');
 
-.likeButton {
-    border-radius: 30px;
+.likeButtonContainer {
     height: 40px;
     width: 40px;
+    transition: all .1s ease-out;
+}
+
+.likeButtonContainer:active {
+    height: 37px;
+    width: 37px;
+}
+
+.likeButton {
+    border-radius: 30px;
+    height: 100%;
+    width: 100%;
     padding: 10px;
     border: none;
     box-shadow: 0 0 2px black;

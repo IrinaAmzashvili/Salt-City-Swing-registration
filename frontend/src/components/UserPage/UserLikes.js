@@ -44,8 +44,10 @@ const UserLikes = ({ userId }) => {
                 alt={like.Class?.imageAlt}
               />
               <div className={styles.buttonsDiv}>
-                <div className={styles.likeButtonDiv}>
-                  <LikeButton currentClass={like.Class} />
+                <div className={styles.likeButtonOuterDiv}>
+                  <div className={`${styles.likeButtonDiv} likeButtonDiv`}>
+                    <LikeButton currentClass={like.Class} />
+                  </div>
                 </div>
                 <div onClick={handleClick} className={styles.registerButtonDiv}>
                   <RegisterModal currentClass={like.Class} />
