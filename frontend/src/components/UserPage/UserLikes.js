@@ -15,7 +15,7 @@ const UserLikes = ({ userId }) => {
 
   return (
     <div>
-      <h2>Hello from user tickets</h2>
+      <h2>Hello from user likes</h2>
       {likes.map((like) => (
         <div key={like.id}>
           <p>{like.id}</p>

@@ -7,6 +7,10 @@ const UserTickets = ({ userId }) => {
   const dispatch = useDispatch();
   const tickets = useSelector((state) => Object.values(state.tickets));
   console.log(tickets);
+  // if date is equal to upcoming,
+    //display all tickets where start date is on or before today's date
+  // if date is equal to past,
+    // display all tickets where start date is later than today's date
 
   useEffect(() => {
     dispatch(getTickets(+userId));
