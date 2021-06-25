@@ -39,7 +39,7 @@ const SingleClassComponent = () => {
           </div>
           <p className={styles.classCost}>{`$${currentClass?.cost}`}</p>
           <div className={styles.registerButtonDiv}>
-            <RegisterModal />
+            <RegisterModal currentClass={currentClass}/>
           </div>
         </div>
         <div className={styles.classContentContainer}>

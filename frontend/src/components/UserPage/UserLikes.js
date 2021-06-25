@@ -41,7 +41,7 @@ const UserLikes = ({ userId }) => {
                   <LikeButton currentClass={like.Class} />
                 </div>
                 <div onClick={handleClick} className={styles.registerButtonDiv}>
-                  <RegisterModal />
+                  <RegisterModal currentClass={like.Class} />
                 </div>
               </div>
             </div>

@@ -1,15 +1,12 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getClasses } from "../../store/classes";
 import { purchaseTicket } from "../../store/tickets";
 import styles from "./Register.module.css";
 
-const Register = ({ closeModal }) => {
+const Register = ({ closeModal, currentClass }) => {
   const sessionUserId = useSelector((store) => store.session.user.id);
   const dispatch = useDispatch();
-  const { classId } = useParams();
-  const currentClass = useSelector((state) => state.classes[classId]);
   const [price, setPrice] = useState(45);
   const [amount, setAmount] = useState(1);
 
@@ -19,15 +16,15 @@ const Register = ({ closeModal }) => {
   };
 
   const handleSubmit = (e) => {
+    console.log('submitting!!')
     e.preventDefault();
 
     const newTicket = {
       userId: sessionUserId,
-      classId: +classId,
+      classId: currentClass.id,
       price,
       numOfTickets: +amount,
     };
-
     dispatch(purchaseTicket(newTicket));
     closeModal();
   };
