@@ -31,7 +31,11 @@ const UserLikes = ({ userId }) => {
             </div>
 
             <div className={styles.classImageContainer}>
-              <img className={styles.classImage} src={like.Class?.image} />
+              <img
+                className={styles.classImage}
+                src={like.Class?.image}
+                alt={like.Class?.imageAlt}
+              />
               <div className={styles.buttonsDiv}>
                 <div className={styles.likeButtonDiv}>
                   <LikeButton currentClass={like.Class} />

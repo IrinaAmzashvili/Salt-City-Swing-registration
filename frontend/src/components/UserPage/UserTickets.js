@@ -32,7 +32,11 @@ const UserTickets = ({ userId }) => {
             </div>
 
             <div className={styles.classImageContainer}>
-              <img className={styles.classImage} src={ticket.Class?.image} />
+              <img
+                className={styles.classImage}
+                src={ticket.Class?.image}
+                alt={ticket.Class?.imageAlt}
+              />
             </div>
           </div>
         </a>
