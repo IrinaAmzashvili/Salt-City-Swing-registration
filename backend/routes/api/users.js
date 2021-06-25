@@ -40,16 +40,17 @@ const validateSignup = [
         .withMessage('Password must be 6 characters or more.')
         .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/, 'g')
         .withMessage('Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.'),
-    check('vaxCardImg')
-        .exists({ checkFalsy: true })
-        .withMessage('Please provide an image of your vaccination card.'),
+    // check('vaxCardImg')
+    //     .exists({ checkFalsy: true })
+    //     .withMessage('Please provide an image of your vaccination card.'),
     handleValidationErrors,
 ];
 
 router.post('/', validateSignup, asyncHandler(async (req, res) => {
-    const { firstName, lastName, email, password, vaxCardImg, userPhoto, mailingList, userType } = req.body;
+    //vaxCardImg, userPhoto,
+    const { firstName, lastName, email, password, mailingList, userType } = req.body;
 
-    const user = await User.signup({ firstName, lastName, email, password, vaxCardImg, userPhoto, mailingList, userType });
+    const user = await User.signup({ firstName, lastName, email, password, mailingList, userType });
 
     await setTokenCookie(res, user);
 

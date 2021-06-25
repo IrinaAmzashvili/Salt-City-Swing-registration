@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
+import { useHistory } from 'react-router-dom';
 import { useDispatch } from "react-redux";
+import { NavLink } from 'react-router-dom';
 import * as sessionActions from "../../store/session";
 import styles from "./ProfileButton.module.css";
 
 const ProfileButton = ({ user }) => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
 
@@ -26,6 +29,7 @@ const ProfileButton = ({ user }) => {
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
+    history.push('/');
   };
 
   return (
@@ -43,9 +47,8 @@ const ProfileButton = ({ user }) => {
         {showMenu && (
           <div className={styles.dropdownDiv}>
             <ul className={styles.profileDropdown}>
-              <a href={`/user/${user.id}`}>My Classes</a>
-              {/* <a href={`/user/${user.id}`}>Liked</a> */}
-              <a href={`/user/${user.id}/account`}>Account Settings</a>
+              <NavLink to={`/user/${user.id}`}>My Classes</NavLink>
+              <NavLink to={`/user/${user.id}/account`}>Account Settings</NavLink>
               <div
                 className={`${styles.logoutButton}`}
                 onClick={logout}

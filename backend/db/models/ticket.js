@@ -15,7 +15,12 @@ module.exports = (sequelize, DataTypes) => {
     },
     numOfTickets: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        min: {
+          args: [1],
+          msg: 'Number of tickets must be no less than 1.'}
+      }
     },
   }, {});
   Ticket.associate = function(models) {

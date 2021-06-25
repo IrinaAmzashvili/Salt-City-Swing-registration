@@ -1,12 +1,13 @@
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getClasses } from "../../store/classes";
-import LikeButton from '../LikeButton';
+import LikeButton from "../LikeButton";
 import RegisterModal from "../RegisterModal";
 import styles from "./Class.module.css";
 
 const SingleClassComponent = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const { classId } = useParams();
   const currentClass = useSelector((state) => state.classes[classId]);
@@ -38,7 +39,7 @@ const SingleClassComponent = () => {
           </div>
           <p className={styles.classCost}>{`$${currentClass?.cost}`}</p>
           <div className={styles.registerButtonDiv}>
-            <RegisterModal />
+            <RegisterModal currentClass={currentClass}/>
           </div>
         </div>
         <div className={styles.classContentContainer}>
@@ -46,6 +47,7 @@ const SingleClassComponent = () => {
           <p className={styles.classDates}>{currentClass?.dates}</p>
           <p className={styles.classStartDate}>Start date: 6/7/21</p>
           <p className={styles.classDescription}>{currentClass?.description}</p>
+          <button onClick={() => history.goBack()} className={`${styles.backButton} link-button`}>Back</button>
         </div>
       </div>
     </div>

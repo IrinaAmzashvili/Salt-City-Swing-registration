@@ -3,9 +3,8 @@ import { useSelector } from 'react-redux';
 import Register from "./Register";
 import LoginForm from '../LoginFormModal/LoginForm';
 import { Modal } from "../../context/Modal";
-import styles from "./Register.module.css";
 
-const RegisterModal = () => {
+const RegisterModal = ({ currentClass }) => {
   // need isLoaded?
   const sessionUser = useSelector((store) => store.session.user);
   const [showModal, setShowModal] = useState(false);
@@ -16,7 +15,7 @@ const RegisterModal = () => {
 
   let sessionLinks;
   if (sessionUser) {
-      sessionLinks = <Register closeModal={closeModal}/>
+      sessionLinks = <Register closeModal={closeModal} currentClass={currentClass} />
   } else {
       sessionLinks = <LoginForm />
   }

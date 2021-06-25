@@ -37,7 +37,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     vaxCardImg: {
       type: DataTypes.TEXT,
-      allowNull: false,
+      allowNull: true,
     },
     userPhoto: DataTypes.TEXT,
     mailingList: {
@@ -105,15 +105,15 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
 
-  User.signup = async function ({ firstName, lastName, email, password, vaxCardImg, userPhoto, mailingList, userType }) {
+  User.signup = async function ({ firstName, lastName, email, password, mailingList, userType }) {
     const hashedPassword = bcrypt.hashSync(password);
     const user = await User.create({
       firstName,
       lastName,
       email,
       hashedPassword,
-      vaxCardImg,
-      userPhoto,
+      // vaxCardImg,
+      // userPhoto,
       mailingList,
       userType,
     });

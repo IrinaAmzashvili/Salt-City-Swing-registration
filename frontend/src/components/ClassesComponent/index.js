@@ -28,7 +28,7 @@ const ClassesComponent = () => {
                   />
                 </div>
                 <div className={styles.cardBottom}>
-                  <p className={styles.classTitle}>{classObj.title}</p>
+                  <h3 className={styles.classTitle}>{classObj.title}</h3>
                   <p className={styles.classDate}>{classObj.dates}</p>
                 </div>
               </div>

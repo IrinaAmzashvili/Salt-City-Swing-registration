@@ -13,8 +13,8 @@ const SignUpFormPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [vaxCardImg, setVaxCardImg] = useState("");
-  const [userPhoto, setUserPhoto] = useState("");
+  // const [vaxCardImg, setVaxCardImg] = useState("");
+  // const [userPhoto, setUserPhoto] = useState("");
   const [mailingList, setMailingList] = useState(false);
   const [userType, setUserType] = useState("user");
   const [errors, setErrors] = useState([]);
@@ -29,8 +29,8 @@ const SignUpFormPage = () => {
       lastName,
       email,
       password,
-      vaxCardImg,
-      userPhoto,
+      // vaxCardImg,
+      // userPhoto,
       mailingList,
       userType,
     };
@@ -126,7 +126,7 @@ const SignUpFormPage = () => {
             />
           </label>
         </div>
-        <div>
+        {/* <div>
           <label>
             <input
               type="text"
@@ -145,10 +145,10 @@ const SignUpFormPage = () => {
               onChange={(e) => setUserPhoto(e.target.value)}
             />
           </label>
-        </div>
-        <div className={styles.userType}>
-          <p>User Type</p>
-          <label htmlFor="userType-user">
+        </div> */}
+        <div className={styles.userTypeRadioDiv}>
+          User Type:
+          <label className={styles.userTypeLabels} htmlFor="userType-user">
             <input
               type="radio"
               id="userType-user"
@@ -158,7 +158,7 @@ const SignUpFormPage = () => {
             />
             User
           </label>
-          <label htmlFor="userType-admin">
+          <label className={styles.userTypeLabels} htmlFor="userType-admin">
             <input
               type="radio"
               id="userType-admin"
@@ -168,7 +168,7 @@ const SignUpFormPage = () => {
             />
             Admin
           </label>
-          <label htmlFor="userType-superUser">
+          <label className={styles.userTypeLabels} htmlFor="userType-superUser">
             <input
               type="radio"
               id="userType-superUser"
@@ -194,10 +194,7 @@ const SignUpFormPage = () => {
           Sign Up
         </button>
         <div className={styles.switch}>
-          {/* <button className="link-button" onClick={handle}>
-            Already have an account? Log in here!
-          </button> */}
-          <LoginFormModal />
+          <LoginFormModal linkText={"Already have an account? Log in here!"} />
         </div>
       </form>
     </div>

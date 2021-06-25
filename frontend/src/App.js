@@ -6,6 +6,7 @@ import SignUpFormPage from "./components/SignUpFormPage";
 import Navigation from "./components/Navigation";
 import ClassesComponent from "./components/ClassesComponent";
 import SingleClassComponent from "./components/SingleClassComponent";
+import UserPage from './components/UserPage';
 import Footer from './components/Footer';
 
 function App() {
@@ -29,6 +30,9 @@ function App() {
           </Route>
           <Route path="/classes/:classId">
             <SingleClassComponent />
+          </Route>
+          <Route path='/user/:userId'>
+            <UserPage />
           </Route>
         </Switch>
       )}

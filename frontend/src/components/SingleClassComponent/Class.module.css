@@ -7,7 +7,7 @@
 }
 
 .classBackgroundImageContainer {
-    height: 715px;
+    height: 600px;
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -25,8 +25,8 @@
 }
 
 .classPageContent {
-    margin: 70px 200px;
-    width: 800px;
+    margin: 70px auto;
+    width: 640px;
     z-index: 0;
     position: relative;
     top: 20px;
@@ -48,6 +48,7 @@
 }
 
 .buttonHeaderDiv {
+    background-color: var(--backgroundLight);
     border-bottom: 1px solid var(--grayTheme);
     padding: 0px 25px;
     padding-bottom: 4px;
@@ -62,24 +63,44 @@
     left: 25px;
 }
 
+.registerButtonDiv {
+    width: 220px;
+}
+
 .classContentContainer {
     padding: 50px 100px;
+    padding-bottom: 20px;
     background-color: var(--backgroundLight);
     display: flex;
     flex-direction: column;
 }
 
-.classContentContainer > * {
-    padding: 10px 0 0 0;
+.classTitle {
+    padding: 0;
     margin: 0;
 }
 
-.classTitle {
-    padding-bottom: 10px;
+.classDates, .classStartDate {
+    font-size: 14px;
+    padding-top: 10px;
+    margin: 0;
 }
 
 .classCost {
     padding: 0 20px;
     margin: 0;
     align-self: center;
+}
+
+.classDescription {
+    padding: 30px 0;
+    margin: 0;
+    border-bottom: 1px solid var(--grayTheme);
+}
+
+.classContentContainer .backButton {
+    text-align: left;
+    margin-top: 50px;
+    width: 41px;
+    border-bottom: 1px solid var(--grayTheme);
 }

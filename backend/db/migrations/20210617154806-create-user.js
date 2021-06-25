@@ -27,7 +27,7 @@ module.exports = {
       },
       vaxCardImg: {
         type: Sequelize.TEXT,
-        allowNull: false,
+        allowNull: true,
       },
       userPhoto: {
         type: Sequelize.TEXT

@@ -1,23 +1,22 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:light,medium,semi-bold,bold,extra-bold,black');
 
-/* .likeButtonDiv {
-    position: absolute;
-} */
-
 .likeButton {
     border-radius: 30px;
     height: 40px;
     width: 40px;
     padding: 10px;
-    cursor: pointer;
     border: none;
     box-shadow: 0 0 2px black;
-    background-color: var(--backgroundLight);
+    background-color: var(--backgroundLighter);
     transition: all .2s ease-out;
 }
 
 .likeButton:hover {
-    background-color: #e7e7e7;
+    background-color: #F8F7FA;
+}
+
+.likeButton:hover .heartIconFilled {
+    color: #F05537;
 }
 
 .heartIconEmpty {
@@ -25,5 +24,6 @@
 }
 
 .heartIconFilled {
-    color: #F05537;
+    color: #d1410c;
+    transition: all .2s ease-out;
 }

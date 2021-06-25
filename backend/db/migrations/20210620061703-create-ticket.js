@@ -24,7 +24,12 @@ module.exports = {
       },
       numOfTickets: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        validate: {
+          min: {
+            args: [1],
+            msg: 'Number of tickets must be no less than 1.'}
+        }
       },
       createdAt: {
         allowNull: false,
