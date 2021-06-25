@@ -7,10 +7,10 @@ const UserTickets = ({ userId }) => {
   const dispatch = useDispatch();
   const unorderedTickets = useSelector((state) => Object.values(state.tickets));
   const tickets = unorderedTickets.sort((ticket1, ticket2) => {
-    if (ticket1.Class?.startDate > ticket2.Class.startDate) return 1;
-    if (ticket1.Class?.startDate < ticket2.Class.startDate) return -1;
-    if (ticket1.Class?.title > ticket2.Class.title) return 1;
-    if (ticket1.Class?.title < ticket2.Class.title) return -1;
+    if (ticket1.Class?.startDate > ticket2.Class?.startDate) return 1;
+    if (ticket1.Class?.startDate < ticket2.Class?.startDate) return -1;
+    if (ticket1.Class?.title > ticket2.Class?.title) return 1;
+    if (ticket1.Class?.title < ticket2.Class?.title) return -1;
     return 0;
   });
   // if date is equal to 'upcoming',

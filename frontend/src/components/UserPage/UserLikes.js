@@ -7,7 +7,14 @@ import styles from "./UserPage.module.css";
 
 const UserLikes = ({ userId }) => {
   const dispatch = useDispatch();
-  const likes = useSelector((state) => Object.values(state.likes));
+  const unorderedLikes = useSelector((state) => Object.values(state.likes));
+  const likes = unorderedLikes.sort((like1, like2) => {
+    if (like1.Class?.startDate > like2.Class?.startDate) return 1;
+    if (like1.Class?.startDate < like2.Class?.startDate) return -1;
+    if (like1.Class?.title > like2.Class?.title) return 1;
+    if (like1.Class?.title < like2.Class?.title) return -1;
+    return 0;
+  });
 
   const handleClick = (e) => {
     e.stopPropagation();
