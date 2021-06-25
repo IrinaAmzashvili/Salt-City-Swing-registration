@@ -24,7 +24,7 @@ const Navigation = ({ isLoaded }) => {
   } else {
     sessionLinks = (
       <>
-        <LoginFormModal />
+        <LoginFormModal linkText={'Log In'} />
         <NavLink to="/signup">Sign Up</NavLink>
         <button className="link-button" onClick={loginDemoUser}>
           Demo User

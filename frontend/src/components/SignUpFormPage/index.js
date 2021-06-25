@@ -197,7 +197,7 @@ const SignUpFormPage = () => {
           {/* <button className="link-button" onClick={handle}>
             Already have an account? Log in here!
           </button> */}
-          <LoginFormModal />
+          <LoginFormModal linkText={'Already have an account? Log in here!'}/>
         </div>
       </form>
     </div>

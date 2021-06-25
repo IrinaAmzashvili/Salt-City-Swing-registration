@@ -8,18 +8,17 @@ import styles from "./UserPage.module.css";
 const UserLikes = ({ userId }) => {
   const dispatch = useDispatch();
   const likes = useSelector((state) => Object.values(state.likes));
-  console.log(likes);
 
-  const handleClick =(e) => {
-      e.stopPropagation();
-      e.preventDefault();
-  }
+  const handleClick = (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+  };
 
   useEffect(() => {
     dispatch(getLikes(+userId));
   }, [dispatch, userId]);
 
-  return (
+  return likes.length !== 0 ? (
     <div className={styles.userClassesContainer}>
       <h2 className={styles.h2}>Likes</h2>
       {likes.map((like) => (
@@ -37,9 +36,7 @@ const UserLikes = ({ userId }) => {
                 <div className={styles.likeButtonDiv}>
                   <LikeButton currentClass={like.Class} />
                 </div>
-                <div
-                  onClick={handleClick}
-                  className={styles.registerButtonDiv}>
+                <div onClick={handleClick} className={styles.registerButtonDiv}>
                   <RegisterModal />
                 </div>
               </div>
@@ -47,6 +44,11 @@ const UserLikes = ({ userId }) => {
           </div>
         </a>
       ))}
+    </div>
+  ) : (
+    <div className={styles.userClassesContainer}>
+      <h2 className={styles.h2}>Likes</h2>
+      <p className={styles.noContentP}>{`You have no likes :)`}</p>
     </div>
   );
 };

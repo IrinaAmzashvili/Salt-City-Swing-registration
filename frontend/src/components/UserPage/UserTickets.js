@@ -6,7 +6,6 @@ import styles from "./UserPage.module.css";
 const UserTickets = ({ userId }) => {
   const dispatch = useDispatch();
   const tickets = useSelector((state) => Object.values(state.tickets));
-  console.log(tickets);
   // if date is equal to 'upcoming',
   // display all tickets where start date is on or before today's date
   // if date is equal to 'past',
@@ -16,7 +15,7 @@ const UserTickets = ({ userId }) => {
     dispatch(getTickets(+userId));
   }, [dispatch, userId]);
 
-  return (
+  return tickets.length !== 0 ? (
     <div className={styles.userClassesContainer}>
       <h2 className={styles.h2}>Upcoming Classes</h2>
       {tickets.map((ticket) => (
@@ -38,6 +37,11 @@ const UserTickets = ({ userId }) => {
           </div>
         </a>
       ))}
+    </div>
+  ) : (
+    <div className={styles.userClassesContainer}>
+      <h2 className={styles.h2}>Upcoming Classes</h2>
+      <p className={styles.noContentP}>{`You have no upcoming classes :)`}</p>
     </div>
   );
 };
