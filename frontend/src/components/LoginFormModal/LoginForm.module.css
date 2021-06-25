@@ -8,6 +8,12 @@
     background-color: transparent;
 }
 
-.form {
+.mainLoginContainer div.loginFormContainer {
+    border-radius: none;
+}
+
+div.loginFormContainer .form {
+    height: 100%;
     margin: 0;
+    border-radius: 0;
 }
