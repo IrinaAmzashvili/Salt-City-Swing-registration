@@ -46,13 +46,16 @@ input:focus {
     outline: none;
 }
 
+button {
+    cursor: pointer;
+}
+
 .link-button {
     padding: 0;
     border: none;
     font: inherit;
     color: inherit;
     background-color: transparent;
-    cursor: pointer;
 }
 
 .ctaButton {
@@ -68,7 +71,6 @@ input:focus {
     color: white;
     font-weight: bold;
     transition: all .2s ease-out;
-    cursor: pointer;
 }
 
 .ctaButton:hover {

@@ -45,7 +45,7 @@ const UserTickets = ({ userId }) => {
   ) : (
     <div className={styles.userClassesContainer}>
       <h2 className={styles.h2}>Upcoming Classes</h2>
-      <p className={styles.noContentP}>{`You have no upcoming classes :)`}</p>
+      <p className={styles.noContentP}>{`You have no upcoming classes :(`}</p>
     </div>
   );
 };

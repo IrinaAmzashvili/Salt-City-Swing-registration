@@ -52,7 +52,7 @@ const UserLikes = ({ userId }) => {
   ) : (
     <div className={styles.userClassesContainer}>
       <h2 className={styles.h2}>Likes</h2>
-      <p className={styles.noContentP}>{`You have no likes :)`}</p>
+      <p className={styles.noContentP}>{`You have no likes :(`}</p>
     </div>
   );
 };

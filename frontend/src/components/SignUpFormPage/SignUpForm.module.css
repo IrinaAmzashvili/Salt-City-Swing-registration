@@ -1,29 +1,31 @@
 @import '../../index.css';
 
-.formContainer {
-    /* margin: auto; */
-}
-
 .form {
     display: flex;
     flex-direction: column;
     align-items: stretch;
     margin: 50px auto 100px;
     width: 450px;
-
     border-radius: 15px;
     padding: 20px 0;
     box-shadow: 0.0625rem 0.0625rem 0.625rem -2px #46574D;
 }
 
 .form > div {
-    padding: 10px 0;
+    padding-bottom: 10px;
     align-self: stretch;
     margin: 0 30px;
 }
 
 .errorsDiv > ul {
     padding-left: 20px;
+    text-align: center;
+    list-style-type: none;
+    color: red;
+}
+
+.errorsDiv > ul > li {
+    padding-top: 7px;
 }
 
 .form > h2 {
@@ -33,6 +35,21 @@
 .nameInputDiv {
     display: flex;
     justify-content: space-between;
+}
+
+.userTypeRadioDiv {
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+}
+
+.userTypeLabels {
+    width: 100%;
+    padding-top: 12px;
+}
+
+.userTypeLabels input {
+    width: 10px;
 }
 
 .checkboxDiv {
