@@ -40,7 +40,7 @@ const Register = ({ closeModal, currentClass }) => {
         <p className={styles.classStartDate}>{currentClass?.startDate}</p>
         <p className={styles.classDates}>{currentClass?.dates}</p>
       </div>
-      <form className={styles.form} onSubmit={handleSubmit}>
+      <form className={styles.form}>
         <div className={styles.inputDiv}>
           <p>${price}.00</p>
           <label>
@@ -57,6 +57,7 @@ const Register = ({ closeModal, currentClass }) => {
           <button
             className={`ctaButton ${styles.purchaseButton}`}
             type="submit"
+            onClick={handleSubmit}
           >
             Purchase
           </button>

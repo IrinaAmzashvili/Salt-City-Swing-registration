@@ -11,7 +11,7 @@
 
 .footer {
     height: 100%;
-    padding: 34px;
+    padding: 10px 34px;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
