@@ -13,10 +13,6 @@ const UserTickets = ({ userId }) => {
     if (ticket1.Class?.title < ticket2.Class?.title) return -1;
     return 0;
   });
-  // if date is equal to 'upcoming',
-  // display all tickets where start date is on or before today's date
-  // if date is equal to 'past',
-  // display all tickets where start date is later than today's date
 
   useEffect(() => {
     dispatch(getTickets(+userId));
