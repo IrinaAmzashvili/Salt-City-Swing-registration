@@ -42,7 +42,7 @@ const Footer = () => {
             target="_blank"
             rel="noreferrer"
           >
-            Salt City Swing website
+            saltcityswing.org
           </a>
           <div className={styles.linkIcons}>
             <a
