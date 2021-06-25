@@ -16,7 +16,6 @@ const Register = ({ closeModal, currentClass }) => {
   };
 
   const handleSubmit = (e) => {
-    console.log('submitting!!')
     e.preventDefault();
 
     const newTicket = {

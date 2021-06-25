@@ -30,8 +30,9 @@ export const purchaseTicket = (newTicket) => async (dispatch) => {
     });
 
     if (res.ok) {
-        const ticket = res.json();
-        dispatch(addTicket(ticket))
+        const ticket = await res.json();
+        await dispatch(addTicket(ticket))
+        return res;
     }
 }
 

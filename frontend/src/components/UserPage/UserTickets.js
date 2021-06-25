@@ -5,7 +5,14 @@ import styles from "./UserPage.module.css";
 
 const UserTickets = ({ userId }) => {
   const dispatch = useDispatch();
-  const tickets = useSelector((state) => Object.values(state.tickets));
+  const unorderedTickets = useSelector((state) => Object.values(state.tickets));
+  const tickets = unorderedTickets.sort((ticket1, ticket2) => {
+    if (ticket1.Class?.startDate > ticket2.Class.startDate) return 1;
+    if (ticket1.Class?.startDate < ticket2.Class.startDate) return -1;
+    if (ticket1.Class?.title > ticket2.Class.title) return 1;
+    if (ticket1.Class?.title < ticket2.Class.title) return -1;
+    return 0;
+  });
   // if date is equal to 'upcoming',
   // display all tickets where start date is on or before today's date
   // if date is equal to 'past',

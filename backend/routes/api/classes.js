@@ -7,7 +7,9 @@ const router = express.Router();
 router.get(
   "/",
   asyncHandler(async (req, res) => {
-    const classes = await Class.findAll();
+    const classes = await Class.findAll({
+      order: [['startDate']]
+    });
     res.json(classes);
   })
 );
