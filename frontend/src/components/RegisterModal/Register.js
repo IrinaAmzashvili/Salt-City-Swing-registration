@@ -9,13 +9,14 @@ const Register = ({ closeModal, currentClass }) => {
   const dispatch = useDispatch();
   const [price, setPrice] = useState(45);
   const [amount, setAmount] = useState(1);
+  const [paid, setPaid] = useState(false);
 
   const amountChange = (e) => {
     setPrice(45 * e.target.value);
     setAmount(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const newTicket = {
@@ -24,15 +25,18 @@ const Register = ({ closeModal, currentClass }) => {
       price,
       numOfTickets: +amount,
     };
-    dispatch(purchaseTicket(newTicket));
-    closeModal();
+    const res = await dispatch(purchaseTicket(newTicket));
+    console.log(res);
+    if (res.ok) {
+      setPaid(true);
+    }
   };
 
   useEffect(() => {
     dispatch(getClasses());
   }, [dispatch]);
 
-  return (
+  return !paid ? (
     <div className={styles.registerPageDiv}>
       <div className={styles.classInfoDiv}>
         <p className={styles.classTitle}>{currentClass?.title}</p>
@@ -62,6 +66,10 @@ const Register = ({ closeModal, currentClass }) => {
           </button>
         </div>
       </form>
+    </div>
+  ) : (
+    <div className={styles.thankYouPageDiv}>
+        <h2 className={styles.thankYou}>Thank you for your purchase!</h2>
     </div>
   );
 };

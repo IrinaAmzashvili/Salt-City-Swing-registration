@@ -48,3 +48,11 @@
     width: 220px;
     align-self: flex-end;
 }
+
+.thankYouPageDiv {
+    height: 150px;
+    width: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
