@@ -12,6 +12,7 @@ module.exports = {
           dates: "July - Wednesdays 7:00pm-8:00pm",
           startDate: '7/7/2021',
           cost: 45,
+          categoryId: 1,
           image: "/images/classImages/classImage-1.jpg",
           imageAlt: 'A couple dancing Lindy Hop'
         },
@@ -22,6 +23,7 @@ module.exports = {
           dates: "July - Wednesdays 7:00pm-8:00pm",
           startDate: '7/7/2021',
           cost: 45,
+          categoryId: 2,
           image: "/images/classImages/classImage-2.jpg",
           imageAlt: 'A couple dancing Lindy Hop'
         },
@@ -32,6 +34,7 @@ module.exports = {
           dates: "July - Wednesdays 7:00pm-8:00pm",
           startDate: '7/7/2021',
           cost: 45,
+          categoryId: 3,
           image: "/images/classImages/classImage-3.jpg",
           imageAlt: 'A couple dancing Lindy Hop'
         },
@@ -42,6 +45,7 @@ module.exports = {
           dates: "August - Wednesdays 7:00pm-8:00pm",
           startDate: '8/4/2021',
           cost: 45,
+          categoryId: 1,
           image: "/images/classImages/classImage-4.jpg",
           imageAlt: 'A couple dancing Lindy Hop'
         },
@@ -52,6 +56,7 @@ module.exports = {
           dates: "August - Wednesdays 7:00pm-8:00pm",
           startDate: '8/4/2021',
           cost: 45,
+          categoryId: 2,
           image: "/images/classImages/classImage-5.jpg",
           imageAlt: 'A couple dancing Lindy Hop'
         },
@@ -62,6 +67,7 @@ module.exports = {
           dates: "August - Wednesdays 7:00pm-8:00pm",
           startDate: '8/4/2021',
           cost: 45,
+          categoryId: 3,
           image: "/images/classImages/classImage-6.jpg",
           imageAlt: 'A couple dancing Lindy Hop'
         },
@@ -72,6 +78,7 @@ module.exports = {
           dates: "September - Wednesdays 7:00pm-8:00pm",
           startDate: '9/8/2021',
           cost: 45,
+          categoryId: 1,
           image: "/images/classImages/classImage-7.jpg",
           imageAlt: 'A couple dancing Lindy Hop'
         },
@@ -82,6 +89,7 @@ module.exports = {
           dates: "September - Wednesdays 7:00pm-8:00pm",
           startDate: '9/8/2021',
           cost: 45,
+          categoryId: 2,
           image: "/images/classImages/classImage-8.jpg",
           imageAlt: 'A couple dancing Lindy Hop'
         },
@@ -92,6 +100,7 @@ module.exports = {
           dates: "September - Wednesdays 7:00pm-8:00pm",
           startDate: '9/8/2021',
           cost: 45,
+          categoryId: 3,
           image: "/images/classImages/classImage-9.jpg",
           imageAlt: 'A couple dancing Lindy Hop'
         },

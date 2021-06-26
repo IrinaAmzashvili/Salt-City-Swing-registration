@@ -21,6 +21,9 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    categoryId: {
+      type: DataTypes.INTEGER,
+    },
     image: {
       allowNull: false,
       type: DataTypes.TEXT
@@ -33,13 +36,7 @@ module.exports = (sequelize, DataTypes) => {
   Class.associate = function(models) {
     Class.hasMany(models.Ticket, { foreignKey: 'classId' });
     Class.hasMany(models.Like, { foreignKey: 'classId' });
-
-    const columnMapping = {
-      through: 'ClassCategory',
-      foreignKey: 'classId',
-      otherKey: 'categoryId',
-    }
-    Class.belongsToMany(models.Category, columnMapping);
+    Class.belongsTo(models.Category, { foreignKey: 'categoryId' });
   };
   return Class;
 };

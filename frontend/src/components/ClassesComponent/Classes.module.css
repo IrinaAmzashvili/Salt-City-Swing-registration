@@ -1,11 +1,11 @@
 @import '../../index.css';
 
 .classesPageContainer {
-    padding: 50px 0 100px;
+    margin: 100px;
+    margin-top: 50px;
 }
 
 .classCardContainer {
-    margin: 0 100px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -14,6 +14,20 @@
 .h2Header {
     text-align: center;
     font-size: 40px;
+}
+
+.levelFilterDiv {
+    margin: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.levelFilterButton {
+    margin: 0 10px;
+}
+
+.active {
+    border-bottom: 1px solid var(--themeDark);
 }
 
 .classCard {

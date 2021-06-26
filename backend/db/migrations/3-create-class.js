@@ -28,6 +28,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.INTEGER
       },
+      categoryId: {
+        type: Sequelize.INTEGER,
+        references: { model: 'Categories' }
+      },
       image: {
         allowNull: false,
         type: Sequelize.TEXT
