@@ -1,22 +1,15 @@
-import { useState } from "react";
 import { useParams } from "react-router-dom";
 import UserLikes from "./UserLikes";
 import UserTickets from "./UserTickets";
+import { useUserViewContext } from '../../context/userView';
 import styles from "./UserPage.module.css";
 
 const UserPage = () => {
+  const { userView, setUserView } = useUserViewContext();
   const { userId } = useParams();
-  const [view, setView] = useState("upcoming");
-
-  const handleClick = (e) => {
-    e.preventDefault();
-
-    setView(e.target.id);
-  };
 
   let displayedList;
-
-  switch (view) {
+  switch (userView) {
     case "upcoming":
       displayedList = <UserTickets userId={userId} dates={"upcoming"} />;
       break;
@@ -35,20 +28,20 @@ const UserPage = () => {
     <div className={styles.userPageContainer}>
       <div className={styles.userClassesButtonDiv}>
         <button
-          className={`link-button ${styles.userClassListBtn} ${view === 'upcoming' ? styles.active : null}`}
+          className={`link-button ${styles.userClassListBtn} ${userView === 'upcoming' ? styles.active : null}`}
           id="upcoming"
-          onClick={handleClick}
+          onClick={(e) => setUserView(e.target.id)}
         >
           Upcoming Classes
         </button>
         {/* to implement in the future */}
-        {/* <button className={`link-button ${styles.userClassListBtn} ${view === 'past' ? styles.active : null}`} id="past" onClick={handleClick}>
+        {/* <button className={`link-button ${styles.userClassListBtn} ${userView === 'past' ? styles.active : null}`} id="past" onClick={(e) => setUserView(e.target.id)}>
         Past Classes
     </button> */}
         <button
-          className={`link-button ${styles.userClassListBtn} ${view === 'likes' ? styles.active : null}`}
+          className={`link-button ${styles.userClassListBtn} ${userView === 'likes' ? styles.active : null}`}
           id="likes"
-          onClick={handleClick}
+          onClick={(e) => setUserView(e.target.id)}
         >
           Likes
         </button>
