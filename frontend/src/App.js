@@ -26,17 +26,22 @@ function App() {
           <Route exact path='/'>
             <ClassesComponent />
           </Route>
-          <Route path="/signup">
+          <Route exact path="/signup">
             <SignUpFormPage />
           </Route>
-          <Route path="/classes/:classId">
+          <Route exact path="/classes/:classId">
             <SingleClassComponent />
           </Route>
-          <Route path='/user/:userId/account'>
+          <Route exact path='/user/:userId/account'>
             <UserAccount />
           </Route>
-          <Route path='/user/:userId'>
+          <Route exact path='/user/:userId'>
             <UserPage />
+          </Route>
+          <Route>
+            <div style={{ height: '70vh' }}>
+              <h2>404 Page Not Found</h2>
+            </div>
           </Route>
         </Switch>
       )}
