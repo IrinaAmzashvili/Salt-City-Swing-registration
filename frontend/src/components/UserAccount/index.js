@@ -1,95 +1,64 @@
 import { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import * as sessionActions from "../../store/session";
+import { useSelector } from "react-redux";
+import AccountInformation from './AccountInformation';
+import UpdatePassword from './UpdatePassword';
+import CloseAccount from './CloseAccount';
 import styles from "./UserAccount.module.css";
 
 const UserAccount = () => {
-  const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
-  const [firstName, setFirstName] = useState(user?.firstName);
-  const [lastName, setLastName] = useState(user?.lastName);
-  const [email, setEmail] = useState(user?.email);
-  const [mailingList, setMailingList] = useState(user?.mailingList);
-  const [errors, setErrors] = useState([]);
+  const [view, setView] = useState("Account Information");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    const updatedUser = {
-      firstName,
-      lastName,
-      email,
-      mailingList,
-    };
-
-    return dispatch(sessionActions.updateUser(updatedUser, user?.id)).catch(async (res) => {
-      const data = await res.json();
-      if (data && data.errors) setErrors(data.errors);
-    });
-  };
+  let displayedForm;
+  switch (view) {
+    case 'Account Information':
+      displayedForm = <AccountInformation user={user} />;
+      break;
+    case 'Update Password':
+      displayedForm = <UpdatePassword user={user} />;
+      break;
+    case 'Close Account':
+      displayedForm = <CloseAccount user={user} />;
+      break;
+    default:
+      displayedForm = <AccountInformation user={user} />;
+      break;
+  }
 
   return (
     <div className={styles.accountPageDiv}>
-      <h2>Account</h2>
+      <div className={styles.buttonDiv}>
+        <button
+          id='Account Information'
+          onClick={(e) => setView(e.target.id)}
+          className={`link-button ${styles.accountButton} ${
+            view === "Account Information" ? styles.active : null
+          }`}
+        >
+          Account Information
+        </button>
+        <button
+          id='Update Password'
+          onClick={(e) => setView(e.target.id)}
+          className={`link-button ${styles.accountButton} ${
+            view === "Update Password" ? styles.active : null
+          }`}
+        >
+          Password
+        </button>
+        <button
+          id='Close Account'
+          onClick={(e) => setView(e.target.id)}
+          className={`link-button ${styles.accountButton} ${
+            view === "Close Account" ? styles.active : null
+          }`}
+        >
+          Close Account
+        </button>
+      </div>
       <div className={styles.formDiv}>
-        <form className={styles.form} onSubmit={handleSubmit}>
-          {errors && (
-            <div className={styles.errorsDiv}>
-              <ul>
-                {errors.map((error, i) => (
-                  <li key={i}>{error}</li>
-                ))}
-              </ul>
-            </div>
-          )}
-          <div className={styles.inputDivs}>
-            <label htmlFor="firstName" className={styles.inputs}>
-              First Name:
-            </label>
-            <input
-              id="firstName"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
-            />
-          </div>
-          <div className={styles.inputDivs}>
-            <label htmlFor="lastName" className={styles.inputs}>
-              Last Name:
-            </label>
-            <input
-              id="lastName"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
-            />
-          </div>
-          <div className={styles.inputDivs}>
-            <label htmlFor="email" className={styles.inputs}>
-              Email:
-            </label>
-            <input
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
-          <div>
-            <div className={styles.checkboxDiv}>
-              <label htmlFor="mailingList" className={styles.inputs}>
-                <input
-                  className={styles.checkbox}
-                  id="mailingList"
-                  type="checkbox"
-                  checked={mailingList}
-                  onChange={() => setMailingList(!mailingList)}
-                />
-                Mailing List
-              </label>
-            </div>
-          </div>
-          <div>
-            <button type="submit">Save</button>
-          </div>
-        </form>
+        <h2>{view}</h2>
+        {displayedForm}
       </div>
     </div>
   );

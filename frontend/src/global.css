@@ -83,3 +83,14 @@ button {
     justify-content: center;
     align-items: center;
 }
+
+.errorsDiv > ul {
+    padding-left: 20px;
+    text-align: center;
+    list-style-type: none;
+    color: red;
+}
+
+.errorsDiv > ul > li {
+    padding-top: 7px;
+}
