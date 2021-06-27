@@ -9,9 +9,9 @@ const ClassesComponent = () => {
   const [levelFilter, setLevelFilter]= useState('all');
 
   const classes = useSelector((state) => Object.values(state.classes));
-  const level1Classes = classes.filter((classObj) => classObj.Category.id === 1);
-  const level2Classes = classes.filter((classObj) => classObj.Category.id === 2);
-  const level3Classes = classes.filter((classObj) => classObj.Category.id === 3);
+  const level1Classes = classes.filter((classObj) => classObj.Category?.id === 1);
+  const level2Classes = classes.filter((classObj) => classObj.Category?.id === 2);
+  const level3Classes = classes.filter((classObj) => classObj.Category?.id === 3);
 
   let displayedClasses;
   switch (levelFilter) {
