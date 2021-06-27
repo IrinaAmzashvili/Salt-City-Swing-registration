@@ -92,6 +92,13 @@ router.put('/:id', validateUpdate, asyncHandler(async (req, res) => {
     const user = await User.getCurrentUserById(id);
     const updatedUser = await user.update(edits);
     return res.json({ updatedUser });
-}))
+}));
+
+router.delete('/:id', asyncHandler(async (req, res) => {
+    const { id } = req.params;
+    const user = await User.getCurrentUserById(id);
+    const deletedUser = await user.destroy();
+    return res.json({ deletedUser });
+}));
 
 module.exports = router;
