@@ -5,7 +5,7 @@
 [Wiki Pages](https://github.com/IrinaAmzashvili/react-solo-project/wiki)
 
 
-![Splash page](images/splash-page.png)
+![SCS Preview](https://user-images.githubusercontent.com/79552414/123537314-0639a880-d6ec-11eb-92ff-9bda874f1ab1.png)
 
 ## Summary
 
