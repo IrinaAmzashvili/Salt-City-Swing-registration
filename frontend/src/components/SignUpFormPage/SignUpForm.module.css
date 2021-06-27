@@ -17,17 +17,6 @@
     margin: 0 30px;
 }
 
-.errorsDiv > ul {
-    padding-left: 20px;
-    text-align: center;
-    list-style-type: none;
-    color: red;
-}
-
-.errorsDiv > ul > li {
-    padding-top: 7px;
-}
-
 .form > h2 {
     text-align: center;
 }
@@ -37,10 +26,18 @@
     justify-content: space-between;
 }
 
-.userTypeRadioDiv {
+.input {
+    border: none;
+    border-bottom: 1px solid black;
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+form .userTypeRadioDiv {
     display: flex;
     flex-direction: column;
-    padding-top: 10px;
+    margin-top: 20px;
 }
 
 .userTypeLabels {
@@ -52,18 +49,15 @@
     width: 10px;
 }
 
-.checkboxDiv {
+form .checkboxDiv {
     height: 40px;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
+    margin-top: 20px;
 }
 
 .checkboxDiv > * {
     padding: 0 10px;
-}
-
-.checkboxInput {
-    width: auto;
 }
 
 .checkboxInput:focus {

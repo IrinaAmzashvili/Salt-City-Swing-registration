@@ -74,6 +74,18 @@ export const updateUser = (user, id) => async (dispatch) => {
     }
 }
 
+export const updatePassword = (newPasswordInfo, id) => async (dispatch) => {
+    const res = await csrfFetch(`/api/users/${id}/password`, {
+        method: 'PUT',
+        body: JSON.stringify(newPasswordInfo)
+    });
+
+    if (res.ok) {
+        const data = await res.json();
+        return res,
+    }
+}
+
 export const logout = () => async (dispatch) => {
     const response = await csrfFetch('/api/session', {
         method: 'DELETE'

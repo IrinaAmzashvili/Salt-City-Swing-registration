@@ -1,6 +1,7 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 const { check } = require('express-validator');
+const bcrypt = require('bcryptjs');
 
 const { handleValidationErrors } = require('../../utils/validation');
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
@@ -88,11 +89,42 @@ const validateUpdate = [
 
 router.put('/:id', validateUpdate, asyncHandler(async (req, res) => {
     const { id } = req.params;
-    const edits = req.body
+    const edits = req.body;
     const user = await User.getCurrentUserById(id);
     const updatedUser = await user.update(edits);
     return res.json({ updatedUser });
 }));
+
+const validatePasswordUpdate = [
+    check('currPassword')
+        .exists({ checkFalsy: true })
+        .withMessage('Please provide current password.'),
+    check('newPassword')
+        .exists({ checkFalsy: true })
+        .isLength({ min: 6 })
+        .withMessage('Password must be 6 characters or more.')
+        .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/, 'g')
+        .withMessage('Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.'),
+    handleValidationErrors,
+];
+
+router.put('/:id/password', validatePasswordUpdate, asyncHandler(async (req, res) => {
+    const { id } = req.params;
+    const updates = req.body;
+    const user = await User.scope('loginUser').findByPk(id);
+    const validated = await user.validatePassword(updates.currPassword);
+
+    if (validated) {
+        const hashedPassword = bcrypt.hashSync(updates.newPassword);
+        const updatedUser = await user.update({
+            ...user,
+            hashedPassword
+        })
+        res.json(updatedUser)
+    } else {
+        throw new Error('Incorrect password.')
+    }
+}))
 
 router.delete('/:id', asyncHandler(async (req, res) => {
     const { id } = req.params;

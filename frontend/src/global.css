@@ -34,12 +34,7 @@ a {
 }
 
 input {
-    border: none;
-    border-bottom: 1px solid black;
-    width: 100%;
-    padding-top: 20px;
-    padding-bottom: 10px;
-    /* caret-color: transparent; */
+    font-family: 'Montserrat';
 }
 
 input:focus {
@@ -78,6 +73,13 @@ button {
     background-color: var(--themeLight);
 }
 
+.submitButton {
+    margin: 25px auto;
+    width: 75%;
+    /* border-radius: 30px; */
+    /* height: 40px; */
+}
+
 .likeButtonDiv {
     display: flex;
     justify-content: center;
@@ -93,4 +95,11 @@ button {
 
 .errorsDiv > ul > li {
     padding-top: 7px;
+}
+
+.checkbox {
+    height: 20px;
+    width: 20px;
+    border: 1px solid var(--grayTheme);
+    font-weight: 300;
 }
