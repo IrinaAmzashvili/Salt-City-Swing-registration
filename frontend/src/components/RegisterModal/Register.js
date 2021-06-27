@@ -29,6 +29,7 @@ const Register = ({ closeModal, currentClass }) => {
     console.log(res);
     if (res.ok) {
       setPaid(true);
+      setTimeout(closeModal, 1500);
     }
   };
 

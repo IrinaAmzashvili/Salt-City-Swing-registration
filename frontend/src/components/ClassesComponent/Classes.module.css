@@ -1,8 +1,7 @@
 @import '../../index.css';
 
 .classesPageContainer {
-    margin: 100px;
-    margin-top: 50px;
+    margin: 50px 100px 160px;
 }
 
 .classCardContainer {

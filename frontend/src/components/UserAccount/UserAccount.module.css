@@ -1,1 +1,43 @@
 @import '../../index.css';
+
+.accountPageDiv {
+    margin: 160px 50px;
+    margin-top: 100px;
+}
+
+.formDiv {
+    width: 500px;
+    margin: 40px auto;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.inputDivs {
+    display: flex;
+    align-items: center;
+    padding-top: 10px;
+}
+
+.inputDivs > input {
+    width: 70%;
+    border: 1px solid var(--grayTheme);
+    border-radius: 2px;
+    padding: 10px;
+}
+
+.inputDivs > label {
+    width: 30%;
+}
+
+.inputDivs .checkbox {
+    width:12.8px;
+    margin: 0;
+}
+
+.checkboxDiv {
+    display: flex;
+
+}
