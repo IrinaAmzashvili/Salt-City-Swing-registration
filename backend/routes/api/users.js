@@ -9,6 +9,23 @@ const { User } = require('../../db/models');
 
 const router = express.Router();
 
+router.put('/:id/confirmPassword', asyncHandler(async (req, res, next) => {
+    const { id } = req.params;
+    const { password } = req.body;
+    const user = await User.scope('loginUser').findByPk(id);
+    const validated = await user.validatePassword(password);
+
+    if (validated) {
+        return res.json({ success: true })
+    } else {
+        const error = new Error('Incorrect password.');
+        error.errors = ['Incorrect password'];
+        error.status = 400;
+        error.title = 'Incorrect password.';
+        return next(error);
+    }
+}));
+
 const validateSignup = [
     check('firstName')
         .exists({ checkFalsy: true })
@@ -99,18 +116,6 @@ const validatePasswordUpdate = [
     check('currPassword')
         .exists({ checkFalsy: true })
         .withMessage('Please provide current password.'),
-        // .custom(async (currPassword) => {
-
-        //     const hashedPassword = bcrypt.hashSync(currPassword);
-
-        //     const user = await User.findOne({
-        //         where: { hashedPassword }
-        //     });
-        //     // const validated = await user.validatePassword(currPassword);
-        //     if (user) return true;
-        //     if (!user) throw new Error();
-        // })
-        // .withMessage('Incorrect password.'),
     check('newPassword')
         .exists({ checkFalsy: true })
         .isLength({ min: 6 })
@@ -120,7 +125,7 @@ const validatePasswordUpdate = [
     handleValidationErrors,
 ];
 
-router.put('/:id/password', validatePasswordUpdate, asyncHandler(async (req, res, next) => {
+router.put('/:id/updatePassword', validatePasswordUpdate, asyncHandler(async (req, res, next) => {
     const { id } = req.params;
     const updates = req.body;
     const user = await User.scope('loginUser').findByPk(id);
@@ -134,7 +139,6 @@ router.put('/:id/password', validatePasswordUpdate, asyncHandler(async (req, res
         });
         return res.json({ success: 'Password updated successfully.' })
     } else {
-        // needs debugging
         const error = new Error('Incorrect password.');
         error.errors = ['Incorrect password'];
         error.status = 400;
@@ -145,9 +149,20 @@ router.put('/:id/password', validatePasswordUpdate, asyncHandler(async (req, res
 
 router.delete('/:id', asyncHandler(async (req, res) => {
     const { id } = req.params;
-    const user = await User.getCurrentUserById(id);
-    const deletedUser = await user.destroy();
-    return res.json({ deletedUser });
+    const { password } = req.body;
+    const user = await User.scope('loginUser').findByPk(id);
+    const validated = await user.validatePassword(password);
+
+    if (validated) {
+        await user.destroy();
+        return res.json({ success: 'user deleted' });
+    } else {
+        const error = new Error('Incorrect password.');
+        error.errors = ['Incorrect password'];
+        error.status = 400;
+        error.title = 'Incorrect password.';
+        return next(error);
+    }
 }));
 
 module.exports = router;

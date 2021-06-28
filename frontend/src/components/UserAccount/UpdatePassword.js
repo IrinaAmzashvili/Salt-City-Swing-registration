@@ -29,7 +29,7 @@ const UpdatePassword = ({ user }) => {
       );
     }
     return setErrors([
-        "Repeat Password field must be the same as the New Password field",
+        "Repeat Password field must be the same as the New Password field.",
     ]);
   };
 
