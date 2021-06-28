@@ -13,7 +13,7 @@ const AccountInformation = ({ user }) => {
   const [errors, setErrors] = useState([]);
   // const [saved, setSaved] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const updatedUser = {
@@ -25,14 +25,14 @@ const AccountInformation = ({ user }) => {
 
     setErrors([]);
 
-    return dispatch(sessionActions.updateUser(updatedUser, user?.id)).catch(
+    await dispatch(sessionActions.updateUser(updatedUser, user?.id)).catch(
       async (res) => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
       }
     );
 
-    // if (errors.length) {
+    // if (!errors.length) {
     //   setSaved(true);
     // }
   };
@@ -96,10 +96,7 @@ const AccountInformation = ({ user }) => {
         </div>
       </div>
       <div>
-        <button
-          type="submit"
-          className={`${styles.accountSaveBtn} ctaButton`}
-        >
+        <button type="submit" className={`${styles.accountSaveBtn} ctaButton`}>
           Save
         </button>
         {/* {saved === true ? (

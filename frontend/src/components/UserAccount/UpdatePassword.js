@@ -5,12 +5,13 @@ import styles from "./UserAccount.module.css";
 
 const UpdatePassword = ({ user }) => {
   const dispatch = useDispatch();
-  const [currPassword, setCurrPassword] = useState('');
-  const [newPassword, setNewPassword] = useState('');
-  const [repeatPassword, setRepeatPassword] = useState('');
+  const [currPassword, setCurrPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [repeatPassword, setRepeatPassword] = useState("");
   const [errors, setErrors] = useState([]);
+  // const [saved, setSaved] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const updatedPassword = {
       id: user?.id,
@@ -21,15 +22,19 @@ const UpdatePassword = ({ user }) => {
     if (newPassword === repeatPassword) {
       setErrors([]);
 
-      return dispatch(sessionActions.updatePassword(updatedPassword, user?.id)).catch(
-        async (res) => {
-          const data = await res.json();
-          if (data && data.errors) setErrors(data.errors);
-        }
-      );
+      await dispatch(
+        sessionActions.updatePassword(updatedPassword, user?.id)
+      ).catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+      });
+
+      // if (!errors.length) {
+      //   setSaved(true);
+      // }
     }
     return setErrors([
-        "Repeat Password field must be the same as the New Password field.",
+      "Repeat Password field must be the same as the New Password field.",
     ]);
   };
 
@@ -85,6 +90,9 @@ const UpdatePassword = ({ user }) => {
           >
             Save
           </button>
+          {/* {saved === true ? (
+            <i className={`${styles.checkMark} fas fa-check`}></i>
+          ) : null} */}
         </div>
       </div>
     </form>
