@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { useHistory } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { NavLink } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import styles from "./ProfileButton.module.css";
 
@@ -29,7 +29,7 @@ const ProfileButton = ({ user }) => {
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
-    history.push('/');
+    history.push("/");
   };
 
   return (
@@ -44,21 +44,18 @@ const ProfileButton = ({ user }) => {
         <span className={styles.welcomeMessage}>
           Welcome, {user.firstName}!
         </span>
-        {showMenu && (
-          <div className={styles.dropdownDiv}>
-            <ul className={styles.profileDropdown}>
-              <NavLink to={`/user/${user.id}`}>My Classes</NavLink>
-              <NavLink to={`/user/${user.id}/account`}>Account Settings</NavLink>
-              <div
-                className={`${styles.logoutButton}`}
-                onClick={logout}
-              >
-                Log Out
-              </div>
-            </ul>
-          </div>
-        )}
       </div>
+      {showMenu && (
+        <div className={styles.dropdownDiv}>
+          <ul className={styles.profileDropdown}>
+            <NavLink to={`/user/${user.id}`}>My Classes</NavLink>
+            <NavLink to={`/user/${user.id}/account`}>Account Settings</NavLink>
+            <div className={`${styles.logoutButton}`} onClick={logout}>
+              Log Out
+            </div>
+          </ul>
+        </div>
+      )}
     </button>
   );
 };

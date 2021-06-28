@@ -15,18 +15,14 @@ const CloseAccount = ({ user }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("1st-->", showModal);
 
     if (password === confirmPassword) {
       setErrors([]);
 
       await dispatch(sessionActions.validatePassword(password, user?.id)).catch(
         async (res) => {
-          console.log("-----> inside handler 1");
           const data = await res.json();
           if (data && data.errors) {
-            console.log("-----> inside handler 2");
-
             return setErrors(data.errors);
           }
         }
@@ -39,7 +35,7 @@ const CloseAccount = ({ user }) => {
 
   const deleteAccount = async (e) => {
     e.preventDefault();
-
+    // needs debugging - only deletes if there are no associated tables
     await dispatch(sessionActions.deleteUser(password, user?.id)).catch(
       async (res) => {
         const data = await res.json();
@@ -48,14 +44,13 @@ const CloseAccount = ({ user }) => {
         }
       }
     );
-    history.push('/');
+    // needs debugging - if delete unsuccessful, it still redirects
+    if (!errors.length) history.push('/');
   };
 
   const openModal = () => {
     if (!errors.length) {
-      console.log("-----> inside handler 3", errors);
       setShowModal(true);
-      console.log(showModal);
     }
   };
 
