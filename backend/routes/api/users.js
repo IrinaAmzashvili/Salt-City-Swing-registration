@@ -132,12 +132,14 @@ router.put('/:id/password', validatePasswordUpdate, asyncHandler(async (req, res
             ...user,
             hashedPassword
         });
-        res.json({ success: 'Password updated successfully.' })
+        return res.json({ success: 'Password updated successfully.' })
     } else {
         // needs debugging
-        const error = new Error('Incorrect password.')
-        error.errors = ['Incorrect password']
-        res.json(error);
+        const error = new Error('Incorrect password.');
+        error.errors = ['Incorrect password'];
+        error.status = 400;
+        error.title = 'Incorrect password.';
+        return next(error);
     }
 }))
 
