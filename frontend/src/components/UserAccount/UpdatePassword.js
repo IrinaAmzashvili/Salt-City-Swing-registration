@@ -5,14 +5,15 @@ import styles from "./UserAccount.module.css";
 
 const UpdatePassword = ({ user }) => {
   const dispatch = useDispatch();
-  const [currPassword, setCurrPassword] = useState();
-  const [newPassword, setNewPassword] = useState();
-  const [repeatPassword, setRepeatPassword] = useState();
+  const [currPassword, setCurrPassword] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [repeatPassword, setRepeatPassword] = useState('');
   const [errors, setErrors] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const updatedPassword = {
+      id: user?.id,
       currPassword,
       newPassword,
     };

@@ -105,9 +105,6 @@
     margin-top: 20px;
     width: 40%;
     background-color: #C0392B;
-    text-align: center;
-    padding: 6px 0;
-    cursor: pointer;
 }
 
 .accountDeleteBtn:hover {

@@ -99,6 +99,18 @@ const validatePasswordUpdate = [
     check('currPassword')
         .exists({ checkFalsy: true })
         .withMessage('Please provide current password.'),
+        // .custom(async (currPassword) => {
+
+        //     const hashedPassword = bcrypt.hashSync(currPassword);
+
+        //     const user = await User.findOne({
+        //         where: { hashedPassword }
+        //     });
+        //     // const validated = await user.validatePassword(currPassword);
+        //     if (user) return true;
+        //     if (!user) throw new Error();
+        // })
+        // .withMessage('Incorrect password.'),
     check('newPassword')
         .exists({ checkFalsy: true })
         .isLength({ min: 6 })
@@ -108,7 +120,7 @@ const validatePasswordUpdate = [
     handleValidationErrors,
 ];
 
-router.put('/:id/password', validatePasswordUpdate, asyncHandler(async (req, res) => {
+router.put('/:id/password', validatePasswordUpdate, asyncHandler(async (req, res, next) => {
     const { id } = req.params;
     const updates = req.body;
     const user = await User.scope('loginUser').findByPk(id);
@@ -116,13 +128,16 @@ router.put('/:id/password', validatePasswordUpdate, asyncHandler(async (req, res
 
     if (validated) {
         const hashedPassword = bcrypt.hashSync(updates.newPassword);
-        const updatedUser = await user.update({
+        await user.update({
             ...user,
             hashedPassword
-        })
-        res.json(updatedUser)
+        });
+        res.json({ success: 'Password updated successfully.' })
     } else {
-        throw new Error('Incorrect password.')
+        // needs debugging
+        const error = new Error('Incorrect password.')
+        error.errors = ['Incorrect password']
+        res.json(error);
     }
 }))
 

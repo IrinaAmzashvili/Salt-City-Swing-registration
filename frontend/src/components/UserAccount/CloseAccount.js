@@ -29,7 +29,7 @@ const CloseAccount = () => {
           <input className={styles.input} type="password" />
         </label>
       </div>
-      <dutton type="submit" className={`${styles.accountDeleteBtn} ctaButton`}>Close Account</dutton>
+      <button type="submit" className={`${styles.accountDeleteBtn} ctaButton`}>Close Account</button>
     </form>
   );
 };

@@ -26,7 +26,6 @@ const Register = ({ closeModal, currentClass }) => {
       numOfTickets: +amount,
     };
     const res = await dispatch(purchaseTicket(newTicket));
-    console.log(res);
     if (res.ok) {
       setPaid(true);
       setTimeout(closeModal, 1500);

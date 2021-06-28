@@ -81,8 +81,8 @@ export const updatePassword = (newPasswordInfo, id) => async (dispatch) => {
     });
 
     if (res.ok) {
-        const data = await res.json();
-        return res,
+        await res.json();
+        return res;
     }
 }
 
