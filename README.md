@@ -97,4 +97,7 @@ The "My Classes" page displays all of a logged in user's liked and purchased cla
 ### Account Settings Page
 Upon navigation to the "Account Settings" page, the user may choose to update any of their account information or to delete their account entirely. 
 
-![Account Settings]()
+![image](https://user-images.githubusercontent.com/79552414/123587416-7a835300-d7a3-11eb-9abf-934106a6c075.png)
+![image](https://user-images.githubusercontent.com/79552414/123587452-8cfd8c80-d7a3-11eb-88c8-be3f18cd21a9.png)
+![image](https://user-images.githubusercontent.com/79552414/123587477-97b82180-d7a3-11eb-9104-69eff4d0856b.png)
+![image](https://user-images.githubusercontent.com/79552414/123587534-a999c480-d7a3-11eb-9037-a1b6017afc86.png)
