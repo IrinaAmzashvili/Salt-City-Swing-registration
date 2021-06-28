@@ -66,7 +66,7 @@ const SignUpFormPage = () => {
       <form className={styles.form} onSubmit={handleSubmit}>
         <h2>Create Account</h2>
         {errors && (
-          <div className={styles.errorsDiv}>
+          <div className='errorsDiv'>
             <ul>
               {errors.map((error, i) => (
                 <li key={i}>{error}</li>
@@ -78,6 +78,7 @@ const SignUpFormPage = () => {
           <div>
             <label>
               <input
+                className={styles.input}
                 type="text"
                 placeholder="First Name"
                 value={firstName}
@@ -88,6 +89,7 @@ const SignUpFormPage = () => {
           <div>
             <label>
               <input
+                className={styles.input}
                 type="text"
                 placeholder="Last Name"
                 value={lastName}
@@ -99,6 +101,7 @@ const SignUpFormPage = () => {
         <div>
           <label>
             <input
+              className={styles.input}
               type="email"
               placeholder="Email"
               value={email}
@@ -109,6 +112,7 @@ const SignUpFormPage = () => {
         <div>
           <label>
             <input
+              className={styles.input}
               type="password"
               placeholder="Password"
               value={password}
@@ -119,6 +123,7 @@ const SignUpFormPage = () => {
         <div>
           <label>
             <input
+              className={styles.input}
               type="password"
               placeholder="Confirm Password"
               value={confirmPassword}
@@ -150,6 +155,7 @@ const SignUpFormPage = () => {
           User Type:
           <label className={styles.userTypeLabels} htmlFor="userType-user">
             <input
+              className={styles.input}
               type="radio"
               id="userType-user"
               value="user"
@@ -160,6 +166,7 @@ const SignUpFormPage = () => {
           </label>
           <label className={styles.userTypeLabels} htmlFor="userType-admin">
             <input
+              className={styles.input}
               type="radio"
               id="userType-admin"
               value="admin"
@@ -170,6 +177,7 @@ const SignUpFormPage = () => {
           </label>
           <label className={styles.userTypeLabels} htmlFor="userType-superUser">
             <input
+              className={styles.input}
               type="radio"
               id="userType-superUser"
               value="superUser"
@@ -181,7 +189,7 @@ const SignUpFormPage = () => {
         </div>
         <div className={styles.checkboxDiv}>
           <input
-            className={styles.checkboxInput}
+            className={`checkbox ${styles.checkboxInput}`}
             id="mailing-list"
             type="checkbox"
             value="mailing-list"
@@ -190,7 +198,7 @@ const SignUpFormPage = () => {
           />
           <label htmlFor="mailing-list">Add me to your mailing list</label>
         </div>
-        <button className={styles.submitButton} type="submit">
+        <button className='ctaButton submitButton' type="submit">
           Sign Up
         </button>
         <div className={styles.switch}>

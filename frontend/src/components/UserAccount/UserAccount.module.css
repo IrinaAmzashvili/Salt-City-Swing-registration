@@ -1,1 +1,136 @@
-@import '../../index.css';
+@import "../../index.css";
+
+.accountPageDiv {
+  display: flex;
+}
+
+.buttonDiv {
+  width: 30%;
+  background-color: #eeeeee;
+  padding: 70px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.accountButton {
+  padding: 20px;
+  padding-right: 40px;
+  text-align: left;
+  border-top: 1px solid var(--backgroundLighter);
+  border-bottom: 1px solid var(--backgroundLighter);
+  font-weight: 400;
+  color: #5b5b5b;
+}
+
+.accountButton:hover {
+  color: black;
+}
+
+.active {
+  background-color: var(--backgroundLighter);
+  color: black;
+}
+
+.formDiv {
+  margin: 70px auto 160px;
+  width: 500px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputDivs {
+  display: flex;
+  align-items: center;
+  padding-top: 10px;
+}
+
+.input {
+  margin-bottom: 10px;
+  margin-top: 5px;
+  width: 100%;
+  height: 50px;
+  border: 1px solid var(--grayTheme);
+  border-radius: 2px;
+  padding: 10px;
+  font-family: "Montserrat";
+  line-height: 30px;
+}
+
+.labels {
+  margin-top: 5px;
+}
+
+.inputDivs > label {
+  width: 100%;
+}
+
+.inputDivs .checkbox {
+  width: 12.8px;
+  margin: 0;
+}
+
+.checkboxDiv {
+  display: flex;
+  padding: 10px 0;
+}
+
+.mailingListP {
+  display: inline;
+  padding: 0 10px;
+}
+
+.updatePasswordDiv {
+  display: flex;
+  flex-direction: column;
+}
+
+.accountSaveBtn {
+  width: 30%;
+  margin-top: 20px;
+  background-color: #27ae60;
+}
+
+.accountSaveBtn:hover {
+  background-color: #2cc66d;
+}
+
+.checkMark {
+  margin: 0 20px;
+}
+
+.accountDeleteBtn {
+  margin-top: 20px;
+  width: 40%;
+  background-color: #c0392b;
+}
+
+.accountDeleteBtn:hover {
+  background-color: #d3483a;
+}
+
+.deleteModal {
+  width: 500px;
+}
+
+.deleteModalButtons {
+  display: flex;
+  justify-content: flex-end;
+  margin: 10px;
+}
+
+.deleteModalButtons button {
+  margin: 10px;
+}
+
+.deleteModal p {
+  padding: 25px 20px;
+  border-bottom: 1px solid var(--grayTheme);
+  border-top: 1px solid var(--grayTheme);
+}
+
+.deleteModal h2 {
+    padding: 0 20px;
+}

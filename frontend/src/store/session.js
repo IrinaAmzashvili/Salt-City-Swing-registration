@@ -61,6 +61,43 @@ export const signUpUser = (user) => async (dispatch) => {
     }
 }
 
+export const validatePassword = (password, id) => async () => {
+    const res = await csrfFetch(`/api/users/${id}/confirmPassword`, {
+        method: 'PUT',
+        body: JSON.stringify({ password })
+    });
+
+    if (res.ok) {
+        await res.json();
+        return res;
+    }
+}
+
+export const updateUser = (user, id) => async (dispatch) => {
+    const res = await csrfFetch(`/api/users/${id}`, {
+        method: 'PUT',
+        body: JSON.stringify(user)
+    });
+
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(setUser(data.updatedUser));
+        return res;
+    }
+}
+
+export const updatePassword = (newPasswordInfo, id) => async (dispatch) => {
+    const res = await csrfFetch(`/api/users/${id}/updatePassword`, {
+        method: 'PUT',
+        body: JSON.stringify(newPasswordInfo)
+    });
+
+    if (res.ok) {
+        await res.json();
+        return res;
+    }
+}
+
 export const logout = () => async (dispatch) => {
     const response = await csrfFetch('/api/session', {
         method: 'DELETE'
@@ -69,6 +106,18 @@ export const logout = () => async (dispatch) => {
     if (response.ok) {
         dispatch(removeUser());
         return response;
+    }
+}
+
+export const deleteUser = (password, id) => async (dispatch) => {
+    const res = await csrfFetch(`/api/users/${id}`, {
+        method: 'DELETE',
+        body: JSON.stringify({ password })
+    });
+
+    if (res.ok) {
+        dispatch(removeUser());
+        return res;
     }
 }
 

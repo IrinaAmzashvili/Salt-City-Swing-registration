@@ -71,8 +71,9 @@ ul.navlinks {
 }
 
 ul.navlinks > * {
+    height: 100%;
     color: white;
-    padding: 26px 18px;
+    padding: 26px 20px;
     transition: background-color .3s;
 }
 

@@ -45,6 +45,7 @@ const LoginForm = () => {
           <div>
             <label htmlFor="email"></label>
             <input
+              className={styles.input}
               placeholder="Email"
               id="email"
               type="email"
@@ -55,6 +56,7 @@ const LoginForm = () => {
           <div>
             <label htmlFor="password"></label>
             <input
+              className={styles.input}
               placeholder="Password"
               id="password"
               type="password"
@@ -62,7 +64,7 @@ const LoginForm = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <button className={styles.submitButton} type="submit">
+          <button className={`ctaButton submitButton`} type="submit">
             Log In
           </button>
           <div className={styles.switch}>
