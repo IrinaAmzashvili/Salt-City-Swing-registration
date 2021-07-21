@@ -6,7 +6,7 @@ import styles from "./Classes.module.css";
 
 const ClassesComponent = () => {
   const dispatch = useDispatch();
-  const [levelFilter, setLevelFilter]= useState('all');
+  const [levelFilter, setLevelFilter] = useState('all');
 
   const classes = useSelector((state) => Object.values(state.classes));
   const level1Classes = classes.filter((classObj) => classObj.Category?.id === 1);
