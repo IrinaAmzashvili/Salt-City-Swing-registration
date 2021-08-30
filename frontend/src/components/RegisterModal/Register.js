@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getClasses } from "../../store/classes";
-import { purchaseTicket } from "../../store/tickets";
+import { purchaseTicket, cancelTicket } from "../../store/tickets";
 import styles from "./Register.module.css";
 
-const Register = ({ currentClass }) => {
+const Register = ({ currentClass, purchased }) => {
   const history = useHistory();
   const sessionUserId = useSelector((store) => store.session.user.id);
   const dispatch = useDispatch();
@@ -31,6 +31,14 @@ const Register = ({ currentClass }) => {
       history.push(`/user/${sessionUserId}`);
     }
   };
+
+  const handleCancel = async (e) => {
+    e.preventDefault();
+
+    // grab ticket id
+    dispatch(cancelTicket())
+
+  }
 
   useEffect(() => {
     dispatch(getClasses());
@@ -62,8 +70,13 @@ const Register = ({ currentClass }) => {
             type="submit"
             onClick={handleSubmit}
           >
-            Purchase
+            {purchased ? "Update Ticket" : "Purchase"}
           </button>
+          {purchased ? (
+            <button className={`ctaButton`} onClick={handleCancel}>
+              Cancel Ticket
+            </button>
+          ) : null}
         </div>
       </form>
     </div>
