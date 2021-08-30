@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getClasses } from "../../store/classes";
 import { purchaseTicket } from "../../store/tickets";
 import styles from "./Register.module.css";
 
-const Register = ({ closeModal, currentClass }) => {
+const Register = ({ currentClass }) => {
+  const history = useHistory();
   const sessionUserId = useSelector((store) => store.session.user.id);
   const dispatch = useDispatch();
   const [price, setPrice] = useState(45);
   const [amount, setAmount] = useState(1);
-  const [paid, setPaid] = useState(false);
 
   const amountChange = (e) => {
     setPrice(45 * e.target.value);
@@ -27,8 +28,7 @@ const Register = ({ closeModal, currentClass }) => {
     };
     const res = await dispatch(purchaseTicket(newTicket));
     if (res.ok) {
-      setPaid(true);
-      setTimeout(closeModal, 1500);
+      history.push(`/user/${sessionUserId}`);
     }
   };
 
@@ -36,7 +36,7 @@ const Register = ({ closeModal, currentClass }) => {
     dispatch(getClasses());
   }, [dispatch]);
 
-  return !paid ? (
+  return (
     <div className={styles.registerPageDiv}>
       <div className={styles.classInfoDiv}>
         <p className={styles.classTitle}>{currentClass?.title}</p>
@@ -66,10 +66,6 @@ const Register = ({ closeModal, currentClass }) => {
           </button>
         </div>
       </form>
-    </div>
-  ) : (
-    <div className={styles.thankYouPageDiv}>
-        <h2 className={styles.thankYou}>Thank you for your purchase!</h2>
     </div>
   );
 };
