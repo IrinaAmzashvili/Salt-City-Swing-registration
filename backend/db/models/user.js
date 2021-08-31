@@ -47,16 +47,21 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
       },
-      userType: {
+      // userType: {
+      //   allowNull: false,
+      //   type: DataTypes.STRING(15),
+      //   defaultValue: "user",
+      //   validate: {
+      //     isIn: {
+      //       args: [["user", "admin", "superUser"]],
+      //       msg: "User type must be either user, admin, or superUser",
+      //     },
+      //   },
+      // },
+      superUser: {
         allowNull: false,
-        type: DataTypes.STRING(15),
-        defaultValue: "user",
-        validate: {
-          isIn: {
-            args: [["user", "admin", "superUser"]],
-            msg: "User type must be either user, admin, or superUser",
-          },
-        },
+        type: DataTypes.BOOLEAN,
+        
       },
     },
     {
