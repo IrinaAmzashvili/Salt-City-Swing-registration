@@ -21,7 +21,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       startDate: {
-        type: Sequelize.STRING,
+        type: Sequelize.DATE,
         allowNull: false,
       },
       cost: {
@@ -36,10 +36,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.TEXT
       },
-      imageAlt: {
-        allowNull: false,
-        type: Sequelize.STRING
-      },
+      // imageAlt: {
+      //   allowNull: false,
+      //   type: Sequelize.STRING
+      // },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

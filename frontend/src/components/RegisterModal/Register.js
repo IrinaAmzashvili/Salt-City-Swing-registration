@@ -2,16 +2,18 @@ import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getClasses } from "../../store/classes";
-import { purchaseTicket, cancelTicket } from "../../store/tickets";
+import { purchaseTicket, cancelTicket, updateTicket } from "../../store/tickets";
 import styles from "./Register.module.css";
 
-const Register = ({ currentClass, purchased }) => {
+const Register = ({ closeModal, currentClass, purchased }) => {
   const history = useHistory();
   const sessionUserId = useSelector((store) => store.session.user.id);
   const dispatch = useDispatch();
-  const [price, setPrice] = useState(45);
-  const [amount, setAmount] = useState(1);
+  const [price, setPrice] = useState(purchased ? purchased.price : 45);
+  const [amount, setAmount] = useState(purchased ? purchased.numOfTickets : 1);
+  const [canceled, setCanceled] = useState(false);
 
+  console.log(purchased)
   const amountChange = (e) => {
     setPrice(45 * e.target.value);
     setAmount(e.target.value);
@@ -26,7 +28,13 @@ const Register = ({ currentClass, purchased }) => {
       price,
       numOfTickets: +amount,
     };
-    const res = await dispatch(purchaseTicket(newTicket));
+
+    let res;
+    if (purchased) {
+      res = await dispatch(updateTicket(purchased.id, newTicket))
+    } else {
+      res = await dispatch(purchaseTicket(newTicket));
+    }
     if (res.ok) {
       history.push(`/user/${sessionUserId}`);
     }
@@ -35,16 +43,18 @@ const Register = ({ currentClass, purchased }) => {
   const handleCancel = async (e) => {
     e.preventDefault();
 
-    // grab ticket id
-    dispatch(cancelTicket())
-
-  }
+    const res = await dispatch(cancelTicket(purchased.id));
+    if (res.ok) {
+      setCanceled(true);
+      setTimeout(closeModal, 1500);
+    }
+  };
 
   useEffect(() => {
     dispatch(getClasses());
   }, [dispatch]);
 
-  return (
+  return !canceled ? (
     <div className={styles.registerPageDiv}>
       <div className={styles.classInfoDiv}>
         <p className={styles.classTitle}>{currentClass?.title}</p>
@@ -60,6 +70,7 @@ const Register = ({ currentClass, purchased }) => {
               type="number"
               value={amount}
               min="1"
+              max="10"
               onChange={amountChange}
             />
           </label>
@@ -73,12 +84,16 @@ const Register = ({ currentClass, purchased }) => {
             {purchased ? "Update Ticket" : "Purchase"}
           </button>
           {purchased ? (
-            <button className={`ctaButton`} onClick={handleCancel}>
+            <button className={`ctaButtonInverse`} onClick={handleCancel}>
               Cancel Ticket
             </button>
           ) : null}
         </div>
       </form>
+    </div>
+  ) : (
+    <div className={styles.confirmedDiv}>
+      <h2 className={styles.confirmed}>Ticket was successfully canceled.</h2>
     </div>
   );
 };

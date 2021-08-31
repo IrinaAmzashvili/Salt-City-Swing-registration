@@ -12,6 +12,8 @@ const SingleClassComponent = () => {
   const { classId } = useParams();
   const currentClass = useSelector((state) => state.classes[classId]);
 
+  const classDate = new Date(currentClass?.startDate)
+
   useEffect(() => {
     dispatch(getClasses());
   }, [dispatch]);
@@ -30,7 +32,7 @@ const SingleClassComponent = () => {
           <img
             className={styles.classImage}
             src={currentClass?.image}
-            alt={currentClass?.alt}
+            alt='dancers'
           />
         </div>
         <div className={styles.buttonHeaderDiv}>
@@ -45,7 +47,8 @@ const SingleClassComponent = () => {
         <div className={styles.classContentContainer}>
           <h2 className={styles.classTitle}>{currentClass?.title}</h2>
           <p className={styles.classDates}>{currentClass?.dates}</p>
-          <p className={styles.classStartDate}>Start date: 6/7/21</p>
+          <p className={styles.classStartDate}>Start date: {classDate.toLocaleDateString()}</p>
+          <p className={styles.classStartDate}>Time: {classDate.toLocaleTimeString('en-US', { timeZone: 'America/Denver', hour: '2-digit', minute: '2-digit' })}</p>
           <p className={styles.classDescription}>{currentClass?.description}</p>
           <button onClick={() => history.goBack()} className={`${styles.backButton} link-button`}>Back</button>
         </div>

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getTickets } from "../../store/tickets";
+import { getTickets, unloadTickets } from "../../store/tickets";
 import styles from "./UserPage.module.css";
 
 const UserTickets = ({ userId }) => {
@@ -16,6 +16,7 @@ const UserTickets = ({ userId }) => {
 
   useEffect(() => {
     dispatch(getTickets(+userId));
+    return () => dispatch(unloadTickets())
   }, [dispatch, userId]);
 
   return tickets.length !== 0 ? (
@@ -38,7 +39,7 @@ const UserTickets = ({ userId }) => {
               <img
                 className={styles.classImage}
                 src={ticket.Class?.image}
-                alt={ticket.Class?.imageAlt}
+                alt='dancers'
               />
             </div>
           </div>

@@ -12,7 +12,7 @@ const RegisterModal = ({ currentClass }) => {
   const tickets = useSelector((store) => Object.values(store.tickets));
   const [showModal, setShowModal] = useState(false);
 
-  const purchased = tickets.find(tic => (tic.id === currentClass?.id))
+  const purchased = tickets.find(tic => (tic.classId === currentClass?.id))
 
   const closeModal = () => {
     setShowModal(false);

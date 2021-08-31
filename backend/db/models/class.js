@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     startDate: {
-      type: DataTypes.STRING,
+      type: DataTypes.DATE,
       allowNull: false,
     },
     cost: {
@@ -28,10 +28,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.TEXT
     },
-    imageAlt: {
-      allowNull: false,
-      type: DataTypes.STRING
-    },
+    // imageAlt: {
+    //   allowNull: false,
+    //   type: DataTypes.STRING
+    // },
   }, {});
   Class.associate = function(models) {
     Class.hasMany(models.Ticket, { foreignKey: 'classId' });

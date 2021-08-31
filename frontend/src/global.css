@@ -73,11 +73,29 @@ button {
     background-color: var(--themeLight);
 }
 
+.ctaButtonInverse {
+    height: 44px;
+    width: 100%;
+    padding: 0 30px;
+    margin-bottom: 1px;
+    border: 2px solid var(--themeColor);
+    line-height: 26px;
+    font-size: 15px;
+    border-radius: 4px;
+    color: var(--themeColor);
+    font-weight: bold;
+    transition: all .2s ease-out;
+}
+
+.ctaButtonInverse:hover {
+    background-color: var(--themeLight);
+    color: white;
+    border: 2px solid transparent;
+}
+
 .submitButton {
     margin: 25px auto;
     width: 75%;
-    /* border-radius: 30px; */
-    /* height: 40px; */
 }
 
 .likeButtonDiv {

@@ -77,7 +77,7 @@ const ClassesComponent = () => {
                 <div className={styles.cardTop}>
                   <img
                     className={styles.classImage}
-                    alt={classObj.imageAlt}
+                    alt='dancers'
                     src={classObj.image}
                   />
                 </div>
