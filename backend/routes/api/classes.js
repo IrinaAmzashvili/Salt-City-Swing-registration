@@ -8,10 +8,19 @@ router.get(
   "/",
   asyncHandler(async (req, res) => {
     const classes = await Class.findAll({
-      order: [['startDate']],
+      order: [["startDate"]],
       include: Category,
     });
     res.json(classes);
+  })
+);
+
+router.post(
+  "/",
+  asyncHandler(async (req, res) => {
+    const classInfo = req.body;
+    const newClass = await Class.create(classInfo);
+    res.json(newClass);
   })
 );
 

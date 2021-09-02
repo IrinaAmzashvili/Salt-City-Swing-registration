@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import DatePicker from 'react-datepicker';
 import { getLevels } from '../../store/levels';
+import { createClass } from '../../store/classes';
 import styles from "./CreateClass.module.css";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -16,7 +17,7 @@ const CreateClass = () => {
   const [cost, setCost] = useState("");
   const [levelId, setLevelId] = useState("");
   const [image, setImage] = useState("");
-  // const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState([]);
 
   useEffect(() => {
     dispatch(getLevels())
@@ -28,7 +29,7 @@ const CreateClass = () => {
     return today.getTime() < selected.getTime();
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const newClass = {
@@ -36,18 +37,25 @@ const CreateClass = () => {
       description,
       startDate,
       cost,
-      categoryId: 1,
+      categoryId: +levelId,
       image: "img.png",
     };
 
-    console.log(newClass);
+    const res = await dispatch(createClass(newClass));
+    if (res.errors) {
+      setErrors(res.errors);
+    } else {
+
+    }
   };
 
   return (
     <div className={styles.createClassContainer}>
       <h1 className={styles.header}>Create a new class</h1>
       <form className={styles.form} onSubmit={handleSubmit}>
-        {/* errors div here */}
+        {errors && errors.map((error, idx) => (
+          <li key={idx}>{error}</li>
+        ))}
         <div>
           <label className={styles.labels} htmlFor="class-title">Title:</label>
           <input
