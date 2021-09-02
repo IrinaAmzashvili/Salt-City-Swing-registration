@@ -9,6 +9,7 @@ import SingleClassComponent from "./components/SingleClassComponent";
 import UserPage from './components/UserPage';
 import UserAccount from './components/UserAccount';
 import Footer from './components/Footer';
+import CreateClass from './components/CreateClass';
 
 function App() {
   const dispatch = useDispatch();
@@ -28,6 +29,9 @@ function App() {
           </Route>
           <Route exact path="/signup">
             <SignUpFormPage />
+          </Route>
+          <Route exact path='/classes/create'>
+            <CreateClass />
           </Route>
           <Route exact path="/classes/:classId">
             <SingleClassComponent />
