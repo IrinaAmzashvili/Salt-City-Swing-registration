@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
+import  { useHistory } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import { getLevels } from '../../store/levels';
 import { createClass } from '../../store/classes';
@@ -9,6 +10,7 @@ import "react-datepicker/dist/react-datepicker.css";
 const CreateClass = () => {
   // if user not superuser, redirect to 404 page
   const dispatch = useDispatch();
+  const history = useHistory();
   const levels = useSelector(state => Object.values(state.levels));
 
   const [title, setTitle] = useState("");
@@ -36,16 +38,17 @@ const CreateClass = () => {
       title,
       description,
       startDate,
-      cost,
+      cost: +cost,
       categoryId: +levelId,
       image: "img.png",
     };
 
     const res = await dispatch(createClass(newClass));
+    console.log('==>', res)
     if (res.errors) {
       setErrors(res.errors);
     } else {
-
+      history.push(`/classes/${1}`)
     }
   };
 

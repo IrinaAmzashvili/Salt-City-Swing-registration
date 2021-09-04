@@ -24,14 +24,17 @@ export const getClasses = () => async (dispatch) => {
 }
 
 export const createClass = (classInfo) => async (dispatch) => {
+    console.log('before fetch')
     const res = await csrfFetch('/api/classes', {
         method: 'POST',
         body: JSON.stringify(classInfo)
     });
+    console.log('after fetch')
+    console.log('--> res', res)
 
     if (res.ok) {
         const newClass = await res.json();
-        dispatch(setOneClass(newClass));
+        dispatch(setOneClass(newClass.newClass));
         return res;
     }
 }
