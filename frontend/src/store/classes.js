@@ -28,15 +28,26 @@ export const createClass = (classInfo) => async (dispatch) => {
         method: 'POST',
         body: JSON.stringify(classInfo)
     });
-    console.log('--> in thunk')
 
     if (res.ok) {
         const newClass = await res.json();
         dispatch(setOneClass(newClass.newClass));
-        console.log('--->', newClass.newClass)
         return newClass.newClass;
     }
 }
+
+export const editClass = (classInfo) => async (dispatch) => {
+    const res = await csrfFetch(`/api/classes/${classInfo.id}`, {
+        method: 'PUT',
+        body: JSON.stringify(classInfo)
+    });
+
+    if (res.ok) {
+        const updatedClass = await res.json();
+        dispatch(setOneClass(updatedClass.updatedClass));
+        return updatedClass.updatedClass;
+    }
+};
 
 const initialState = {};
 

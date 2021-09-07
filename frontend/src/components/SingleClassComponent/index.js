@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getClasses } from "../../store/classes";
 import LikeButton from "../LikeButton";
 import RegisterModal from "../RegisterModal";
+import EditClassModal from '../EditClass';
 import styles from "./Class.module.css";
 
 const SingleClassComponent = () => {
@@ -38,6 +39,9 @@ const SingleClassComponent = () => {
         <div className={styles.buttonHeaderDiv}>
           <div className={`${styles.likeButtonDiv} likeButtonDiv`}>
             <LikeButton currentClass={currentClass} />
+          </div>
+          <div>
+            <EditClassModal currentClass={currentClass}/>
           </div>
           <p className={styles.classCost}>{`$${currentClass?.cost}`}</p>
           <div className={styles.registerButtonDiv}>

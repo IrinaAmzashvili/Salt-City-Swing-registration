@@ -12,30 +12,28 @@ const validateClass = [
     .withMessage("Title required")
     .isLength({ min: 4, max: 255 })
     .withMessage("Title must be between 4 and 255 characters"),
-  check('description')
+  check("description")
     .exists({ checkFalsy: true })
     .withMessage("Description required"),
-  check('startDate')
+  check("startDate")
     .exists({ checkFalsy: true })
     .withMessage("Start date required")
     .isISO8601()
     .toDate()
     .withMessage("Start date must be a date"),
-  check('cost')
+  check("cost")
     .exists({ checkFalsy: true })
     .withMessage("Cost required")
     .isNumeric()
     .withMessage("Cost must be a number")
     .isLength({ min: 0 })
     .withMessage("Cost cannot be a negative number"),
-  check('categoryId')
+  check("categoryId")
     .exists({ checkFalsy: true })
     .withMessage("Level required")
     .isNumeric()
     .withMessage("CategoryId must be a number"),
-  check('image')
-    .exists({ checkFalsy: true })
-    .withMessage("Image required"),
+  check("image").exists({ checkFalsy: true }).withMessage("Image required"),
   handleValidationErrors,
 ];
 
@@ -57,6 +55,16 @@ router.post(
     const classInfo = req.body;
     const newClass = await Class.create(classInfo);
     return res.json({ newClass });
+  })
+);
+
+router.put(
+  "/:id",
+  validateClass,
+  asyncHandler(async (req, res) => {
+    const classInfo = req.body;
+    const updatedClass = await Class.updte(classInfo);
+    return res.json({ updatedClass });
   })
 );
 
