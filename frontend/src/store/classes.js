@@ -36,8 +36,8 @@ export const createClass = (classInfo) => async (dispatch) => {
     }
 }
 
-export const editClass = (classInfo) => async (dispatch) => {
-    const res = await csrfFetch(`/api/classes/${classInfo.id}`, {
+export const editClass = (classId, classInfo) => async (dispatch) => {
+    const res = await csrfFetch(`/api/classes/${classId}`, {
         method: 'PUT',
         body: JSON.stringify(classInfo)
     });

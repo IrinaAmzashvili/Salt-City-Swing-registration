@@ -63,7 +63,9 @@ router.put(
   validateClass,
   asyncHandler(async (req, res) => {
     const classInfo = req.body;
-    const updatedClass = await Class.updte(classInfo);
+    const classId = +req.params.id;
+    const targetClass = await Class.findByPk(classId);
+    const updatedClass = await targetClass.update(classInfo);
     return res.json({ updatedClass });
   })
 );

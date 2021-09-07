@@ -45,7 +45,7 @@ const EditClass = ({ currentClass, setShowModal }) => {
       image: "img.png",
     };
 
-    return dispatch(editClass(editedClass)).then(setShowModal(false)).catch(async (res) => {
+    return dispatch(editClass(currentClass.id, editedClass)).then(setShowModal(false)).catch(async (res) => {
       const data = await res.json();
       if (data && data.errors) setErrors(data.errors);
     });
