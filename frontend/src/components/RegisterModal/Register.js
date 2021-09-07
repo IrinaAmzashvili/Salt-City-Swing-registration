@@ -13,7 +13,6 @@ const Register = ({ closeModal, currentClass, purchased }) => {
   const [amount, setAmount] = useState(purchased ? purchased.numOfTickets : 1);
   const [canceled, setCanceled] = useState(false);
 
-  console.log(purchased)
   const amountChange = (e) => {
     setPrice(45 * e.target.value);
     setAmount(e.target.value);

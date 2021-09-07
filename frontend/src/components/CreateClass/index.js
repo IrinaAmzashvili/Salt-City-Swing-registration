@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from 'react-redux';
-import  { useHistory } from 'react-router-dom';
-import DatePicker from 'react-datepicker';
-import { getLevels } from '../../store/levels';
-import { createClass } from '../../store/classes';
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import DatePicker from "react-datepicker";
+import { getLevels } from "../../store/levels";
+import { createClass } from "../../store/classes";
 import styles from "./CreateClass.module.css";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -11,7 +11,7 @@ const CreateClass = () => {
   // if user not superuser, redirect to 404 page
   const dispatch = useDispatch();
   const history = useHistory();
-  const levels = useSelector(state => Object.values(state.levels));
+  const levels = useSelector((state) => Object.values(state.levels));
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -22,17 +22,19 @@ const CreateClass = () => {
   const [errors, setErrors] = useState([]);
 
   useEffect(() => {
-    dispatch(getLevels())
-  }, [dispatch])
+    dispatch(getLevels());
+  }, [dispatch]);
 
   const disablePastTimes = (time) => {
     const today = new Date();
     const selected = new Date(time);
     return today.getTime() < selected.getTime();
-  }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    setErrors([]);
 
     const newClass = {
       title,
@@ -43,24 +45,21 @@ const CreateClass = () => {
       image: "img.png",
     };
 
-    const res = await dispatch(createClass(newClass));
-    console.log('==>', res)
-    if (res.errors) {
-      setErrors(res.errors);
-    } else {
-      history.push(`/classes/${1}`)
-    }
+    return dispatch(createClass(newClass)).then(res => history.push(`/classes/${res.id}`)).catch(async (res) => {
+      const data = await res.json();
+      if (data && data.errors) setErrors(data.errors);
+    });
   };
 
   return (
     <div className={styles.createClassContainer}>
       <h1 className={styles.header}>Create a new class</h1>
       <form className={styles.form} onSubmit={handleSubmit}>
-        {errors && errors.map((error, idx) => (
-          <li key={idx}>{error}</li>
-        ))}
+        {errors && errors.map((error, idx) => <li key={idx}>{error}</li>)}
         <div>
-          <label className={styles.labels} htmlFor="class-title">Title:</label>
+          <label className={styles.labels} htmlFor="class-title">
+            Title:
+          </label>
           <input
             id="class-title"
             className={styles.input}
@@ -71,7 +70,9 @@ const CreateClass = () => {
           />
         </div>
         <div>
-          <label className={styles.labels} htmlFor="class-description">Description:</label>
+          <label className={styles.labels} htmlFor="class-description">
+            Description:
+          </label>
           <textarea
             id="class-description"
             className={styles.input}
@@ -82,46 +83,59 @@ const CreateClass = () => {
           />
         </div>
         <div>
-          <label className={styles.labels} htmlFor="class-start-date">Start Date:</label>
+          <label className={styles.labels} htmlFor="class-start-date">
+            Start Date:
+          </label>
           <DatePicker
             id="class-start-date"
             className={styles.input}
             showTimeSelect
             selected={startDate}
             onChange={(date) => setStartDate(date)}
-            dateFormat='MMM d, yyyy h:mm aa'
+            dateFormat="MMM d, yyyy h:mm aa"
             filterTime={disablePastTimes}
             minDate={new Date()}
           />
         </div>
         <div>
-          <label className={styles.labels} htmlFor="class-cost">Cost:</label>
+          <label className={styles.labels} htmlFor="class-cost">
+            Cost:
+          </label>
           <input
             id="class-cost"
             className={styles.input}
             type="number"
-            min='0'
+            min="0"
             value={cost}
             onChange={(e) => setCost(e.target.value)}
           />
         </div>
         <div>
-          <label className={styles.labels} htmlFor="class-level">Level:</label>
+          <label className={styles.labels} htmlFor="class-level">
+            Level:
+          </label>
           <select
-            id='class-level'
+            id="class-level"
             className={styles.input}
             value={levelId}
-            name='class-level'
+            name="class-level"
             onChange={(e) => setLevelId(e.target.value)}
           >
-            <option value='' disabled>Select a level</option>
-            {levels && levels.map(level => (
-              <option key={level.id} value={level.id}>{level.type}</option>
-            ))}
+            <option value="" disabled>
+              Select a level
+            </option>
+            {levels &&
+              levels.map((level) => (
+                <option key={level.id} value={level.id}>
+                  {level.type}
+                </option>
+              ))}
           </select>
         </div>
         <div>
-          <label className={styles.labels} htmlFor="class-image">Image:</label>
+          <label className={styles.labels} htmlFor="class-image">
+            Image:
+          </label>
           <input
             id="class-image"
             className={styles.input}
@@ -131,7 +145,9 @@ const CreateClass = () => {
           />
         </div>
         <div>
-          <button type='submit' className='ctaButton'>Save</button>
+          <button type="submit" className="ctaButton">
+            Save
+          </button>
         </div>
       </form>
     </div>

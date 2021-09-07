@@ -31,7 +31,6 @@ router.put(
     const id = req.params.ticketId;
     const ticket = req.body;
     const originalTicket = await Ticket.findByPk(id);
-    console.log("======> in backend", originalTicket);
     const updatedTicket = await originalTicket.update(ticket);
     res.json(updatedTicket);
   })
