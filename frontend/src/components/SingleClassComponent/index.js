@@ -1,25 +1,46 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import Lottie from "react-lottie";
+import loadingAnimation from "../../lotties/8707-loading.json";
 import { getClasses } from "../../store/classes";
 import LikeButton from "../LikeButton";
 import RegisterModal from "../RegisterModal";
 import EditClassModal from "../EditClass";
 import DeleteClassModal from "../DeleteClass";
+// import { PlaceholderClassImage } from '../../image/image';
 import styles from "./Class.module.css";
 
 const SingleClassComponent = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const { classId } = useParams();
+
+  const [isLoaded, setIsLoaded] = useState(false);
   const currentClass = useSelector((state) => state.classes[classId]);
   const sessionUser = useSelector((state) => state.session.user);
 
   const classDate = new Date(currentClass?.startDate);
 
   useEffect(() => {
-    dispatch(getClasses());
+    (async () => {
+      await dispatch(getClasses());
+      setIsLoaded(true);
+    })();
   }, [dispatch]);
+
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: loadingAnimation,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
+
+  if (!isLoaded) {
+    return <Lottie options={defaultOptions} height={400} width={400} />;
+  }
 
   return (
     <div className={styles.classPageContainer}>
@@ -33,8 +54,10 @@ const SingleClassComponent = () => {
       <div className={styles.classPageContent}>
         <div className={styles.classImageContainer}>
           <img
+            // style={{ backgroundImage: `url(${PlaceholderClassImage()})`}}
             className={styles.classImage}
             src={currentClass?.image}
+            // src={PlaceholderClassImage()}
             alt="dancers"
           />
         </div>

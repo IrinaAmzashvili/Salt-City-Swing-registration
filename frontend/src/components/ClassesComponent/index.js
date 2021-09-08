@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { IoCreateOutline } from "react-icons/io5";
+import Lottie from "react-lottie";
+import loadingAnimation from "../../lotties/8707-loading.json";
 import { getClasses } from "../../store/classes";
 import LikeButton from "../LikeButton";
 import styles from "./Classes.module.css";
@@ -8,6 +10,7 @@ import styles from "./Classes.module.css";
 const ClassesComponent = () => {
   const dispatch = useDispatch();
   const [levelFilter, setLevelFilter] = useState("all");
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const sessionUser = useSelector((state) => state.session.user);
 
@@ -41,8 +44,20 @@ const ClassesComponent = () => {
       break;
   }
 
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: loadingAnimation,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
+
   useEffect(() => {
-    dispatch(getClasses());
+    (async () => {
+      await dispatch(getClasses());
+      setIsLoaded(true);
+    })();
   }, [dispatch]);
 
   return (
@@ -100,28 +115,32 @@ const ClassesComponent = () => {
       </div>
 
       <div className={styles.classCardContainer}>
-        {displayedClasses.map((classObj, i) => (
-          <div key={i} className={styles.classCard}>
-            <a href={`/classes/${classObj.id}`}>
-              <div className={styles.classCardContent}>
-                <div className={styles.cardTop}>
-                  <img
-                    className={styles.classImage}
-                    alt="dancers"
-                    src={classObj.image}
-                  />
+        {isLoaded ? (
+          displayedClasses.map((classObj, i) => (
+            <div key={i} className={styles.classCard}>
+              <a href={`/classes/${classObj.id}`}>
+                <div className={styles.classCardContent}>
+                  <div className={styles.cardTop}>
+                    <img
+                      className={styles.classImage}
+                      alt="dancers"
+                      src={classObj.image}
+                    />
+                  </div>
+                  <div className={styles.cardBottom}>
+                    <h3 className={styles.classTitle}>{classObj.title}</h3>
+                    <p className={styles.classDate}>{classObj.dates}</p>
+                  </div>
                 </div>
-                <div className={styles.cardBottom}>
-                  <h3 className={styles.classTitle}>{classObj.title}</h3>
-                  <p className={styles.classDate}>{classObj.dates}</p>
+                <div className={`${styles.likeButtonDiv} likeButtonDiv`}>
+                  <LikeButton currentClass={classObj} />
                 </div>
-              </div>
-              <div className={`${styles.likeButtonDiv} likeButtonDiv`}>
-                <LikeButton currentClass={classObj} />
-              </div>
-            </a>
-          </div>
-        ))}
+              </a>
+            </div>
+          ))
+        ) : (
+          <Lottie options={defaultOptions} height={400} width={400} />
+        )}
       </div>
     </div>
   );
