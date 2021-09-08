@@ -1,6 +1,7 @@
 const express = require("express");
 const asyncHandler = require("express-async-handler");
 const { check } = require("express-validator");
+const { singlePublicFileUpload, singleMulterUpload } = require('../../awsS3');
 const { handleValidationErrors } = require("../../utils/validation");
 const { Class, Category } = require("../../db/models");
 
@@ -50,9 +51,12 @@ router.get(
 
 router.post(
   "/",
+  singleMulterUpload('image'),
   validateClass,
   asyncHandler(async (req, res) => {
     const classInfo = req.body;
+    const classImageUrl = await singlePublicFileUpload(req.file);
+    classInfo[image] = classImageUrl;
     const newClass = await Class.create(classInfo);
     return res.json({ newClass });
   })
