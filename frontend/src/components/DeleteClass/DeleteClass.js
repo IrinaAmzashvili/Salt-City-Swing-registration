@@ -23,7 +23,7 @@ const DeleteClass = ({ currentClass, setShowModal }) => {
           className={`${styles.accountDeleteBtn} ctaButton`}
           onClick={handleDelete}
         >
-          Delete Account
+          Delete
         </button>
         <button
           className={`${styles.accountSaveBtn} ctaButton`}

@@ -16,10 +16,6 @@ module.exports = {
         allowNull: false,
         type: Sequelize.TEXT
       },
-      // dates: {
-      //   allowNull: false,
-      //   type: Sequelize.STRING
-      // },
       startDate: {
         type: Sequelize.DATE,
         allowNull: false,
