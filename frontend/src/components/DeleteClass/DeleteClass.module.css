@@ -1,0 +1,37 @@
+@import '../../index.css';
+
+.deleteModalDiv {
+    width: 500px;
+    padding: 20px;
+    position: relative;
+}
+
+.exitButton {
+    font-size: 25px;
+    position:absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.header {
+    font-size: 25px;
+}
+
+.body {
+    padding: 25px 0;
+    border-top: 1px solid var(--grayTheme);
+    border-bottom: 1px solid var(--grayTheme);
+}
+
+.deleteModalButtons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.deleteModalButtons > button {
+    width: 40%;
+}
+
+.cancelButton {
+    margin-left: 10px;
+}

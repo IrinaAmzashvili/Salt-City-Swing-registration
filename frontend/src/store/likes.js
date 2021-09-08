@@ -1,6 +1,6 @@
 import { csrfFetch } from './csrf';
 
-const SET_LIKES = 'classes/SET_LIKES'
+const SET_LIKES = 'classes/SET_LIKES';
 const ADD_LIKE = 'likes/ADD_LIKE';
 const REMOVE_LIKE = 'likes/REMOVE_LIKE';
 

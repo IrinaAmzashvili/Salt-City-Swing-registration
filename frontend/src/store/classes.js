@@ -1,10 +1,22 @@
 import { csrfFetch } from "./csrf";
 
 const SET_CLASSES = 'classes/SET_CLASSES';
+const ADD_ONE_CLASS = 'classes/ADD_ONE_CLASS';
+const REMOVE_CLASS = 'classes/REMOVE_CLASS';
 
 const setClasses = (classes) => ({
     type: SET_CLASSES,
     classes
+});
+
+const setOneClass = (oneClass) => ({
+    type: ADD_ONE_CLASS,
+    oneClass
+});
+
+const removeClass = (id) => ({
+    type: REMOVE_CLASS,
+    id
 });
 
 export const getClasses = () => async (dispatch) => {
@@ -13,6 +25,43 @@ export const getClasses = () => async (dispatch) => {
     if (res.ok) {
         const classes = await res.json();
         dispatch(setClasses(classes));
+        return res;
+    }
+}
+
+export const createClass = (classInfo) => async (dispatch) => {
+    const res = await csrfFetch('/api/classes', {
+        method: 'POST',
+        body: JSON.stringify(classInfo)
+    });
+
+    if (res.ok) {
+        const newClass = await res.json();
+        dispatch(setOneClass(newClass.newClass));
+        return newClass.newClass;
+    }
+}
+
+export const editClass = (classId, classInfo) => async (dispatch) => {
+    const res = await csrfFetch(`/api/classes/${classId}`, {
+        method: 'PUT',
+        body: JSON.stringify(classInfo)
+    });
+
+    if (res.ok) {
+        const updatedClass = await res.json();
+        dispatch(setOneClass(updatedClass.updatedClass));
+        return updatedClass.updatedClass;
+    }
+};
+
+export const deleteClass = (classId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/classes/${classId}`, {
+        method: 'DELETE',
+    });
+
+    if (res.ok) {
+        dispatch(removeClass(classId));
         return res;
     }
 }
@@ -27,6 +76,15 @@ const classesReducer = (state = initialState, action) => {
                 newObj[classObj.id] = classObj;
             })
             return { ...state, ...newObj };
+        case ADD_ONE_CLASS:
+            return {
+                ...state,
+                [action.oneClass.id]: action.oneClass,
+            };
+        case REMOVE_CLASS:
+            newObj = { ...state };
+            delete newObj[action.id];
+            return newObj;
         default:
             return state;
     }

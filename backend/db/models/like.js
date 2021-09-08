@@ -11,8 +11,8 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, {});
   Like.associate = function(models) {
-    Like.belongsTo(models.User, { foreignKey: 'userId' });
-    Like.belongsTo(models.Class, { foreignKey: 'classId' });
+    Like.belongsTo(models.User, { foreignKey: 'userId', onDelete: 'CASCADE' });
+    Like.belongsTo(models.Class, { foreignKey: 'classId', onDelete: 'CASCADE' });
   };
   return Like;
 };

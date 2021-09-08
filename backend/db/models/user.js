@@ -47,16 +47,20 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
       },
-      userType: {
+      // userType: {
+      //   allowNull: false,
+      //   type: DataTypes.STRING(15),
+      //   defaultValue: "user",
+      //   validate: {
+      //     isIn: {
+      //       args: [["user", "admin", "superUser"]],
+      //       msg: "User type must be either user, admin, or superUser",
+      //     },
+      //   },
+      // },
+      superUser: {
         allowNull: false,
-        type: DataTypes.STRING(15),
-        defaultValue: "user",
-        validate: {
-          isIn: {
-            args: [["user", "admin", "superUser"]],
-            msg: "User type must be either user, admin, or superUser",
-          },
-        },
+        type: DataTypes.BOOLEAN,
       },
     },
     {
@@ -83,8 +87,8 @@ module.exports = (sequelize, DataTypes) => {
 
   User.prototype.toSafeObject = function () {
     // remember, this cannot be an arrow function
-    const { id, firstName, lastName, email, mailingList, userType } = this; // context will be the User instance
-    return { id, firstName, lastName, email, mailingList, userType };
+    const { id, firstName, lastName, email, mailingList, superUser } = this; // context will be the User instance
+    return { id, firstName, lastName, email, mailingList, superUser };
   };
 
   User.prototype.validatePassword = function (password) {

@@ -58,7 +58,7 @@ const Navigation = ({ isLoaded }) => {
         <div className={styles.searchDiv}></div>
         <ul className={styles.navlinks}>
           <NavLink exact to="/">
-            Home
+            Classes
           </NavLink>
           {isLoaded && sessionLinks}
         </ul>

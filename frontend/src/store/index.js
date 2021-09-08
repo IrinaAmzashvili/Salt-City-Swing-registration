@@ -1,16 +1,18 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 
-import sessionReducer from './session';
-import classesReducer from './classes';
-import ticketReducer from './tickets';
-import likesReducer from './likes';
+import session from './session';
+import classes from './classes';
+import tickets from './tickets';
+import likes from './likes';
+import levels from './levels';
 
 const rootReducer = combineReducers({
-    session: sessionReducer,
-    classes: classesReducer,
-    tickets: ticketReducer,
-    likes: likesReducer,
+    session,
+    classes,
+    tickets,
+    likes,
+    levels
 });
 
 let enhancer;

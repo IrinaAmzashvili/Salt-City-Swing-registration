@@ -6,21 +6,23 @@ import { Modal } from "../../context/Modal";
 import { getTickets } from '../../store/tickets';
 
 const RegisterModal = ({ currentClass }) => {
-  // need isLoaded?
   const dispatch = useDispatch();
   const sessionUser = useSelector((store) => store.session.user);
   const tickets = useSelector((store) => Object.values(store.tickets));
   const [showModal, setShowModal] = useState(false);
 
-  const purchased = tickets.find(tic => (tic.id === currentClass?.id))
+  const purchased = tickets.find(tic => (tic.classId === currentClass?.id))
 
   const closeModal = () => {
     setShowModal(false);
   }
 
   useEffect(() => {
-    dispatch(getTickets(sessionUser.id));
-  }, [dispatch, sessionUser.id])
+    // if user is logged in, get tickets
+    if (sessionUser) {
+      dispatch(getTickets(sessionUser?.id));
+    }
+  }, [dispatch, sessionUser, sessionUser?.id])
 
   let sessionLinks;
   if (sessionUser) {

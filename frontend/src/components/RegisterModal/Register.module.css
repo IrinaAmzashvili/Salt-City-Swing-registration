@@ -45,11 +45,17 @@
 }
 
 .purchaseButtonDiv {
-    width: 220px;
-    align-self: flex-end;
+    width: 100%;
+    /* align-self: flex-end; */
+    justify-content: space-between;
+    display: flex;
 }
 
-.thankYouPageDiv {
+.purchaseButtonDiv > button {
+    width: 220px;
+}
+
+.confirmedDiv {
     height: 150px;
     width: 450px;
     display: flex;

@@ -1,12 +1,12 @@
-'use strict';
+"use strict";
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Users', {
+    return queryInterface.createTable("Users", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       firstName: {
         type: Sequelize.STRING(30),
@@ -19,7 +19,7 @@ module.exports = {
       email: {
         type: Sequelize.STRING,
         allowNull: false,
-        unique: true
+        unique: true,
       },
       hashedPassword: {
         type: Sequelize.STRING.BINARY,
@@ -30,37 +30,42 @@ module.exports = {
         allowNull: true,
       },
       userPhoto: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
       },
       mailingList: {
         allowNull: false,
         type: Sequelize.BOOLEAN,
-        defaultValue: false
+        defaultValue: false,
       },
-      userType: {
+      // userType: {
+      //   allowNull: false,
+      //   type: Sequelize.STRING(15),
+      //   defaultValue: 'user',
+      //   validate: {
+      //     isIn: {
+      //       args: [['user', 'admin', 'superUser']],
+      //       msg: 'User type must be either user, admin, or superUser',
+      //     }
+      //   }
+      // },
+      superUser: {
         allowNull: false,
-        type: Sequelize.STRING(15),
-        defaultValue: 'user',
-        validate: {
-          isIn: {
-            args: [['user', 'admin', 'superUser']],
-            msg: 'User type must be either user, admin, or superUser',
-          }
-        }
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
       },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
-        defaultValue: Sequelize.fn('now'),
+        defaultValue: Sequelize.fn("now"),
       },
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
-        defaultValue: Sequelize.fn('now'),
-      }
+        defaultValue: Sequelize.fn("now"),
+      },
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Users');
-  }
+    return queryInterface.dropTable("Users");
+  },
 };
