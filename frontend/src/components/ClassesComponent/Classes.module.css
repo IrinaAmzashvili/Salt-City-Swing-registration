@@ -15,10 +15,19 @@
     font-size: 40px;
 }
 
-.levelFilterDiv {
+.createClassButton {
+    font-size: 25px;
+}
+
+.classesTopDiv {
     margin: 20px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.createClassDiv {
+    margin-top: 2px;
 }
 
 .levelFilterButton {
