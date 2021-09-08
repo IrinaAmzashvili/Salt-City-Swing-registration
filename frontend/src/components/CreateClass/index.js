@@ -45,10 +45,15 @@ const CreateClass = () => {
       image: "img.png",
     };
 
-    return dispatch(createClass(newClass)).then(res => history.push(`/classes/${res.id}`)).catch(async (res) => {
-      const data = await res.json();
-      if (data && data.errors) setErrors(data.errors);
-    });
+    return dispatch(createClass(newClass))
+      .then((res) => history.push(`/classes/${res.id}`))
+      .catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) {
+          setErrors(data.errors);
+          window.scroll(0, 0);
+        }
+      });
   };
 
   return (

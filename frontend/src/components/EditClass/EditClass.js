@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import DatePicker from "react-datepicker";
 import { getLevels } from "../../store/levels";
 import { editClass } from "../../store/classes";
@@ -14,11 +14,11 @@ const EditClass = ({ currentClass, setShowModal }) => {
   const [title, setTitle] = useState(currentClass.title);
   const [description, setDescription] = useState(currentClass.description);
   // const [startDate, setStartDate] = useState(currentClass.startDate);
-  const [startDate, setStartDate] = useState('');
+  const [startDate, setStartDate] = useState("");
   const [cost, setCost] = useState(currentClass.cost);
   const [levelId, setLevelId] = useState(currentClass.categoryId);
   // const [image, setImage] = useState(currentClass.image);
-  const [image, setImage] = useState('');
+  const [image, setImage] = useState("");
   const [errors, setErrors] = useState([]);
 
   useEffect(() => {
@@ -45,10 +45,12 @@ const EditClass = ({ currentClass, setShowModal }) => {
       image: "img.png",
     };
 
-    return dispatch(editClass(currentClass.id, editedClass)).then(setShowModal(false)).catch(async (res) => {
-      const data = await res.json();
-      if (data && data.errors) setErrors(data.errors);
-    });
+    return dispatch(editClass(currentClass.id, editedClass))
+      .then(() => setShowModal(false))
+      .catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+      });
   };
 
   return (
@@ -152,6 +154,6 @@ const EditClass = ({ currentClass, setShowModal }) => {
       </form>
     </div>
   );
-}
+};
 
 export default EditClass;
