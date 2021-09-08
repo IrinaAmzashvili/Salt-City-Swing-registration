@@ -55,7 +55,7 @@ button {
 }
 
 .link-button:hover {
-    color: black;
+    color: inherit;
 }
 
 .ctaButton {

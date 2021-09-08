@@ -12,6 +12,7 @@ const CreateClass = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const levels = useSelector((state) => Object.values(state.levels));
+  const sessionUser = useSelector((state) => state.session.user);
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -55,6 +56,12 @@ const CreateClass = () => {
         }
       });
   };
+
+  if (!sessionUser?.superUser) {
+    return (
+      <h1>404 Page Not Found</h1>
+    )
+  }
 
   return (
     <div className={styles.createClassContainer}>

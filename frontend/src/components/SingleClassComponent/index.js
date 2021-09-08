@@ -13,6 +13,7 @@ const SingleClassComponent = () => {
   const dispatch = useDispatch();
   const { classId } = useParams();
   const currentClass = useSelector((state) => state.classes[classId]);
+  const sessionUser = useSelector((state) => state.session.user);
 
   const classDate = new Date(currentClass?.startDate);
 
@@ -41,14 +42,16 @@ const SingleClassComponent = () => {
           <div className={`${styles.likeButtonDiv} likeButtonDiv`}>
             <LikeButton currentClass={currentClass} />
           </div>
-          <div className={styles.editDeleteButtonsDiv}>
-            <div>
-              <EditClassModal currentClass={currentClass} />
+          {sessionUser?.superUser ? (
+            <div className={styles.editDeleteButtonsDiv}>
+              <div>
+                <EditClassModal currentClass={currentClass} />
+              </div>
+              <div>
+                <DeleteClassModal currentClass={currentClass} />
+              </div>
             </div>
-            <div>
-              <DeleteClassModal currentClass={currentClass} />
-            </div>
-          </div>
+          ) : null}
           <p className={styles.classCost}>{`$${currentClass?.cost}`}</p>
           <div className={styles.registerButtonDiv}>
             <RegisterModal currentClass={currentClass} />

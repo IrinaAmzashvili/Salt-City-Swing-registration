@@ -19,8 +19,11 @@ const RegisterModal = ({ currentClass }) => {
   }
 
   useEffect(() => {
-    dispatch(getTickets(sessionUser?.id));
-  }, [dispatch, sessionUser?.id])
+    // if user is logged in, get tickets
+    if (sessionUser) {
+      dispatch(getTickets(sessionUser?.id));
+    }
+  }, [dispatch, sessionUser, sessionUser?.id])
 
   let sessionLinks;
   if (sessionUser) {

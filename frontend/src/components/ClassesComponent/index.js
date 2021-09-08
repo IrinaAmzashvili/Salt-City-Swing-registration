@@ -9,6 +9,8 @@ const ClassesComponent = () => {
   const dispatch = useDispatch();
   const [levelFilter, setLevelFilter] = useState("all");
 
+  const sessionUser = useSelector((state) => state.session.user);
+
   const classes = useSelector((state) => Object.values(state.classes));
   const level1Classes = classes.filter(
     (classObj) => classObj.Category?.id === 1
@@ -48,12 +50,14 @@ const ClassesComponent = () => {
       <h2 className={styles.h2Header}>Upcoming Classes</h2>
       <div className={styles.classesTopDiv}>
         <div className={styles.createClassDiv}>
-          <a
-            href="/classes/create"
-            className={`link-button ${styles.createClassButton}`}
-          >
-            <IoCreateOutline />
-          </a>
+          {sessionUser?.superUser ? (
+            <a
+              href="/classes/create"
+              className={`link-button ${styles.createClassButton}`}
+            >
+              <IoCreateOutline />
+            </a>
+          ) : null}
         </div>
         <div>
           <button

@@ -61,7 +61,6 @@ module.exports = (sequelize, DataTypes) => {
       superUser: {
         allowNull: false,
         type: DataTypes.BOOLEAN,
-        
       },
     },
     {
@@ -88,8 +87,8 @@ module.exports = (sequelize, DataTypes) => {
 
   User.prototype.toSafeObject = function () {
     // remember, this cannot be an arrow function
-    const { id, firstName, lastName, email, mailingList, userType } = this; // context will be the User instance
-    return { id, firstName, lastName, email, mailingList, userType };
+    const { id, firstName, lastName, email, mailingList, superUser } = this; // context will be the User instance
+    return { id, firstName, lastName, email, mailingList, superUser };
   };
 
   User.prototype.validatePassword = function (password) {
