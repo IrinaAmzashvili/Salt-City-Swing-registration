@@ -17,6 +17,7 @@
 }
 
 .classBackgroundImage {
+    /* background-image: url('../../image/annie-spratt-0ZPSX_mQ3xI-unsplash.jpg'); */
     flex: 1;
     height: 1300px;
     max-width: 200%;
@@ -40,6 +41,7 @@
 .classImageContainer {
     margin: auto;
     width: 100%;
+    /* background-image: url('../../image/annie-spratt-0ZPSX_mQ3xI-unsplash.jpg'); */
 }
 
 .classImage {

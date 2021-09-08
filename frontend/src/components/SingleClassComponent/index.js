@@ -6,6 +6,7 @@ import LikeButton from "../LikeButton";
 import RegisterModal from "../RegisterModal";
 import EditClassModal from "../EditClass";
 import DeleteClassModal from "../DeleteClass";
+import { PlaceholderClassImage } from '../../image/image';
 import styles from "./Class.module.css";
 
 const SingleClassComponent = () => {
@@ -33,8 +34,10 @@ const SingleClassComponent = () => {
       <div className={styles.classPageContent}>
         <div className={styles.classImageContainer}>
           <img
+            // style={{ backgroundImage: `url(${PlaceholderClassImage()})`}}
             className={styles.classImage}
             src={currentClass?.image}
+            // src={PlaceholderClassImage()}
             alt="dancers"
           />
         </div>
