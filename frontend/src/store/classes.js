@@ -30,9 +30,25 @@ export const getClasses = () => async (dispatch) => {
 }
 
 export const createClass = (classInfo) => async (dispatch) => {
+    // const { title, description, startDate, cost, categoryId, image } = classInfo;
+    // const formData = new FormData();
+    // formData.append('title', title);
+    // formData.append('description', description);
+    // formData.append('startDate', startDate);
+    // formData.append('cost', cost);
+    // formData.append('categoryId', categoryId);
+
+    // if (image) formData.append('image', image);
+    // for (const key in classInfo) {
+    //     formData.append(key, classInfo[key]);
+    // };
+
+    console.log('be4 fetch', classInfo)
+    // console.log('form data', formData)
     const res = await csrfFetch('/api/classes', {
         method: 'POST',
-        body: JSON.stringify(classInfo)
+        headers: { "Content-Type": "multipart/form-data" },
+        body: classInfo
     });
 
     if (res.ok) {

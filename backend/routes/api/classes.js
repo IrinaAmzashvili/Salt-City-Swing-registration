@@ -18,10 +18,10 @@ const validateClass = [
     .withMessage("Description required"),
   check("startDate")
     .exists({ checkFalsy: true })
-    .withMessage("Start date required")
-    .isISO8601()
-    .toDate()
-    .withMessage("Start date must be a date"),
+    .withMessage("Start date required"),
+    // .isISO8601()
+    // .toDate()
+    // .withMessage("Start date must be a date"),
   check("cost")
     .exists({ checkFalsy: true })
     .withMessage("Cost required")
@@ -34,7 +34,7 @@ const validateClass = [
     .withMessage("Level required")
     .isNumeric()
     .withMessage("CategoryId must be a number"),
-  check("image").exists({ checkFalsy: true }).withMessage("Image required"),
+  // check("image").exists({ checkFalsy: true }).withMessage("Image required"),
   handleValidationErrors,
 ];
 
@@ -56,7 +56,7 @@ router.post(
   asyncHandler(async (req, res) => {
     const classInfo = req.body;
     const classImageUrl = await singlePublicFileUpload(req.file);
-    classInfo[image] = classImageUrl;
+    classInfo.image = classImageUrl;
     const newClass = await Class.create(classInfo);
     return res.json({ newClass });
   })
