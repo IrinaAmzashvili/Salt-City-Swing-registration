@@ -55,6 +55,7 @@ const EditClass = ({ currentClass, setShowModal }) => {
 
   return (
     <div className={styles.createClassContainer}>
+      <button onClick={() => setShowModal(false)}>x</button>
       <h1 className={styles.header}>Edit this class</h1>
       <form className={styles.form} onSubmit={handleSubmit}>
         {errors && errors.map((error, idx) => <li key={idx}>{error}</li>)}

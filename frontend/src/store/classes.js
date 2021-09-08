@@ -2,6 +2,7 @@ import { csrfFetch } from "./csrf";
 
 const SET_CLASSES = 'classes/SET_CLASSES';
 const ADD_ONE_CLASS = 'classes/ADD_ONE_CLASS';
+const REMOVE_CLASS = 'classes/REMOVE_CLASS';
 
 const setClasses = (classes) => ({
     type: SET_CLASSES,
@@ -11,6 +12,11 @@ const setClasses = (classes) => ({
 const setOneClass = (oneClass) => ({
     type: ADD_ONE_CLASS,
     oneClass
+});
+
+const removeClass = (id) => ({
+    type: REMOVE_CLASS,
+    id
 });
 
 export const getClasses = () => async (dispatch) => {
@@ -49,6 +55,17 @@ export const editClass = (classId, classInfo) => async (dispatch) => {
     }
 };
 
+export const deleteClass = (classId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/classes/${classId}`, {
+        method: 'DELETE',
+    });
+
+    if (res.ok) {
+        dispatch(removeClass(classId));
+        return res;
+    }
+}
+
 const initialState = {};
 
 const classesReducer = (state = initialState, action) => {
@@ -64,6 +81,10 @@ const classesReducer = (state = initialState, action) => {
                 ...state,
                 [action.oneClass.id]: action.oneClass,
             };
+        case REMOVE_CLASS:
+            newObj = { ...state };
+            delete newObj[action.id];
+            return newObj;
         default:
             return state;
     }

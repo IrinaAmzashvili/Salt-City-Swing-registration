@@ -1,23 +1,23 @@
 import { useState } from 'react';
-import EditClass from './EditClass';
+import DeleteClass from './DeleteClass';
 import { Modal } from '../../context/Modal';
 
 
-const EditClassModal = ({ currentClass }) => {
-  const [showModal, setShowModal] = useState(false);
+const DeleteClassModal = ({ currentClass }) => {
+  const [showModal, setShowModal] = useState();
 
   return (
     <>
       <button onClick={() => setShowModal(true)}>
-        Edit
+        Delete
       </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <EditClass setShowModal={setShowModal} currentClass={currentClass} />
+          <DeleteClass setShowModal={setShowModal} currentClass={currentClass}/>
         </Modal>
       )}
     </>
   )
 }
 
-export default EditClassModal;
+export default DeleteClassModal;

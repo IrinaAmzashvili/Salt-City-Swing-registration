@@ -70,4 +70,14 @@ router.put(
   })
 );
 
+router.delete(
+  "/:id",
+  asyncHandler(async (req, res) => {
+    const classId = +req.params.id;
+    const targetClass = await Class.findByPk(classId);
+    await targetClass.destroy()
+    res.json({ success: true });
+  })
+)
+
 module.exports = router;

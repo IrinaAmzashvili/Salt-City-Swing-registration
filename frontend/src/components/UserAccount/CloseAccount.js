@@ -109,7 +109,7 @@ const CloseAccount = ({ user }) => {
               </div>
             )}
             <h2>Are you sure?</h2>
-            <p>Are you sure you would like to delete your account?</p>
+            <p>This action is not reversible</p>
             <div className={styles.deleteModalButtons}>
               <button
                 className={`${styles.accountDeleteBtn} ctaButton`}

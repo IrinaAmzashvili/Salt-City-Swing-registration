@@ -5,6 +5,7 @@ import { getClasses } from "../../store/classes";
 import LikeButton from "../LikeButton";
 import RegisterModal from "../RegisterModal";
 import EditClassModal from '../EditClass';
+import DeleteClassModal from '../DeleteClass';
 import styles from "./Class.module.css";
 
 const SingleClassComponent = () => {
@@ -42,6 +43,9 @@ const SingleClassComponent = () => {
           </div>
           <div>
             <EditClassModal currentClass={currentClass}/>
+          </div>
+          <div>
+            <DeleteClassModal currentClass={currentClass}/>
           </div>
           <p className={styles.classCost}>{`$${currentClass?.cost}`}</p>
           <div className={styles.registerButtonDiv}>
