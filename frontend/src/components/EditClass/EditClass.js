@@ -7,14 +7,12 @@ import styles from "./EditClass.module.css";
 import "react-datepicker/dist/react-datepicker.css";
 
 const EditClass = ({ currentClass, setShowModal }) => {
-  // if user not superuser, redirect to 404 page
   const dispatch = useDispatch();
   const levels = useSelector((state) => Object.values(state.levels));
 
   const [title, setTitle] = useState(currentClass.title);
   const [description, setDescription] = useState(currentClass.description);
-  // const [startDate, setStartDate] = useState(currentClass.startDate);
-  const [startDate, setStartDate] = useState("");
+  const [startDate, setStartDate] = useState(new Date(currentClass.startDate));
   const [cost, setCost] = useState(currentClass.cost);
   const [levelId, setLevelId] = useState(currentClass.categoryId);
   // const [image, setImage] = useState(currentClass.image);
