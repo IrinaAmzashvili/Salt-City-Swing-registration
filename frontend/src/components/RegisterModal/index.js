@@ -6,7 +6,6 @@ import { Modal } from "../../context/Modal";
 import { getTickets } from '../../store/tickets';
 
 const RegisterModal = ({ currentClass }) => {
-  // need isLoaded?
   const dispatch = useDispatch();
   const sessionUser = useSelector((store) => store.session.user);
   const tickets = useSelector((store) => Object.values(store.tickets));
