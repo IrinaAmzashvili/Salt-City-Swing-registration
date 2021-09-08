@@ -28,6 +28,13 @@
     background-color: #FFFFFF;
 }
 
+main {
+    /* padding-bottom: 6.5rem; */
+    padding-bottom: 140px;
+    min-height: 100vh;
+    /* position: relative; */
+}
+
 a {
     text-decoration: none;
     color: black;

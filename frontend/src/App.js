@@ -22,6 +22,7 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
+      <main>
       {isLoaded && (
         <Switch>
           <Route exact path='/'>
@@ -49,6 +50,7 @@ function App() {
           </Route>
         </Switch>
       )}
+      </main>
       <Footer />
     </>
   );
