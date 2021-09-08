@@ -23,7 +23,6 @@ const Footer = () => {
               target="_blank"
               rel="noreferrer"
             >
-              {/* <i className="fab fa-linkedin-in"></i> */}
               <i
                 className={`fab fa-linkedin ${
                   (styles.linkedinIcon, styles.icon)
@@ -70,7 +69,6 @@ const Footer = () => {
                 }`}
               ></i>
             </a>
-            {/* <i className="fab fa-facebook"></i> */}
           </div>
         </div>
       </footer>

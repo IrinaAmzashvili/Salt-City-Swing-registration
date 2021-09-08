@@ -19,7 +19,7 @@ const CloseAccount = ({ user }) => {
     if (password === confirmPassword) {
       setErrors([]);
 
-      await dispatch(sessionActions.validatePassword(password, user?.id)).catch(
+      let result = await dispatch(sessionActions.validatePassword(password, user?.id)).catch(
         async (res) => {
           const data = await res.json();
           if (data && data.errors) {
@@ -27,7 +27,9 @@ const CloseAccount = ({ user }) => {
           }
         }
       );
-      openModal();
+      if (result.ok) {
+        openModal();
+      }
     } else {
       return setErrors(["Passwords don't match."]);
     }

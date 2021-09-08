@@ -6,7 +6,11 @@
 }
 
 .footerContainer * {
-    color: white;
+    color: #E18B65;
+}
+
+.footerContainer a:hover {
+    color: #eebca6;
 }
 
 .footer {
@@ -41,12 +45,6 @@
     cursor: pointer;
 }
 
-.facebookIcon {
-    /* color: #4064AC;
-    color: #3D548E; */
+.icon:hover {
+    color: #eebca6;
 }
-/*
-.iconAnchor {
-    width: 21px;
-    height: 21px;
-} */

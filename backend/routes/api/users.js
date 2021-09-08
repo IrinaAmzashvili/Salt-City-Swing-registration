@@ -126,10 +126,12 @@ const validatePasswordUpdate = [
 ];
 
 router.put('/:id/updatePassword', validatePasswordUpdate, asyncHandler(async (req, res, next) => {
+    // console.log('---------------------->')
     const { id } = req.params;
     const updates = req.body;
     const user = await User.scope('loginUser').findByPk(id);
     const validated = await user.validatePassword(updates.currPassword);
+    // console.log('------> VALIDATED', validated)
 
     if (validated) {
         const hashedPassword = bcrypt.hashSync(updates.newPassword);

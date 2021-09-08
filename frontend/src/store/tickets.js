@@ -36,6 +36,16 @@ export const purchaseTicket = (newTicket) => async (dispatch) => {
     }
 }
 
+export const cancelTicket = (ticketId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/tickets/${ticketId}`, {
+        method: 'DELETE'
+    });
+
+    if (res.ok) {
+       //
+    }
+}
+
 const initialState = {};
 
 const ticketReducer = (state = initialState, action) => {
