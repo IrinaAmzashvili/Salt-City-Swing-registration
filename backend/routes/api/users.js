@@ -74,7 +74,7 @@ router.post(
   validateSignup,
   asyncHandler(async (req, res) => {
     //vaxCardImg, userPhoto,
-    const { firstName, lastName, email, password, mailingList, userType } =
+    const { firstName, lastName, email, password, mailingList, superUser } =
       req.body;
 
     const user = await User.signup({
@@ -83,7 +83,7 @@ router.post(
       email,
       password,
       mailingList,
-      userType,
+      superUser,
     });
 
     await setTokenCookie(res, user);

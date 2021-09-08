@@ -8,7 +8,6 @@ import styles from "./CreateClass.module.css";
 import "react-datepicker/dist/react-datepicker.css";
 
 const CreateClass = () => {
-  // if user not superuser, redirect to 404 page
   const dispatch = useDispatch();
   const history = useHistory();
   const levels = useSelector((state) => Object.values(state.levels));
@@ -57,6 +56,7 @@ const CreateClass = () => {
       });
   };
 
+  // if user not superuser, display 404 page
   if (!sessionUser?.superUser) {
     return (
       <h1>404 Page Not Found</h1>

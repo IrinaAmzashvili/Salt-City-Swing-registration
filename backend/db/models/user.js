@@ -122,7 +122,7 @@ module.exports = (sequelize, DataTypes) => {
     email,
     password,
     mailingList,
-    userType,
+    superUser,
   }) {
     const hashedPassword = bcrypt.hashSync(password);
     const user = await User.create({
@@ -133,7 +133,7 @@ module.exports = (sequelize, DataTypes) => {
       // vaxCardImg,
       // userPhoto,
       mailingList,
-      userType,
+      superUser,
     });
     return await User.scope("currentUser").findByPk(user.id);
   };

@@ -8,6 +8,7 @@ import styles from "./SignUpForm.module.css";
 const SignUpFormPage = () => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
+
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -16,7 +17,7 @@ const SignUpFormPage = () => {
   // const [vaxCardImg, setVaxCardImg] = useState("");
   // const [userPhoto, setUserPhoto] = useState("");
   const [mailingList, setMailingList] = useState(false);
-  const [userType, setUserType] = useState("user");
+  const [superUser, setSuperUser] = useState("user");
   const [errors, setErrors] = useState([]);
 
   if (sessionUser) return <Redirect to="/" />;
@@ -32,7 +33,7 @@ const SignUpFormPage = () => {
       // vaxCardImg,
       // userPhoto,
       mailingList,
-      userType,
+      superUser: superUser === "super" ? true : false,
     };
 
     if (password === confirmPassword) {
@@ -153,38 +154,27 @@ const SignUpFormPage = () => {
         </div> */}
         <div className={styles.userTypeRadioDiv}>
           User Type:
-          <label className={styles.userTypeLabels} htmlFor="userType-user">
+          <label className={styles.userTypeLabels} htmlFor="userType-super">
             <input
               className={styles.input}
               type="radio"
-              id="userType-user"
-              value="user"
-              checked={userType === "user"}
-              onChange={(e) => setUserType(e.target.value)}
+              id="userType-super"
+              value="super"
+              checked={superUser === "super"}
+              onChange={(e) => setSuperUser(e.target.value)}
             />
-            User
+            Super user
           </label>
-          <label className={styles.userTypeLabels} htmlFor="userType-admin">
+          <label className={styles.userTypeLabels} htmlFor="userType-member">
             <input
               className={styles.input}
               type="radio"
-              id="userType-admin"
-              value="admin"
-              checked={userType === "admin"}
-              onChange={(e) => setUserType(e.target.value)}
+              id="userType-member"
+              value="member"
+              checked={superUser === "member"}
+              onChange={(e) => setSuperUser(e.target.value)}
             />
-            Admin
-          </label>
-          <label className={styles.userTypeLabels} htmlFor="userType-superUser">
-            <input
-              className={styles.input}
-              type="radio"
-              id="userType-superUser"
-              value="superUser"
-              checked={userType === "superUser"}
-              onChange={(e) => setUserType(e.target.value)}
-            />
-            SuperUser
+            Member
           </label>
         </div>
         <div className={styles.checkboxDiv}>
