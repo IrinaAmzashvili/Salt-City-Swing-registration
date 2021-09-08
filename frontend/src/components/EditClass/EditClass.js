@@ -55,7 +55,9 @@ const EditClass = ({ currentClass, setShowModal }) => {
 
   return (
     <div className={styles.createClassContainer}>
-      <button onClick={() => setShowModal(false)}>x</button>
+      <button className='link-button' onClick={() => setShowModal(false)}>
+        <i className="far fa-times-circle"></i>
+      </button>
       <h1 className={styles.header}>Edit this class</h1>
       <form className={styles.form} onSubmit={handleSubmit}>
         {errors && errors.map((error, idx) => <li key={idx}>{error}</li>)}
@@ -150,6 +152,12 @@ const EditClass = ({ currentClass, setShowModal }) => {
         <div>
           <button type="submit" className="ctaButton">
             Save
+          </button>
+          <button
+            className={`${styles.accountSaveBtn} ctaButton`}
+            onClick={() => setShowModal(false)}
+          >
+            Cancel
           </button>
         </div>
       </form>

@@ -8,8 +8,8 @@ const EditClassModal = ({ currentClass }) => {
 
   return (
     <>
-      <button onClick={() => setShowModal(true)}>
-        Edit
+      <button className='link-button' onClick={() => setShowModal(true)}>
+        <i className="far fa-edit"></i>
       </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>

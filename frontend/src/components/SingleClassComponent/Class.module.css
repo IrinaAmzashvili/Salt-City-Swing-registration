@@ -68,6 +68,18 @@
     width: 220px;
 }
 
+.editDeleteButtonsDiv {
+    display: flex;
+    width: 50px;
+    /* justify-content: space-between; */
+    flex-grow: .7;
+    align-items: center;
+}
+
+.editDeleteButtonsDiv > div {
+    margin: 0 10px;
+}
+
 .classContentContainer {
     padding: 50px 100px;
     padding-bottom: 20px;

@@ -50,8 +50,12 @@ button {
     padding: 0;
     border: none;
     font: inherit;
-    color: inherit;
+    color: grey;
     background-color: transparent;
+}
+
+.link-button:hover {
+    color: inherit;
 }
 
 .ctaButton {

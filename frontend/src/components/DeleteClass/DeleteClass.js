@@ -14,19 +14,21 @@ const DeleteClass = ({ currentClass, setShowModal }) => {
   }
 
   return (
-    <div>
-      <button onClick={() => setShowModal(false)}>x</button>
-      <h1>Are you sure?</h1>
-      <p>This action is not reversible</p>
+    <div className={styles.deleteModalDiv}>
+      <button className={`link-button ${styles.exitButton}`} onClick={() => setShowModal(false)}>
+        <i className='far fa-times-circle'></i>
+      </button>
+      <h1 className={styles.header}>Are you sure?</h1>
+      <p className={styles.body}>This action is not reversible</p>
       <div className={styles.deleteModalButtons}>
         <button
-          className={`${styles.accountDeleteBtn} ctaButton`}
+          className={`${styles.deleteButton} ctaButton`}
           onClick={handleDelete}
         >
-          Delete
+          Delete Class
         </button>
         <button
-          className={`${styles.accountSaveBtn} ctaButton`}
+          className={`${styles.cancelButton} ctaButtonInverse`}
           onClick={() => setShowModal(false)}
         >
           Cancel

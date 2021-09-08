@@ -8,8 +8,8 @@ const DeleteClassModal = ({ currentClass }) => {
 
   return (
     <>
-      <button onClick={() => setShowModal(true)}>
-        Delete
+      <button className='link-button' onClick={() => setShowModal(true)}>
+        <i className="far fa-trash-alt"></i>
       </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
