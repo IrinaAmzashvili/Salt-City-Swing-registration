@@ -55,106 +55,117 @@ const EditClass = ({ currentClass, setShowModal }) => {
 
   return (
     <div className={styles.createClassContainer}>
-      <button className='link-button' onClick={() => setShowModal(false)}>
+      <button
+        className={`link-button ${styles.exitButton}`}
+        onClick={() => setShowModal(false)}
+      >
         <i className="far fa-times-circle"></i>
       </button>
       <h1 className={styles.header}>Edit this class</h1>
       <form className={styles.form} onSubmit={handleSubmit}>
         {errors && errors.map((error, idx) => <li key={idx}>{error}</li>)}
-        <div>
-          <label className={styles.labels} htmlFor="class-title">
-            Title:
-          </label>
-          <input
-            id="class-title"
-            className={styles.input}
-            type="text"
-            placeholder="Class Title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-        </div>
-        <div>
-          <label className={styles.labels} htmlFor="class-description">
-            Description:
-          </label>
-          <textarea
-            id="class-description"
-            className={styles.input}
-            type="text"
-            placeholder="Class description...."
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
-        </div>
-        <div>
-          <label className={styles.labels} htmlFor="class-start-date">
-            Start Date:
-          </label>
-          <DatePicker
-            id="class-start-date"
-            className={styles.input}
-            showTimeSelect
-            selected={startDate}
-            onChange={(date) => setStartDate(date)}
-            dateFormat="MMM d, yyyy h:mm aa"
-            filterTime={disablePastTimes}
-            minDate={new Date()}
-          />
-        </div>
-        <div>
-          <label className={styles.labels} htmlFor="class-cost">
-            Cost:
-          </label>
-          <input
-            id="class-cost"
-            className={styles.input}
-            type="number"
-            min="0"
-            value={cost}
-            onChange={(e) => setCost(e.target.value)}
-          />
-        </div>
-        <div>
-          <label className={styles.labels} htmlFor="class-level">
-            Level:
-          </label>
-          <select
-            id="class-level"
-            className={styles.input}
-            value={levelId}
-            name="class-level"
-            onChange={(e) => setLevelId(e.target.value)}
-          >
-            <option value="" disabled>
-              Select a level
-            </option>
-            {levels &&
-              levels.map((level) => (
-                <option key={level.id} value={level.id}>
-                  {level.type}
+        <div className={styles.inputFieldDivSections}>
+          <div>
+            <div className={styles.labelAndInputDiv}>
+              <label className={styles.labels} htmlFor="class-title">
+                Title:
+              </label>
+              <input
+                id="class-title"
+                className={styles.input}
+                type="text"
+                placeholder="Class Title"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+              />
+            </div>
+            <div className={styles.labelAndInputDiv}>
+              <label className={styles.labels} htmlFor="class-description">
+                Description:
+              </label>
+              <textarea
+                id="class-description"
+                className={styles.input}
+                type="text"
+                placeholder="Class description...."
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+              />
+            </div>
+          </div>
+
+          <div>
+            <div className={styles.labelAndInputDiv}>
+              <label className={styles.labels} htmlFor="class-start-date">
+                Start Date:
+              </label>
+              <DatePicker
+                id="class-start-date"
+                className={styles.input}
+                showTimeSelect
+                selected={startDate}
+                onChange={(date) => setStartDate(date)}
+                dateFormat="MMM d, yyyy h:mm aa"
+                filterTime={disablePastTimes}
+                minDate={new Date()}
+              />
+            </div>
+            <div className={styles.labelAndInputDiv}>
+              <label className={styles.labels} htmlFor="class-cost">
+                Cost:
+              </label>
+              <input
+                id="class-cost"
+                className={styles.input}
+                type="number"
+                min="0"
+                value={cost}
+                onChange={(e) => setCost(e.target.value)}
+              />
+            </div>
+            <div className={styles.labelAndInputDiv}>
+              <label className={styles.labels} htmlFor="class-level">
+                Level:
+              </label>
+              <select
+                id="class-level"
+                className={styles.input}
+                value={levelId}
+                name="class-level"
+                onChange={(e) => setLevelId(e.target.value)}
+              >
+                <option value="" disabled>
+                  Select a level
                 </option>
-              ))}
-          </select>
+                {levels &&
+                  levels.map((level) => (
+                    <option key={level.id} value={level.id}>
+                      {level.type}
+                    </option>
+                  ))}
+              </select>
+            </div>
+            <div className={styles.labelAndInputDiv}>
+              <label className={styles.labels} htmlFor="class-image">
+                Image:
+              </label>
+              <input
+                id="class-image"
+                className={styles.input}
+                type="file"
+                value={image}
+                onChange={(e) => setImage(e.target.value)}
+              />
+            </div>
+          </div>
         </div>
-        <div>
-          <label className={styles.labels} htmlFor="class-image">
-            Image:
-          </label>
-          <input
-            id="class-image"
-            className={styles.input}
-            type="file"
-            value={image}
-            onChange={(e) => setImage(e.target.value)}
-          />
-        </div>
-        <div>
+
+        <div className={styles.editModalButtons}>
           <button type="submit" className="ctaButton">
             Save
           </button>
           <button
-            className={`${styles.accountSaveBtn} ctaButton`}
+            className={`${styles.cancelButton} ctaButtonInverse`}
             onClick={() => setShowModal(false)}
           >
             Cancel

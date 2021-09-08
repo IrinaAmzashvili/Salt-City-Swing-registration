@@ -1,1 +1,73 @@
 @import '../../index.css';
+
+.createClassContainer {
+    width: 800px;
+    padding: 20px;
+    position: relative;
+}
+
+.exitButton {
+    font-size: 25px;
+    position:absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.header {
+    font-size: 25px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+}
+
+.inputFieldDivSections {
+    display: flex;
+    justify-content: space-between;
+}
+
+.inputFieldDivSections > div {
+    width: 49%;
+}
+
+.labelAndInputDiv {
+    margin-bottom: 20px;
+}
+
+/* .inputFieldDivSections > div > * {
+    width: 100%;
+}
+
+.inputFieldDivSections > div > div {
+    margin: 10px 0;
+} */
+
+.labels {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.input {
+    width: 100%;
+    height: 35px;
+    padding: 5px;
+}
+
+textarea.input {
+    height: 186px;
+}
+
+.editModalButtons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.editModalButtons > button {
+    width: 40%;
+}
+
+.cancelButton {
+    margin-left: 10px;
+}
