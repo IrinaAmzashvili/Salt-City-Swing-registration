@@ -42,11 +42,14 @@
 .classImageContainer {
     margin: auto;
     width: 100%;
+    height: 426px;
     /* background-image: url('../../image/annie-spratt-0ZPSX_mQ3xI-unsplash.jpg'); */
 }
 
 .classImage {
-    max-width: 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
@@ -54,8 +57,7 @@
 .buttonHeaderDiv {
     background-color: var(--backgroundLight);
     border-bottom: 1px solid var(--grayTheme);
-    padding: 0px 25px;
-    padding-bottom: 4px;
+    padding: 4px 25px;
     display: flex;
     justify-content: flex-end;
     position: relative;
@@ -63,7 +65,7 @@
 
 .likeButtonDiv {
     position: absolute;
-    top: 3px;
+    top: 7px;
     left: 25px;
 }
 

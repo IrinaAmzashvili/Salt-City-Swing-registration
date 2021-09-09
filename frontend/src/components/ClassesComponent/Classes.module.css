@@ -71,6 +71,7 @@
 .classImage {
     flex: 1;
     height: 100%;
+    object-fit: cover;
 }
 
 .cardBottom {

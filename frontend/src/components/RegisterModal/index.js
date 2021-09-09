@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Register from "./Register";
 import LoginForm from '../LoginFormModal/LoginForm';
 import { Modal } from "../../context/Modal";
-import { getTickets } from '../../store/tickets';
+import { getTickets, unloadTickets } from '../../store/tickets';
 
 const RegisterModal = ({ currentClass }) => {
   const dispatch = useDispatch();
@@ -22,6 +22,7 @@ const RegisterModal = ({ currentClass }) => {
     if (sessionUser) {
       dispatch(getTickets(sessionUser?.id));
     }
+    return () => dispatch(unloadTickets());
   }, [dispatch, sessionUser, sessionUser?.id])
 
   let sessionLinks;

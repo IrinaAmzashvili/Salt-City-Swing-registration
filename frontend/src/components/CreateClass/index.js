@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import DatePicker from "react-datepicker";
-import { getLevels } from "../../store/levels";
+import { getLevels, unloadLevels } from "../../store/levels";
 import { createClass } from "../../store/classes";
 import styles from "./CreateClass.module.css";
 import "react-datepicker/dist/react-datepicker.css";
@@ -23,6 +23,7 @@ const CreateClass = () => {
 
   useEffect(() => {
     dispatch(getLevels());
+    return () => dispatch(unloadLevels());
   }, [dispatch]);
 
   const updateFile = (e) => {
@@ -160,7 +161,6 @@ const CreateClass = () => {
             id="class-image"
             className={styles.input}
             type="file"
-            // value={image}
             onChange={updateFile}
           />
         </div>
