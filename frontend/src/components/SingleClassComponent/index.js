@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Lottie from "react-lottie";
-import loadingAnimation from "../../lotties/8707-loading.json";
+import { defaultOptions } from '../../lotties/utils';
 import { getClasses, unloadClasses } from "../../store/classes";
 import LikeButton from "../LikeButton";
 import RegisterModal from "../RegisterModal";
@@ -31,18 +31,7 @@ const SingleClassComponent = () => {
     return () => dispatch(unloadClasses());
   }, [dispatch]);
 
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: loadingAnimation,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-    },
-  };
-
-  if (!isLoaded) {
-    return <Lottie options={defaultOptions} height={400} width={400} />;
-  }
+  if (!isLoaded) return <Lottie options={defaultOptions} height={400} width={400} />;
 
   return (
     <div className={styles.classPageContainer}>

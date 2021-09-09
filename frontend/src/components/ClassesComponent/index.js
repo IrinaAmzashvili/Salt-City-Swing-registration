@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { IoCreateOutline } from "react-icons/io5";
 import Lottie from "react-lottie";
-import loadingAnimation from "../../lotties/8707-loading.json";
+import { defaultOptions } from '../../lotties/utils';
 import { getClasses, unloadClasses } from "../../store/classes";
 import LikeButton from "../LikeButton";
 import styles from "./Classes.module.css";
@@ -44,21 +44,12 @@ const ClassesComponent = () => {
       break;
   }
 
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: loadingAnimation,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-    },
-  };
-
   useEffect(() => {
     (async () => {
       await dispatch(getClasses());
       setIsLoaded(true);
     })();
-    
+
     return () => dispatch(unloadClasses());
   }, [dispatch]);
 

@@ -1,5 +1,7 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Lottie from "react-lottie";
+import { defaultOptions } from '../../lotties/utils';
 import { getLikes, unloadLikes } from "../../store/likes";
 import RegisterModal from "../RegisterModal";
 import LikeButton from "../LikeButton";
@@ -7,6 +9,7 @@ import styles from "./UserPage.module.css";
 
 const UserLikes = ({ userId }) => {
   const dispatch = useDispatch();
+  const [isLoaded, setIsLoaded] = useState(false);
   const unorderedLikes = useSelector((state) => Object.values(state.likes));
   const likes = unorderedLikes.sort((like1, like2) => {
     if (like1.Class?.startDate > like2.Class?.startDate) return 1;
@@ -34,9 +37,14 @@ const UserLikes = ({ userId }) => {
   };
 
   useEffect(() => {
-    dispatch(getLikes(+userId));
+    (async () => {
+      await dispatch(getLikes(+userId));
+      setIsLoaded(true);
+    })();
     return () => dispatch(unloadLikes());
   }, [dispatch, userId]);
+
+  if (!isLoaded) return <Lottie options={defaultOptions} height={400} width={400} />;
 
   return likes.length !== 0 ? (
     <div className={styles.userClassesContainer}>
