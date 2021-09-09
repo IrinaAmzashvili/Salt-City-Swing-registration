@@ -25,21 +25,19 @@ const UpdatePassword = ({ user }) => {
 
       await dispatch(
         sessionActions.updatePassword(updatedPassword, user?.id)
-      ).catch(async (res) => {
-        const data = await res.json();
-        if (data && data.errors) setErrors(data.errors);
-      });
-
-      if (!errors.length) {
+      ).then(() => {
         setSaved(true);
         setCurrPassword('');
         setNewPassword('');
         setRepeatPassword('');
         displaySavedConfirmation();
-      }
+      }).catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+      });
     } else {
       return setErrors([
-        "Repeat Password field must be the same as the New Password field.",
+        "Repeat password and new password must match.",
       ]);
     }
   };
