@@ -3,6 +3,7 @@ import { csrfFetch } from './csrf';
 const SET_LIKES = 'classes/SET_LIKES';
 const ADD_LIKE = 'likes/ADD_LIKE';
 const REMOVE_LIKE = 'likes/REMOVE_LIKE';
+const UNLOAD_LIKES = 'likes/UNLOAD_LIKES';
 
 const setLikes = (likes) => ({
     type: SET_LIKES,
@@ -17,6 +18,10 @@ const addLike = (like) => ({
 const removeLike = (likeId) => ({
     type: REMOVE_LIKE,
     likeId,
+});
+
+export const unloadLikes = () => ({
+    type: UNLOAD_LIKES
 });
 
 export const getLikes = (userId) => async (dispatch) => {
@@ -73,6 +78,8 @@ const likesReducer = (state = initialState, action) => {
             newObj = { ...state };
             delete newObj[action.likeId];
             return newObj;
+        case UNLOAD_LIKES:
+            return { ...initialState };
         default:
             return state;
     }

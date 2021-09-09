@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getClasses } from "../../store/classes";
+import { getClasses, unloadClasses } from "../../store/classes";
 import { purchaseTicket, cancelTicket, updateTicket } from "../../store/tickets";
 import styles from "./Register.module.css";
 
@@ -35,6 +35,7 @@ const Register = ({ closeModal, currentClass, purchased }) => {
       res = await dispatch(purchaseTicket(newTicket));
     }
     if (res.ok) {
+      closeModal();
       history.push(`/user/${sessionUserId}`);
     }
   };
@@ -51,6 +52,7 @@ const Register = ({ closeModal, currentClass, purchased }) => {
 
   useEffect(() => {
     dispatch(getClasses());
+    return () => dispatch(unloadClasses());
   }, [dispatch]);
 
   return !canceled ? (

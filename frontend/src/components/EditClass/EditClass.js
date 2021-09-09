@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import DatePicker from "react-datepicker";
-import { getLevels } from "../../store/levels";
+import { getLevels, unloadLevels } from "../../store/levels";
 import { editClass } from "../../store/classes";
 import styles from "./EditClass.module.css";
 import "react-datepicker/dist/react-datepicker.css";
@@ -20,6 +20,7 @@ const EditClass = ({ currentClass, setShowModal }) => {
 
   useEffect(() => {
     dispatch(getLevels());
+    return () => dispatch(unloadLevels());
   }, [dispatch]);
 
   const updateImage = (e) => {

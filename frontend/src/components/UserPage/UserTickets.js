@@ -14,6 +14,18 @@ const UserTickets = ({ userId }) => {
     return 0;
   });
 
+  const classDate = (date) => {
+    return new Date(date).toLocaleDateString();
+  }
+
+  const classTime = (date) => {
+    return new Date(date).toLocaleTimeString("en-US", {
+      timeZone: "America/Denver",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+  }
+
   useEffect(() => {
     dispatch(getTickets(+userId));
     return () => dispatch(unloadTickets())
@@ -27,8 +39,8 @@ const UserTickets = ({ userId }) => {
           <div className={styles.classContainer} key={ticket.id}>
             <div className={styles.classInfoContainer}>
               <h3 className={styles.classTitle}>{ticket.Class?.title}</h3>
-              <p className={styles.classInfo}>{ticket.Class?.startDate}</p>
-              <p className={styles.classInfo}>{ticket.Class?.dates}</p>
+              <p className={styles.classInfo}>Start Date: {classDate(ticket.Class?.startDate)}</p>
+              <p className={styles.classInfo}>Time: {classTime(ticket.Class?.startDate)}</p>
               <div className={styles.userTicketInfo}>
                 <p>Tickets Purchased: {ticket.numOfTickets}</p>
                 <p>Amount Paid: ${ticket.price}</p>

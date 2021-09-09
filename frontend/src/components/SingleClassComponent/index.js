@@ -3,7 +3,7 @@ import { useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Lottie from "react-lottie";
 import loadingAnimation from "../../lotties/8707-loading.json";
-import { getClasses } from "../../store/classes";
+import { getClasses, unloadClasses } from "../../store/classes";
 import LikeButton from "../LikeButton";
 import RegisterModal from "../RegisterModal";
 import EditClassModal from "../EditClass";
@@ -27,6 +27,8 @@ const SingleClassComponent = () => {
       await dispatch(getClasses());
       setIsLoaded(true);
     })();
+
+    return () => dispatch(unloadClasses());
   }, [dispatch]);
 
   const defaultOptions = {

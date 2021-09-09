@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { IoCreateOutline } from "react-icons/io5";
 import Lottie from "react-lottie";
 import loadingAnimation from "../../lotties/8707-loading.json";
-import { getClasses } from "../../store/classes";
+import { getClasses, unloadClasses } from "../../store/classes";
 import LikeButton from "../LikeButton";
 import styles from "./Classes.module.css";
 
@@ -58,6 +58,8 @@ const ClassesComponent = () => {
       await dispatch(getClasses());
       setIsLoaded(true);
     })();
+    
+    return () => dispatch(unloadClasses());
   }, [dispatch]);
 
   return (
