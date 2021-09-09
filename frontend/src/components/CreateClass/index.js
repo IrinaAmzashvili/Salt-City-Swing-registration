@@ -38,7 +38,6 @@ const CreateClass = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     setErrors([]);
 
     const formData = new FormData();

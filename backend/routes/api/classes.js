@@ -64,10 +64,13 @@ router.post(
 
 router.put(
   "/:id",
+  singleMulterUpload('image'),
   validateClass,
   asyncHandler(async (req, res) => {
     const classInfo = req.body;
     const classId = +req.params.id;
+    const classImageUrl = await singlePublicFileUpload(req.file);
+    classInfo.image = classImageUrl;
     const targetClass = await Class.findByPk(classId);
     const updatedClass = await targetClass.update(classInfo);
     return res.json({ updatedClass });
