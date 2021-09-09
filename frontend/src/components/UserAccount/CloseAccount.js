@@ -27,7 +27,7 @@ const CloseAccount = ({ user }) => {
           }
         }
       );
-      if (result.ok) {
+      if (result && result.ok) {
         openModal();
       }
     } else {

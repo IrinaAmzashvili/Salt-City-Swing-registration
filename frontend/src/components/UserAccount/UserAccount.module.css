@@ -2,6 +2,7 @@
 
 .accountPageDiv {
   display: flex;
+  height: 100vh;
 }
 
 .buttonDiv {
