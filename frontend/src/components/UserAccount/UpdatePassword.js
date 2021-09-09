@@ -45,7 +45,7 @@ const UpdatePassword = ({ user }) => {
   const displaySavedConfirmation = () => {
     setTimeout(() => {
       setSaved(false);
-    }, 4000);
+    }, 3000);
   }
 
   return (

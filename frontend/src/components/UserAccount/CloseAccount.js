@@ -17,9 +17,11 @@ const CloseAccount = ({ user }) => {
     e.preventDefault();
 
     if (password === confirmPassword) {
-      setErrors([]);
+      await setErrors([]);
 
-      let result = await dispatch(sessionActions.validatePassword(password, user?.id)).catch(
+      await dispatch(sessionActions.validatePassword(password, user?.id)).then(() => {
+        setShowModal(true);
+      }).catch(
         async (res) => {
           const data = await res.json();
           if (data && data.errors) {
@@ -27,18 +29,17 @@ const CloseAccount = ({ user }) => {
           }
         }
       );
-      if (result && result.ok) {
-        openModal();
-      }
     } else {
-      return setErrors(["Passwords don't match."]);
+      return setErrors(["Passwords must match."]);
     }
   };
 
   const deleteAccount = async (e) => {
     e.preventDefault();
-    // needs debugging - only deletes if there are no associated tables
-    await dispatch(sessionActions.deleteUser(password, user?.id)).catch(
+
+    await dispatch(sessionActions.deleteUser(password, user?.id)).then(() => {
+      history.push('/');
+    }).catch(
       async (res) => {
         const data = await res.json();
         if (data && data.errors) {
@@ -46,16 +47,8 @@ const CloseAccount = ({ user }) => {
         }
       }
     );
-    // needs debugging - if delete unsuccessful, it still redirects
-    if (!errors.length) history.push('/');
   };
-
-  const openModal = () => {
-    if (!errors.length) {
-      setShowModal(true);
-    }
-  };
-
+  
   const closeModal = () => {
     setShowModal(false);
   };
