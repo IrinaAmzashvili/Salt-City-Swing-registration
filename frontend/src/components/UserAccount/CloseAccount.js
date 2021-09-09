@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useHistory } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
 import { Modal } from "../../context/Modal";
@@ -17,43 +17,36 @@ const CloseAccount = ({ user }) => {
     e.preventDefault();
 
     if (password === confirmPassword) {
-      setErrors([]);
+      await setErrors([]);
 
-      let result = await dispatch(sessionActions.validatePassword(password, user?.id)).catch(
-        async (res) => {
+      await dispatch(sessionActions.validatePassword(password, user?.id))
+        .then(() => {
+          setShowModal(true);
+        })
+        .catch(async (res) => {
           const data = await res.json();
           if (data && data.errors) {
             return setErrors(data.errors);
           }
-        }
-      );
-      if (result && result.ok) {
-        openModal();
-      }
+        });
     } else {
-      return setErrors(["Passwords don't match."]);
+      return setErrors(["Passwords must match."]);
     }
   };
 
   const deleteAccount = async (e) => {
     e.preventDefault();
-    // needs debugging - only deletes if there are no associated tables
-    await dispatch(sessionActions.deleteUser(password, user?.id)).catch(
-      async (res) => {
+
+    await dispatch(sessionActions.deleteUser(password, user?.id))
+      .then(() => {
+        history.push("/");
+      })
+      .catch(async (res) => {
         const data = await res.json();
         if (data && data.errors) {
           setErrors(data.errors);
         }
-      }
-    );
-    // needs debugging - if delete unsuccessful, it still redirects
-    if (!errors.length) history.push('/');
-  };
-
-  const openModal = () => {
-    if (!errors.length) {
-      setShowModal(true);
-    }
+      });
   };
 
   const closeModal = () => {
@@ -93,7 +86,12 @@ const CloseAccount = ({ user }) => {
           />
         </label>
       </div>
-      <button type="submit" className={`${styles.accountDeleteBtn} ctaButton`}>
+      <button
+        type="submit"
+        className={`${styles.accountDeleteBtn} ctaButton`}
+        disabled={user?.id === 1 ? true : false}
+        title={user?.id === 1 ? 'Demo account information cannot be updated' : null}
+      >
         Delete Account
       </button>
       {showModal && (
@@ -114,6 +112,8 @@ const CloseAccount = ({ user }) => {
               <button
                 className={`${styles.accountDeleteBtn} ctaButton`}
                 onClick={deleteAccount}
+                disabled={user?.id === 1 ? true : false}
+                title={user?.id === 1 ? 'Demo account information cannot be updated' : null}
               >
                 Delete Account
               </button>
