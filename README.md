@@ -84,6 +84,8 @@ The user may register for a class via the "Register" button found on the individ
 ### Likes
 A logged in user may like or unlike any class. The "like button" feature is a separate React component that appears when a user is logged in.
 
+![Like feature code](https://user-images.githubusercontent.com/79552414/132736778-464b5840-08d1-4afc-bcd0-5e5a2a1cd366.png)
+
 ![Home - like](https://user-images.githubusercontent.com/79552414/123537137-2f0d6e00-d6eb-11eb-8ffb-1fccc6630975.png)
 ![Class - like](https://user-images.githubusercontent.com/79552414/123537170-52381d80-d6eb-11eb-81ec-5c6619880ed9.png)
 ![My Classes - like](https://user-images.githubusercontent.com/79552414/123537193-6e3bbf00-d6eb-11eb-9d1b-cf9ec23fb58f.png)
