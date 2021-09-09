@@ -1,7 +1,7 @@
 const express = require("express");
 const asyncHandler = require("express-async-handler");
 const { check } = require("express-validator");
-const { singlePublicFileUpload, singleMulterUpload } = require('../../awsS3');
+const { singlePublicFileUpload, singleMulterUpload, deleteSingleFile } = require('../../awsS3');
 const { handleValidationErrors } = require("../../utils/validation");
 const { Class, Category } = require("../../db/models");
 
@@ -73,6 +73,7 @@ router.put(
     if (classInfo.image !== targetClass.image) {
       const classImageUrl = await singlePublicFileUpload(req.file);
       classInfo.image = classImageUrl;
+      deleteSingleFile(targetClass.image);
     }
     const updatedClass = await targetClass.update(classInfo);
     return res.json({ updatedClass });

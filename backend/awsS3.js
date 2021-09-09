@@ -38,6 +38,15 @@ const multiplePublicFileUpload = async (files) => {
   );
 };
 
+const S3_LOCATION = 'https://saltcityswing-registration.s3.amazonaws.com/';
+const deleteSingleFile = async (url) => {
+  key = url.slice(52)
+  if (url.startsWith(S3_LOCATION)) {
+    await s3.deleteObject({ Bucket: NAME_OF_BUCKET, Key: key}, (err, data) => {
+    });
+  };
+};
+
 // --------------------------- Prviate UPLOAD ------------------------
 
 const singlePrivateFileUpload = async (file) => {
@@ -92,6 +101,7 @@ module.exports = {
   s3,
   singlePublicFileUpload,
   multiplePublicFileUpload,
+  deleteSingleFile,
   singlePrivateFileUpload,
   multiplePrivateFileUpload,
   retrievePrivateFile,
