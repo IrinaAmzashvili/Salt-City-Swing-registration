@@ -69,9 +69,11 @@ router.put(
   asyncHandler(async (req, res) => {
     const classInfo = req.body;
     const classId = +req.params.id;
-    const classImageUrl = await singlePublicFileUpload(req.file);
-    classInfo.image = classImageUrl;
     const targetClass = await Class.findByPk(classId);
+    if (classInfo.image !== targetClass.image) {
+      const classImageUrl = await singlePublicFileUpload(req.file);
+      classInfo.image = classImageUrl;
+    }
     const updatedClass = await targetClass.update(classInfo);
     return res.json({ updatedClass });
   })
