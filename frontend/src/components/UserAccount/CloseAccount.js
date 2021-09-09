@@ -16,7 +16,7 @@ const CloseAccount = ({ user }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (password === confirmPassword) {
+    if (password && password === confirmPassword) {
       await setErrors([]);
 
       await dispatch(sessionActions.validatePassword(password, user?.id))
@@ -26,11 +26,15 @@ const CloseAccount = ({ user }) => {
         .catch(async (res) => {
           const data = await res.json();
           if (data && data.errors) {
-            return setErrors(data.errors);
+            setErrors(data.errors);
+            window.scroll(0, 200);
+            return;
           }
         });
     } else {
-      return setErrors(["Passwords must match."]);
+      setErrors(["Passwords must match."]);
+      window.scroll(0, 200);
+      return;
     }
   };
 

@@ -40,7 +40,10 @@ const SignUpFormPage = () => {
       setErrors([]);
       return dispatch(sessionActions.signUpUser(newUser)).catch(async (res) => {
         const data = await res.json();
-        if (data && data.errors) setErrors(data.errors);
+        if (data && data.errors) {
+          setErrors(data.errors);
+          window.scroll(0, 200);
+        }
       });
     }
     return setErrors([

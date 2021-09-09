@@ -19,7 +19,11 @@ const UpdatePassword = ({ user }) => {
       newPassword,
     };
 
-    if (!currPassword) return setErrors(['Current password required.']);
+    if (!currPassword) {
+      setErrors(['Current password required.']);
+      window.scroll(0, 200);
+      return;
+    }
     if (newPassword && newPassword === repeatPassword) {
       setErrors([]);
 
@@ -33,12 +37,17 @@ const UpdatePassword = ({ user }) => {
         displaySavedConfirmation();
       }).catch(async (res) => {
         const data = await res.json();
-        if (data && data.errors) setErrors(data.errors);
+        if (data && data.errors) {
+          setErrors(data.errors);
+          window.scroll(0, 200);
+        }
       });
     } else {
-      return setErrors([
+      setErrors([
         "Repeat password and new password must match.",
       ]);
+      window.scroll(0, 200);
+      return;
     }
   };
 

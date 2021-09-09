@@ -32,7 +32,10 @@ const AccountInformation = ({ user }) => {
       })
       .catch(async (res) => {
         const data = await res.json();
-        if (data && data.errors) setErrors(data.errors);
+        if (data && data.errors) {
+          setErrors(data.errors);
+          window.scroll(0, 200);
+        }
       });
   };
 
