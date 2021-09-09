@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import { getLevels, unloadLevels } from "../../store/levels";
 import { createClass } from "../../store/classes";
+import { postImage } from '../../store/images';
 import styles from "./CreateClass.module.css";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -26,9 +27,12 @@ const CreateClass = () => {
     return () => dispatch(unloadLevels());
   }, [dispatch]);
 
-  const updateFile = (e) => {
+  const updateFile = async (e) => {
     const file = e.target.files[0];
-    if (file) setImage(file);
+    if (file) {
+      const url = await dispatch(postImage(file));
+      setImage(url);
+    }
   }
 
   const disablePastTimes = (time) => {
@@ -41,7 +45,7 @@ const CreateClass = () => {
     e.preventDefault();
     setErrors([]);
 
-    const formData = new FormData();
+    // const formData = new FormData();
     const newClass = {
       title,
       description,
@@ -50,11 +54,12 @@ const CreateClass = () => {
       categoryId: +levelId,
       image,
     };
-    for (let key in newClass) {
-      formData.append(key, newClass[key]);
-    }
+    // for (let key in newClass) {
+    //   formData.append(key, newClass[key]);
+    // }
 
-    return dispatch(createClass(formData))
+    console.log(newClass)
+    return dispatch(createClass(newClass))
       .then((res) => history.push(`/classes/${res.id}`))
       .catch(async (res) => {
         const data = await res.json();
@@ -77,6 +82,20 @@ const CreateClass = () => {
       <h1 className={styles.header}>Create a new class</h1>
       <form className={styles.form} onSubmit={handleSubmit}>
         {errors && errors.map((error, idx) => <li key={idx}>{error}</li>)}
+        <div>
+          <img src={image} alt='preview'/>
+        </div>
+        <div>
+          <label className={styles.labels} htmlFor="class-image">
+            Image:
+          </label>
+          <input
+            id="class-image"
+            className={styles.input}
+            type="file"
+            onChange={updateFile}
+          />
+        </div>
         <div>
           <label className={styles.labels} htmlFor="class-title">
             Title:
@@ -152,17 +171,6 @@ const CreateClass = () => {
                 </option>
               ))}
           </select>
-        </div>
-        <div>
-          <label className={styles.labels} htmlFor="class-image">
-            Image:
-          </label>
-          <input
-            id="class-image"
-            className={styles.input}
-            type="file"
-            onChange={updateFile}
-          />
         </div>
         <div>
           <button type="submit" className="ctaButton">
