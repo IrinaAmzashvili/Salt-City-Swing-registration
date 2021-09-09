@@ -38,11 +38,27 @@ const multiplePublicFileUpload = async (files) => {
   );
 };
 
-const S3_LOCATION = 'https://saltcityswing-registration.s3.amazonaws.com/';
+const S3_LOCATION = 'https://saltcityswing-registration.s3.';
+// const params = {
+//   Bucket: NAME_OF_BUCKET,
+//   Delete: {
+//     Objects: [{ Key: }]
+//   }
+// }
 const deleteSingleFile = async (url) => {
-  key = url.slice(52)
+  index = url.lastIndexOf('/');
+  key = url.slice(index + 1);
+  console.log('======> url', url)
+  console.log('======> key', key)
   if (url.startsWith(S3_LOCATION)) {
     await s3.deleteObject({ Bucket: NAME_OF_BUCKET, Key: key}, (err, data) => {
+      if (err) {
+        console.error('Something went wrong');
+        return false;
+      } else {
+        console.log('=====> success!')
+        return true;
+      }
     });
   };
 };

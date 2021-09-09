@@ -73,7 +73,7 @@ router.put(
     if (classInfo.image !== targetClass.image) {
       const classImageUrl = await singlePublicFileUpload(req.file);
       classInfo.image = classImageUrl;
-      deleteSingleFile(targetClass.image);
+      await deleteSingleFile(targetClass.image);
     }
     const updatedClass = await targetClass.update(classInfo);
     return res.json({ updatedClass });
