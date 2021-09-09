@@ -147,3 +147,15 @@
 .deleteModal h2 {
     padding: 0 20px;
 }
+
+button:disabled {
+  cursor: not-allowed;
+  pointer-events: all !important;
+  pointer-events: none;
+}
+
+button:disabled:hover {
+  cursor: not-allowed;
+  pointer-events: all !important;
+  pointer-events: none;
+}

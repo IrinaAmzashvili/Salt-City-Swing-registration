@@ -97,6 +97,8 @@ const UpdatePassword = ({ user }) => {
           <button
             type="submit"
             className={`${styles.accountSaveBtn} ctaButton`}
+            disabled={user?.id === 1 ? true : false}
+            title={user?.id === 1 ? 'Demo account information cannot be updated' : null}
           >
             Save
           </button>

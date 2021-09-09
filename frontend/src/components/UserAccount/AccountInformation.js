@@ -25,22 +25,22 @@ const AccountInformation = ({ user }) => {
 
     setErrors([]);
 
-    await dispatch(sessionActions.updateUser(updatedUser, user?.id)).then(() => {
-      setSaved(true);
-      displaySavedConfirmation();
-    }).catch(
-      async (res) => {
+    await dispatch(sessionActions.updateUser(updatedUser, user?.id))
+      .then(() => {
+        setSaved(true);
+        displaySavedConfirmation();
+      })
+      .catch(async (res) => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
-      }
-    );
+      });
   };
 
   const displaySavedConfirmation = () => {
     setTimeout(() => {
       setSaved(false);
     }, 3000);
-  }
+  };
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
@@ -101,10 +101,17 @@ const AccountInformation = ({ user }) => {
         </div>
       </div>
       <div>
-        <button type="submit" className={`${styles.accountSaveBtn} ctaButton`}>
+        <button
+          type="submit"
+          className={`${styles.accountSaveBtn} ctaButton`}
+          disabled={user?.id === 1 ? true : false}
+          title={user?.id === 1 ? 'Demo account information cannot be updated' : null}
+        >
           Save
         </button>
-        <p className={saved ? `${styles.visible}` : `${styles.hidden}`}>Updates saved<i className={`${styles.checkMark} fas fa-check`}></i></p>
+        <p className={saved ? `${styles.visible}` : `${styles.hidden}`}>
+          Updates saved<i className={`${styles.checkMark} fas fa-check`}></i>
+        </p>
       </div>
     </form>
   );
