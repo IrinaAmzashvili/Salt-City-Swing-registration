@@ -1,10 +1,15 @@
 import { csrfFetch } from './csrf';
 
 const SET_LEVELS = 'levels/SET_LEVELS';
+const UNLOAD_LEVELS = 'levels/UNLOAD_LEVELS';
 
 const setLevels = (levels) => ({
   type: SET_LEVELS,
   levels
+});
+
+export const unloadLevels = () => ({
+  type: UNLOAD_LEVELS
 });
 
 export const getLevels = () => async (dispatch) => {
@@ -27,6 +32,8 @@ const levelsReducer = (state = initialState, action) => {
         newObj[level.id] = level;
       });
       return { ...state, ...newObj }
+    case UNLOAD_LEVELS:
+      return { ...initialState };
     default:
       return state;
   }

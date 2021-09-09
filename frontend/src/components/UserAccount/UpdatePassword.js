@@ -9,7 +9,7 @@ const UpdatePassword = ({ user }) => {
   const [newPassword, setNewPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
   const [errors, setErrors] = useState([]);
-  // const [saved, setSaved] = useState(false);
+  const [saved, setSaved] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,24 +19,34 @@ const UpdatePassword = ({ user }) => {
       newPassword,
     };
 
-    if (newPassword === repeatPassword) {
+    if (!currPassword) return setErrors(['Current password required.']);
+    if (newPassword && newPassword === repeatPassword) {
       setErrors([]);
 
       await dispatch(
         sessionActions.updatePassword(updatedPassword, user?.id)
-      ).catch(async (res) => {
+      ).then(() => {
+        setSaved(true);
+        setCurrPassword('');
+        setNewPassword('');
+        setRepeatPassword('');
+        displaySavedConfirmation();
+      }).catch(async (res) => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
       });
-
-      // if (!errors.length) {
-      //   setSaved(true);
-      // }
+    } else {
+      return setErrors([
+        "Repeat password and new password must match.",
+      ]);
     }
-    return setErrors([
-      "Repeat Password field must be the same as the New Password field.",
-    ]);
   };
+
+  const displaySavedConfirmation = () => {
+    setTimeout(() => {
+      setSaved(false);
+    }, 3000);
+  }
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
@@ -87,12 +97,12 @@ const UpdatePassword = ({ user }) => {
           <button
             type="submit"
             className={`${styles.accountSaveBtn} ctaButton`}
+            disabled={user?.id === 1 ? true : false}
+            title={user?.id === 1 ? 'Demo account information cannot be updated' : null}
           >
             Save
           </button>
-          {/* {saved === true ? (
-            <i className={`${styles.checkMark} fas fa-check`}></i>
-          ) : null} */}
+          <p className={saved ? `${styles.visible}` : `${styles.hidden}`}>New password saved<i className={`${styles.checkMark} fas fa-check`}></i></p>
         </div>
       </div>
     </form>

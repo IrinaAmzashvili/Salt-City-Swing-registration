@@ -3,6 +3,7 @@ import { csrfFetch } from "./csrf";
 const SET_CLASSES = 'classes/SET_CLASSES';
 const ADD_ONE_CLASS = 'classes/ADD_ONE_CLASS';
 const REMOVE_CLASS = 'classes/REMOVE_CLASS';
+const UNLOAD_CLASSES = 'classes/UNLOAD_CLASSES';
 
 const setClasses = (classes) => ({
     type: SET_CLASSES,
@@ -19,6 +20,10 @@ const removeClass = (id) => ({
     id
 });
 
+export const unloadClasses = () => ({
+    type: UNLOAD_CLASSES
+});
+
 export const getClasses = () => async (dispatch) => {
     const res = await csrfFetch('/api/classes');
 
@@ -32,7 +37,8 @@ export const getClasses = () => async (dispatch) => {
 export const createClass = (classInfo) => async (dispatch) => {
     const res = await csrfFetch('/api/classes', {
         method: 'POST',
-        body: JSON.stringify(classInfo)
+        headers: { "Content-Type": "multipart/form-data" },
+        body: classInfo
     });
 
     if (res.ok) {
@@ -45,7 +51,8 @@ export const createClass = (classInfo) => async (dispatch) => {
 export const editClass = (classId, classInfo) => async (dispatch) => {
     const res = await csrfFetch(`/api/classes/${classId}`, {
         method: 'PUT',
-        body: JSON.stringify(classInfo)
+        headers: { "Content-Type": "multipart/form-data" },
+        body: classInfo
     });
 
     if (res.ok) {
@@ -85,6 +92,8 @@ const classesReducer = (state = initialState, action) => {
             newObj = { ...state };
             delete newObj[action.id];
             return newObj;
+        case UNLOAD_CLASSES:
+            return { ...initialState };
         default:
             return state;
     }

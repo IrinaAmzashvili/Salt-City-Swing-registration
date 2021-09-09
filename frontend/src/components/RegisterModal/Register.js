@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getClasses } from "../../store/classes";
+import { getClasses, unloadClasses } from "../../store/classes";
 import { purchaseTicket, cancelTicket, updateTicket } from "../../store/tickets";
 import styles from "./Register.module.css";
 
@@ -13,6 +13,7 @@ const Register = ({ closeModal, currentClass, purchased }) => {
   const [amount, setAmount] = useState(purchased ? purchased.numOfTickets : 1);
   const [canceled, setCanceled] = useState(false);
 
+  console.log('===>', currentClass)
   const amountChange = (e) => {
     setPrice(45 * e.target.value);
     setAmount(e.target.value);
@@ -35,6 +36,7 @@ const Register = ({ closeModal, currentClass, purchased }) => {
       res = await dispatch(purchaseTicket(newTicket));
     }
     if (res.ok) {
+      closeModal();
       history.push(`/user/${sessionUserId}`);
     }
   };
@@ -51,6 +53,7 @@ const Register = ({ closeModal, currentClass, purchased }) => {
 
   useEffect(() => {
     dispatch(getClasses());
+    return () => dispatch(unloadClasses());
   }, [dispatch]);
 
   return !canceled ? (

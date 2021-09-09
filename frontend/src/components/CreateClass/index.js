@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import DatePicker from "react-datepicker";
-import { getLevels } from "../../store/levels";
+import { getLevels, unloadLevels } from "../../store/levels";
 import { createClass } from "../../store/classes";
 import styles from "./CreateClass.module.css";
 import "react-datepicker/dist/react-datepicker.css";
@@ -18,12 +18,18 @@ const CreateClass = () => {
   const [startDate, setStartDate] = useState("");
   const [cost, setCost] = useState("");
   const [levelId, setLevelId] = useState("");
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState(null);
   const [errors, setErrors] = useState([]);
 
   useEffect(() => {
     dispatch(getLevels());
+    return () => dispatch(unloadLevels());
   }, [dispatch]);
+
+  const updateFile = (e) => {
+    const file = e.target.files[0];
+    if (file) setImage(file);
+  }
 
   const disablePastTimes = (time) => {
     const today = new Date();
@@ -33,19 +39,22 @@ const CreateClass = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     setErrors([]);
 
+    const formData = new FormData();
     const newClass = {
       title,
       description,
       startDate,
       cost: +cost,
       categoryId: +levelId,
-      image: "img.png",
+      image,
     };
+    for (let key in newClass) {
+      formData.append(key, newClass[key]);
+    }
 
-    return dispatch(createClass(newClass))
+    return dispatch(createClass(formData))
       .then((res) => history.push(`/classes/${res.id}`))
       .catch(async (res) => {
         const data = await res.json();
@@ -152,8 +161,7 @@ const CreateClass = () => {
             id="class-image"
             className={styles.input}
             type="file"
-            value={image}
-            onChange={(e) => setImage(e.target.value)}
+            onChange={updateFile}
           />
         </div>
         <div>

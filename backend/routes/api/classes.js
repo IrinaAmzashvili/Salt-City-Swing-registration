@@ -1,6 +1,7 @@
 const express = require("express");
 const asyncHandler = require("express-async-handler");
 const { check } = require("express-validator");
+const { singlePublicFileUpload, singleMulterUpload, deleteSingleFile } = require('../../awsS3');
 const { handleValidationErrors } = require("../../utils/validation");
 const { Class, Category } = require("../../db/models");
 
@@ -17,10 +18,10 @@ const validateClass = [
     .withMessage("Description required"),
   check("startDate")
     .exists({ checkFalsy: true })
-    .withMessage("Start date required")
-    .isISO8601()
-    .toDate()
-    .withMessage("Start date must be a date"),
+    .withMessage("Start date required"),
+    // .isISO8601()
+    // .toDate()
+    // .withMessage("Start date must be a date"),
   check("cost")
     .exists({ checkFalsy: true })
     .withMessage("Cost required")
@@ -33,7 +34,7 @@ const validateClass = [
     .withMessage("Level required")
     .isNumeric()
     .withMessage("CategoryId must be a number"),
-  check("image").exists({ checkFalsy: true }).withMessage("Image required"),
+  // check("image").exists({ checkFalsy: true }).withMessage("Image required"),
   handleValidationErrors,
 ];
 
@@ -50,9 +51,12 @@ router.get(
 
 router.post(
   "/",
+  singleMulterUpload('image'),
   validateClass,
   asyncHandler(async (req, res) => {
     const classInfo = req.body;
+    const classImageUrl = await singlePublicFileUpload(req.file);
+    classInfo.image = classImageUrl;
     const newClass = await Class.create(classInfo);
     return res.json({ newClass });
   })
@@ -60,11 +64,17 @@ router.post(
 
 router.put(
   "/:id",
+  singleMulterUpload('image'),
   validateClass,
   asyncHandler(async (req, res) => {
     const classInfo = req.body;
     const classId = +req.params.id;
     const targetClass = await Class.findByPk(classId);
+    if (classInfo.image !== targetClass.image) {
+      const classImageUrl = await singlePublicFileUpload(req.file);
+      classInfo.image = classImageUrl;
+      await deleteSingleFile(targetClass.image);
+    }
     const updatedClass = await targetClass.update(classInfo);
     return res.json({ updatedClass });
   })
@@ -75,9 +85,10 @@ router.delete(
   asyncHandler(async (req, res) => {
     const classId = +req.params.id;
     const targetClass = await Class.findByPk(classId);
+    await deleteSingleFile(targetClass.image);
     await targetClass.destroy()
     res.json({ success: true });
   })
-)
+);
 
 module.exports = router;

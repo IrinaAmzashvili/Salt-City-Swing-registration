@@ -1,12 +1,15 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getLikes } from "../../store/likes";
+import Lottie from "react-lottie";
+import { defaultOptions } from '../../lotties/utils';
+import { getLikes, unloadLikes } from "../../store/likes";
 import RegisterModal from "../RegisterModal";
 import LikeButton from "../LikeButton";
 import styles from "./UserPage.module.css";
 
 const UserLikes = ({ userId }) => {
   const dispatch = useDispatch();
+  const [isLoaded, setIsLoaded] = useState(false);
   const unorderedLikes = useSelector((state) => Object.values(state.likes));
   const likes = unorderedLikes.sort((like1, like2) => {
     if (like1.Class?.startDate > like2.Class?.startDate) return 1;
@@ -16,14 +19,32 @@ const UserLikes = ({ userId }) => {
     return 0;
   });
 
+  const classDate = (date) => {
+    return new Date(date).toLocaleDateString();
+  }
+
+  const classTime = (date) => {
+    return new Date(date).toLocaleTimeString("en-US", {
+      timeZone: "America/Denver",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+  }
+
   const handleClick = (e) => {
     e.stopPropagation();
     e.preventDefault();
   };
 
   useEffect(() => {
-    dispatch(getLikes(+userId));
+    (async () => {
+      await dispatch(getLikes(+userId));
+      setIsLoaded(true);
+    })();
+    return () => dispatch(unloadLikes());
   }, [dispatch, userId]);
+
+  if (!isLoaded) return <Lottie options={defaultOptions} height={400} width={400} />;
 
   return likes.length !== 0 ? (
     <div className={styles.userClassesContainer}>
@@ -33,8 +54,9 @@ const UserLikes = ({ userId }) => {
           <div className={styles.classContainer} key={like.id}>
             <div className={styles.classInfoContainer}>
               <h3 className={styles.classTitle}>{like.Class?.title}</h3>
-              <p>{like.Class?.startDate}</p>
-              <p>{like.Class?.dates}</p>
+              <p>Start Date: {classDate(like.Class?.startDate)}</p>
+              <p>Time: {classTime(like.Class?.startDate)}</p>
+              <p>Cost: ${like.Class?.cost}</p>
             </div>
 
             <div className={styles.classImageContainer}>

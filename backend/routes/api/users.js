@@ -121,6 +121,7 @@ const validateUpdate = [
   handleValidationErrors,
 ];
 
+// update account information
 router.put(
   "/:id",
   validateUpdate,
@@ -128,6 +129,7 @@ router.put(
     const { id } = req.params;
     const edits = req.body;
     const user = await User.getCurrentUserById(id);
+    if (user.id === 1) return res.json({ error: 'Demo account information cannot be updated'});
     const updatedUser = await user.update(edits);
     return res.json({ updatedUser });
   })
@@ -148,6 +150,7 @@ const validatePasswordUpdate = [
   handleValidationErrors,
 ];
 
+// update password
 router.put(
   "/:id/updatePassword",
   validatePasswordUpdate,
@@ -155,8 +158,10 @@ router.put(
     const { id } = req.params;
     const updates = req.body;
     const user = await User.scope("loginUser").findByPk(id);
-    const validated = await user.validatePassword(updates.currPassword);
 
+    if (user.id === 1) return res.json({ error: 'Demo account information cannot be updated'});
+
+    const validated = await user.validatePassword(updates.currPassword);
     if (validated) {
       const hashedPassword = bcrypt.hashSync(updates.newPassword);
       await user.update({
@@ -174,12 +179,16 @@ router.put(
   })
 );
 
+// delete account
 router.delete(
   "/:id",
   asyncHandler(async (req, res) => {
     const { id } = req.params;
     const { password } = req.body;
     const user = await User.scope("loginUser").findByPk(id);
+
+    if (user.id === 1) return res.json({ error: 'Demo account information cannot be updated'});
+    
     const validated = await user.validatePassword(password);
 
     if (validated) {

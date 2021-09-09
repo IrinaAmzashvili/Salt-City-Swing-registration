@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import DatePicker from "react-datepicker";
-import { getLevels } from "../../store/levels";
+import { getLevels, unloadLevels } from "../../store/levels";
 import { editClass } from "../../store/classes";
 import styles from "./EditClass.module.css";
 import "react-datepicker/dist/react-datepicker.css";
@@ -15,13 +15,18 @@ const EditClass = ({ currentClass, setShowModal }) => {
   const [startDate, setStartDate] = useState(new Date(currentClass.startDate));
   const [cost, setCost] = useState(currentClass.cost);
   const [levelId, setLevelId] = useState(currentClass.categoryId);
-  // const [image, setImage] = useState(currentClass.image);
-  const [image, setImage] = useState("");
+  const [imageFile, setImageFile] = useState(null);
   const [errors, setErrors] = useState([]);
 
   useEffect(() => {
     dispatch(getLevels());
+    return () => dispatch(unloadLevels());
   }, [dispatch]);
+
+  const updateImage = (e) => {
+    const file = e.target.files[0];
+    setImageFile(file);
+  };
 
   const disablePastTimes = (time) => {
     const today = new Date();
@@ -31,19 +36,30 @@ const EditClass = ({ currentClass, setShowModal }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     setErrors([]);
 
+    let image;
+    if (!imageFile) {
+      image = currentClass.image;
+    } else {
+      image = imageFile;
+    }
+
+    const formData = new FormData();
     const editedClass = {
       title,
       description,
       startDate,
       cost: +cost,
       categoryId: +levelId,
-      image: "img.png",
+      image,
     };
+    console.log(editedClass)
+    for (const key in editedClass) {
+      formData.append(key, editedClass[key]);
+    }
 
-    return dispatch(editClass(currentClass.id, editedClass))
+    return dispatch(editClass(currentClass.id, formData))
       .then(() => setShowModal(false))
       .catch(async (res) => {
         const data = await res.json();
@@ -151,8 +167,8 @@ const EditClass = ({ currentClass, setShowModal }) => {
                 id="class-image"
                 className={styles.input}
                 type="file"
-                value={image}
-                onChange={(e) => setImage(e.target.value)}
+                // value={image}
+                onChange={updateImage}
               />
             </div>
           </div>
