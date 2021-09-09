@@ -99,7 +99,19 @@
 }
 
 .checkMark {
-  margin: 0 20px;
+  margin: 0px 6px;
+}
+
+.visible {
+  visibility: visible;
+  opacity: 1;
+  transition: all 0.2s linear;
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: all 2s linear;
 }
 
 .accountDeleteBtn {
