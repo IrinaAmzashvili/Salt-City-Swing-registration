@@ -35,7 +35,6 @@ export const getClasses = () => async (dispatch) => {
 }
 
 export const createClass = (classInfo) => async (dispatch) => {
-    console.log(classInfo)
     const res = await csrfFetch('/api/classes', {
         method: 'POST',
         body: JSON.stringify(classInfo)

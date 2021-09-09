@@ -45,7 +45,6 @@ const CreateClass = () => {
     e.preventDefault();
     setErrors([]);
 
-    // const formData = new FormData();
     const newClass = {
       title,
       description,
@@ -54,9 +53,6 @@ const CreateClass = () => {
       categoryId: +levelId,
       image,
     };
-    // for (let key in newClass) {
-    //   formData.append(key, newClass[key]);
-    // }
 
     console.log(newClass)
     return dispatch(createClass(newClass))
@@ -81,9 +77,17 @@ const CreateClass = () => {
     <div className={styles.createClassContainer}>
       <h1 className={styles.header}>Create a new class</h1>
       <form className={styles.form} onSubmit={handleSubmit}>
-        {errors && errors.map((error, idx) => <li key={idx}>{error}</li>)}
-        <div>
-          <img src={image} alt='preview'/>
+        {errors && (
+          <div className='errorsDiv'>
+            <ul>
+              {errors.map((error, i) => (
+                <li key={i}>{error}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+        <div className={styles.imagePreviewDiv}>
+          <img src={image} alt='preview' className={styles.imagePreview}/>
         </div>
         <div>
           <label className={styles.labels} htmlFor="class-image">
