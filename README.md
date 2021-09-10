@@ -1,15 +1,18 @@
 # Salt City Swing - Registration
 
-[Salt City Swing - Registration Website](https://saltcityswing-registration.herokuapp.com/)
+*By Irina Amzashvili - [Visit Salt City Swing - Registration](https://saltcityswing-registration.herokuapp.com/)*
 
-[Wiki Pages](https://github.com/IrinaAmzashvili/react-solo-project/wiki)
+*[Wiki Pages](https://github.com/IrinaAmzashvili/react-solo-project/wiki)*
 
-
-![SCS Preview](https://user-images.githubusercontent.com/79552414/123537314-0639a880-d6ec-11eb-92ff-9bda874f1ab1.png)
+**Table of Contents**
+- [Summary](#Summary)
+- [Structure Overview](#Structure-Overview)
+- [Primary Features](#Primary-Features)
+- [Conclusion and Next Steps](#Conclusion-and-Next-Steps)
 
 ## Summary
 
-Salt City Swing - Registration is an app where users can discover and register for local dance classes hosted by the non-profit organization, Salt City Swing. This app was built using React, Redux, Express, and Sequelize. Users may:
+Salt City Swing - Registration is an app where users can discover and register for local dance classes hosted by the existing non-profit organization, Salt City Swing. This app was built using React, Redux, Express, and Sequelize. Users may:
 
 - Create an account
 - Log in and Log out
@@ -21,12 +24,13 @@ Salt City Swing - Registration is an app where users can discover and register f
 - Register for a class
 - Navigate to the "My Classes" page to view all purchased and liked classes
 - Navigate to the "Account" page to update their personal account information
+- Users with super user authorization may create, update, and delete classes
 
 ## Structure Overview
 ### Backend
 The backend of this app was built using Javascript and Express while utilizing sequelize to interact with a postgreSQL database. The ReSTful convention was followed in all backend API routes.
 
-#### Libraries Used
+#### Libraries and Technologies Used
 - bcryptjs - password hashing
 - cookie-parser - parsing cookies from requests
 - cors - CORS
@@ -43,6 +47,7 @@ The backend of this app was built using Javascript and Express while utilizing s
 - pg@">=8.4.1" - PostgresQL greater or equal to version 8.4.1
 - sequelize@5 - Sequelize
 - sequelize-cli@5 - use sequelize in the command line
+- AWS - allowing scalability and improved speed
 
 - dev-dependencies:
     - dotenv-cli - use dotenv in the command line
@@ -52,12 +57,13 @@ The backend of this app was built using Javascript and Express while utilizing s
 The frontend of this app was built using React and Redux. React allows for quick rerendering without requiring pages to refresh and Redux
 manages the application's state.
 
-#### Libraries Used
+#### Libraries and Technologies Used
 - js-cookie - extracts cookies
 - react-redux - React components and hooks for Redux
 - react-router-dom - routing for React
 - redux - Redux
 - redux-thunk - add Redux thunk
+- [react-datepicker](https://www.npmjs.com/package/react-datepicker)
 - dev-dependencies:
     - redux-logger - log Redux actions in the browser's dev tools console
 
@@ -93,13 +99,19 @@ A logged in user may like or unlike any class. The "like button" feature is a se
 ### My Classes Page
 The "My Classes" page displays all of a logged in user's liked and purchased classes. The user may choose which list to view by clicking the corresponding button at the top of the page. When the "Likes" list is displayed, the class cards have the Register and like buttons included so the user may choose to unlike or register for any class from that list.
 
-![Mu Classes - upcoming](https://user-images.githubusercontent.com/79552414/123537247-ad6a1000-d6eb-11eb-89c5-daabb19024f5.png)
 ![My Classes - likes](https://user-images.githubusercontent.com/79552414/123537274-d12d5600-d6eb-11eb-9b60-26147560a10c.png)
 
 ### Account Settings Page
-Upon navigation to the "Account Settings" page, the user may choose to update any of their account information or to delete their account entirely. 
+Upon navigation to the "Account Settings" page, the user may choose to update any of their account information or to delete their account entirely.
 
 ![image](https://user-images.githubusercontent.com/79552414/123587416-7a835300-d7a3-11eb-9abf-934106a6c075.png)
-![image](https://user-images.githubusercontent.com/79552414/123587452-8cfd8c80-d7a3-11eb-88c8-be3f18cd21a9.png)
 ![image](https://user-images.githubusercontent.com/79552414/123587477-97b82180-d7a3-11eb-9104-69eff4d0856b.png)
 ![image](https://user-images.githubusercontent.com/79552414/123587534-a999c480-d7a3-11eb-9037-a1b6017afc86.png)
+
+## Conclusion and Next Steps
+As my first solo project, this was a fun change of pace for me. I especially enjoyed being completely in charge of all decision making and implementations. I encountered many road blocks along the way, but ultimately it was a very rewarding experience. If I had a change to do it all over again, I would like to modularize the larger react components by breaking them up into smaller pieces.
+
+**Next Steps:** This website is fully intended to be used by the non-profit, Salt City Swing. In order to be production read, I intend to implement the following features:
+- payment system using square or paypal
+- user vaccine card images uploaded to profile
+- ability for super user to access mailing list emails
