@@ -4,6 +4,7 @@ import { IoCreateOutline } from "react-icons/io5";
 import Lottie from "react-lottie";
 import { defaultOptions } from '../../lotties/utils';
 import { getClasses, unloadClasses } from "../../store/classes";
+import { unloadLikes } from '../../store/likes';
 import LikeButton from "../LikeButton";
 import styles from "./Classes.module.css";
 
@@ -51,7 +52,10 @@ const ClassesComponent = () => {
       setIsLoaded(true);
     })();
 
-    return () => dispatch(unloadClasses());
+    return () => {
+      dispatch(unloadClasses());
+      dispatch(unloadLikes());
+    }
   }, [dispatch]);
 
   return (
