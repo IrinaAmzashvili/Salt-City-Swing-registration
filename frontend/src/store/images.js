@@ -1,6 +1,6 @@
 import { csrfFetch } from "./csrf";
 
-export const postImage = (url) => async (dispatch) => {
+export const postImage = (url) => async () => {
   const formData = new FormData();
   formData.append('image', url);
 

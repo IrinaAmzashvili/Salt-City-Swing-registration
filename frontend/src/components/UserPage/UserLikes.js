@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Lottie from "react-lottie";
-import { defaultOptions } from '../../lotties/utils';
+import { defaultOptions } from "../../lotties/utils";
 import { getLikes, unloadLikes } from "../../store/likes";
 import RegisterModal from "../RegisterModal";
 import LikeButton from "../LikeButton";
@@ -21,7 +21,7 @@ const UserLikes = ({ userId }) => {
 
   const classDate = (date) => {
     return new Date(date).toLocaleDateString();
-  }
+  };
 
   const classTime = (date) => {
     return new Date(date).toLocaleTimeString("en-US", {
@@ -29,7 +29,7 @@ const UserLikes = ({ userId }) => {
       hour: "2-digit",
       minute: "2-digit",
     });
-  }
+  };
 
   const handleClick = (e) => {
     e.stopPropagation();
@@ -44,7 +44,8 @@ const UserLikes = ({ userId }) => {
     return () => dispatch(unloadLikes());
   }, [dispatch, userId]);
 
-  if (!isLoaded) return <Lottie options={defaultOptions} height={400} width={400} />;
+  if (!isLoaded)
+    return <Lottie options={defaultOptions} height={400} width={400} />;
 
   return likes.length !== 0 ? (
     <div className={styles.userClassesContainer}>
@@ -59,12 +60,14 @@ const UserLikes = ({ userId }) => {
               <p>Cost: ${like.Class?.cost}</p>
             </div>
 
-            <div className={styles.classImageContainer}>
-              <img
-                className={styles.classImage}
-                src={like.Class?.image}
-                alt='dancers'
-              />
+            <div>
+              <div className={styles.classImageContainer}>
+                <img
+                  className={styles.classImage}
+                  src={like.Class?.image}
+                  alt="dancers"
+                />
+              </div>
               <div className={styles.buttonsDiv}>
                 <div className={styles.likeButtonOuterDiv}>
                   <div className={`${styles.likeButtonDiv} likeButtonDiv`}>
