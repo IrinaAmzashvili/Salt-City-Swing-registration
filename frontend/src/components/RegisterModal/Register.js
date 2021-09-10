@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getClasses, unloadClasses } from "../../store/classes";
+import { getClasses } from "../../store/classes";
 import { purchaseTicket, cancelTicket, updateTicket } from "../../store/tickets";
 import styles from "./Register.module.css";
 

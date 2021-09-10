@@ -8,7 +8,7 @@ import LikeButton from "../LikeButton";
 import RegisterModal from "../RegisterModal";
 import EditClassModal from "../EditClass";
 import DeleteClassModal from "../DeleteClass";
-// import { PlaceholderClassImage } from '../../image/image';
+import EditClassImageModal from '../EditClassImageModal';
 import styles from "./Class.module.css";
 
 const SingleClassComponent = () => {
@@ -30,6 +30,7 @@ const SingleClassComponent = () => {
 
     return () => dispatch(unloadClasses());
   }, [dispatch]);
+  console.log(currentClass)
 
   if (!isLoaded) return <Lottie options={defaultOptions} height={400} width={400} />;
 
@@ -44,11 +45,12 @@ const SingleClassComponent = () => {
       </div>
       <div className={styles.classPageContent}>
         <div className={styles.classImageContainer}>
+          {sessionUser?.superUser ? (
+            <EditClassImageModal currentClass={currentClass}/>
+          ) : null}
           <img
-            // style={{ backgroundImage: `url(${PlaceholderClassImage()})`}}
             className={styles.classImage}
             src={currentClass?.image}
-            // src={PlaceholderClassImage()}
             alt="dancers"
           />
         </div>

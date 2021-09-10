@@ -3,7 +3,7 @@ import EditClassImage from "./EditClassImage";
 import { Modal } from "../../context/Modal";
 import styles from "./EditClassImage.module.css";
 
-const EditClassImageModal = () => {
+const EditClassImageModal = ({ currentClass }) => {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -13,7 +13,7 @@ const EditClassImageModal = () => {
       </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <EditClassImage />
+          <EditClassImage currentClass={currentClass} setShowModal={setShowModal} />
         </Modal>
       )}
     </>
