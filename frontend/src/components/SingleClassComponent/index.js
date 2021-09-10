@@ -21,6 +21,7 @@ const SingleClassComponent = () => {
   const sessionUser = useSelector((state) => state.session.user);
 
   const classDate = new Date(currentClass?.startDate);
+  console.log(currentClass)
 
   useEffect(() => {
     (async () => {
@@ -32,7 +33,11 @@ const SingleClassComponent = () => {
   }, [dispatch]);
   console.log(currentClass)
 
-  if (!isLoaded) return <Lottie options={defaultOptions} height={400} width={400} />;
+  if (!isLoaded) {
+    return <Lottie options={defaultOptions} height={400} width={400} />;
+  } else if (!currentClass) {
+    return <h1>404 Page Not Found</h1>
+  }
 
   return (
     <div className={styles.classPageContainer}>
