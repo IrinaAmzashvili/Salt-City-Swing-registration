@@ -15,18 +15,12 @@ const EditClass = ({ currentClass, setShowModal }) => {
   const [startDate, setStartDate] = useState(new Date(currentClass.startDate));
   const [cost, setCost] = useState(currentClass.cost);
   const [levelId, setLevelId] = useState(currentClass.categoryId);
-  const [imageFile, setImageFile] = useState(null);
   const [errors, setErrors] = useState([]);
 
   useEffect(() => {
     dispatch(getLevels());
     return () => dispatch(unloadLevels());
   }, [dispatch]);
-
-  const updateImage = (e) => {
-    const file = e.target.files[0];
-    setImageFile(file);
-  };
 
   const disablePastTimes = (time) => {
     const today = new Date();
@@ -38,28 +32,16 @@ const EditClass = ({ currentClass, setShowModal }) => {
     e.preventDefault();
     setErrors([]);
 
-    let image;
-    if (!imageFile) {
-      image = currentClass.image;
-    } else {
-      image = imageFile;
-    }
-
-    const formData = new FormData();
     const editedClass = {
       title,
       description,
       startDate,
       cost: +cost,
       categoryId: +levelId,
-      image,
+      image: currentClass.image,
     };
-    console.log(editedClass)
-    for (const key in editedClass) {
-      formData.append(key, editedClass[key]);
-    }
 
-    return dispatch(editClass(currentClass.id, formData))
+    return dispatch(editClass(currentClass.id, editedClass))
       .then(() => setShowModal(false))
       .catch(async (res) => {
         const data = await res.json();
@@ -77,7 +59,15 @@ const EditClass = ({ currentClass, setShowModal }) => {
       </button>
       <h1 className={styles.header}>Edit this class</h1>
       <form className={styles.form} onSubmit={handleSubmit}>
-        {errors && errors.map((error, idx) => <li key={idx}>{error}</li>)}
+        {errors && (
+          <div className="errorsDiv">
+            <ul>
+              {errors.map((error, i) => (
+                <li key={i}>{error}</li>
+              ))}
+            </ul>
+          </div>
+        )}
         <div className={styles.inputFieldDivSections}>
           <div>
             <div className={styles.labelAndInputDiv}>
@@ -159,18 +149,7 @@ const EditClass = ({ currentClass, setShowModal }) => {
                   ))}
               </select>
             </div>
-            <div className={styles.labelAndInputDiv}>
-              <label className={styles.labels} htmlFor="class-image">
-                Image:
-              </label>
-              <input
-                id="class-image"
-                className={styles.input}
-                type="file"
-                // value={image}
-                onChange={updateImage}
-              />
-            </div>
+
           </div>
         </div>
 

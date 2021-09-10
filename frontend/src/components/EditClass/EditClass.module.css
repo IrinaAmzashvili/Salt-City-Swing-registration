@@ -20,7 +20,6 @@
 .form {
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
 }
 
 .inputFieldDivSections {
@@ -48,7 +47,7 @@
 }
 
 textarea.input {
-    height: 186px;
+    height: 114px;
 }
 
 .editModalButtons {

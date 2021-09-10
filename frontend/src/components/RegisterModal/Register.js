@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getClasses, unloadClasses } from "../../store/classes";
+import { getClasses } from "../../store/classes";
 import { purchaseTicket, cancelTicket, updateTicket } from "../../store/tickets";
 import styles from "./Register.module.css";
 
@@ -13,7 +13,8 @@ const Register = ({ closeModal, currentClass, purchased }) => {
   const [amount, setAmount] = useState(purchased ? purchased.numOfTickets : 1);
   const [canceled, setCanceled] = useState(false);
 
-  console.log('===>', currentClass)
+  const classDate = new Date(currentClass?.startDate);
+
   const amountChange = (e) => {
     setPrice(45 * e.target.value);
     setAmount(e.target.value);
@@ -53,15 +54,14 @@ const Register = ({ closeModal, currentClass, purchased }) => {
 
   useEffect(() => {
     dispatch(getClasses());
-    return () => dispatch(unloadClasses());
+    // return () => dispatch(unloadClasses());
   }, [dispatch]);
 
   return !canceled ? (
     <div className={styles.registerPageDiv}>
       <div className={styles.classInfoDiv}>
         <p className={styles.classTitle}>{currentClass?.title}</p>
-        <p className={styles.classStartDate}>{currentClass?.startDate}</p>
-        <p className={styles.classDates}>{currentClass?.dates}</p>
+        <p className={styles.classStartDate}>Start date: {classDate.toLocaleDateString()}</p>
       </div>
       <form className={styles.form}>
         <div className={styles.inputDiv}>

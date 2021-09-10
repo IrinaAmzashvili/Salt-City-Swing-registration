@@ -15,6 +15,7 @@ const ClassesComponent = () => {
   const sessionUser = useSelector((state) => state.session.user);
 
   const classes = useSelector((state) => Object.values(state.classes));
+
   const level1Classes = classes.filter(
     (classObj) => classObj.Category?.id === 1
   );
@@ -56,6 +57,7 @@ const ClassesComponent = () => {
   return (
     <div className={styles.classesPageContainer}>
       <h2 className={styles.h2Header}>Upcoming Classes</h2>
+      <p className={styles.pHeader}>Discover, like, and purchase tickets for classes run by Salt City Swing here!</p>
       <div className={styles.classesTopDiv}>
         <div className={styles.createClassDiv}>
           {sessionUser?.superUser ? (
@@ -122,7 +124,7 @@ const ClassesComponent = () => {
                   </div>
                   <div className={styles.cardBottom}>
                     <h3 className={styles.classTitle}>{classObj.title}</h3>
-                    <p className={styles.classDate}>{classObj.dates}</p>
+                    <p className={styles.classDate}>Start date: {new Date(classObj.startDate).toLocaleDateString()}</p>
                   </div>
                 </div>
                 <div className={`${styles.likeButtonDiv} likeButtonDiv`}>

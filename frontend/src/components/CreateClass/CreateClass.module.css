@@ -1,40 +1,58 @@
-@import '../../index.css';
+@import "../../index.css";
 
 .createClassContainer {
-    width: 500px;
-    margin: 50px auto;
-    margin-bottom: 100px;
+  width: 500px;
+  margin: 50px auto;
+  margin-bottom: 100px;
 }
 
 .header {
-    text-align: center;
+  text-align: center;
 }
 
 .form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .form > * {
-    width: 100%;
+  width: 100%;
 }
 
 .form > div {
-    margin: 10px 0;
+  margin: 10px 0;
 }
 
 .labels {
-    display: block;
-    margin-bottom: 5px;
+  display: block;
+  margin-bottom: 5px;
 }
 
 .input {
-    width: 100%;
-    height: 35px;
-    padding: 5px;
+  width: 100%;
+  height: 35px;
+  padding: 5px;
 }
 
 textarea.input {
-    height: 100px;
+  height: 100px;
+}
+
+.imagePreviewDiv {
+  background-image: url("https://st3.depositphotos.com/23594922/31822/v/600/depositphotos_318221368-stock-illustration-missing-picture-page-for-website.jpg");
+  width: 640px;
+  height: 426px;
+}
+
+.imagePreview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.imageInput {
+  padding: 0;
 }

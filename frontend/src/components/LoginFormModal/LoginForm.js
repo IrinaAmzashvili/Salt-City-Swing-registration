@@ -34,7 +34,7 @@ const LoginForm = () => {
         >
           <h2>Login</h2>
           {errors && (
-            <div className={styles.errorsDiv}>
+            <div className="errorsDiv">
               <ul>
                 {errors.map((error, i) => (
                   <li key={i}>{error}</li>
