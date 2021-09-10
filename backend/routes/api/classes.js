@@ -51,12 +51,9 @@ router.get(
 
 router.post(
   "/",
-  // singleMulterUpload('image'),
   validateClass,
   asyncHandler(async (req, res) => {
     const classInfo = req.body;
-    // const classImageUrl = await singlePublicFileUpload(req.file);
-    // classInfo.image = classImageUrl;
     const newClass = await Class.create(classInfo);
     return res.json({ newClass });
   })
@@ -64,17 +61,16 @@ router.post(
 
 router.put(
   "/:id",
-  singleMulterUpload('image'),
   validateClass,
   asyncHandler(async (req, res) => {
     const classInfo = req.body;
     const classId = +req.params.id;
     const targetClass = await Class.findByPk(classId);
-    if (classInfo.image !== targetClass.image) {
-      const classImageUrl = await singlePublicFileUpload(req.file);
-      classInfo.image = classImageUrl;
-      await deleteSingleFile(targetClass.image);
-    }
+    // if (classInfo.image !== targetClass.image) {
+      // const classImageUrl = await singlePublicFileUpload(req.file);
+      // classInfo.image = classImageUrl;
+      // await deleteSingleFile(targetClass.image);
+    // }
     const updatedClass = await targetClass.update(classInfo);
     return res.json({ updatedClass });
   })

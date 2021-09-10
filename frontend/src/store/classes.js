@@ -50,8 +50,7 @@ export const createClass = (classInfo) => async (dispatch) => {
 export const editClass = (classId, classInfo) => async (dispatch) => {
     const res = await csrfFetch(`/api/classes/${classId}`, {
         method: 'PUT',
-        headers: { "Content-Type": "multipart/form-data" },
-        body: classInfo
+        body: JSON.stringify(classInfo)
     });
 
     if (res.ok) {
