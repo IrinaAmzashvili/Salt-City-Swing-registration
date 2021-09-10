@@ -16,10 +16,10 @@ export const postImage = (url) => async (dispatch) => {
   }
 };
 
-export const deleteImage = (url) => async (dispatch) => {
+export const deleteImage = (url) => async () => {
   const res = await csrfFetch('/api/images', {
     method: 'DELETE',
-    body: JSON.stringify(url)
+    body: JSON.stringify({ url })
   });
 
   if (res.ok) {

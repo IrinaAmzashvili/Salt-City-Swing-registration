@@ -24,7 +24,7 @@ router.delete(
   "/",
   asyncHandler(async (req, res) => {
     const url = req.body;
-    await deleteSingleFile(url);
+    await deleteSingleFile(url.url);
     res.json({ success: true });
   })
 );

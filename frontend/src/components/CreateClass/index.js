@@ -55,14 +55,13 @@ const CreateClass = () => {
       image,
     };
 
-    console.log(newClass)
     return dispatch(createClass(newClass))
       .then((res) => history.push(`/classes/${res.id}`))
       .catch(async (res) => {
         const data = await res.json();
         if (data && data.errors) {
           setErrors(data.errors);
-          window.scroll(0, 0);
+          window.scroll(0, 200);
         }
       });
   };
@@ -96,7 +95,7 @@ const CreateClass = () => {
           </label>
           <input
             id="class-image"
-            className={styles.input}
+            className={`${styles.input} ${styles.imageInput}`}
             type="file"
             onChange={updateFile}
           />
