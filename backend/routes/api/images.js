@@ -20,4 +20,13 @@ router.post(
   })
 );
 
+router.delete(
+  "/",
+  asyncHandler(async (req, res) => {
+    const url = req.body;
+    await deleteSingleFile(url);
+    res.json({ success: true });
+  })
+);
+
 module.exports = router;

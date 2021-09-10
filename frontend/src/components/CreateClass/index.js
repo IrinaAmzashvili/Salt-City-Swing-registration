@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import { getLevels, unloadLevels } from "../../store/levels";
 import { createClass } from "../../store/classes";
-import { postImage } from '../../store/images';
+import { postImage, deleteImage } from '../../store/images';
 import styles from "./CreateClass.module.css";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -31,6 +31,7 @@ const CreateClass = () => {
     const file = e.target.files[0];
     if (file) {
       const url = await dispatch(postImage(file));
+      if (image) await dispatch(deleteImage(image));
       setImage(url);
     }
   }
