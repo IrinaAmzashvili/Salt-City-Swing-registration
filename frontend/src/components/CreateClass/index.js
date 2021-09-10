@@ -67,11 +67,7 @@ const CreateClass = () => {
   };
 
   // if user not superuser, display 404 page
-  if (!sessionUser?.superUser) {
-    return (
-      <h1>404 Page Not Found</h1>
-    )
-  }
+  if (!sessionUser?.superUser) return <h1>404 Page Not Found</h1>
 
   return (
     <div className={styles.createClassContainer}>

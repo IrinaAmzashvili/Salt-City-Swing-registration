@@ -57,6 +57,7 @@ const ClassesComponent = () => {
   return (
     <div className={styles.classesPageContainer}>
       <h2 className={styles.h2Header}>Upcoming Classes</h2>
+      <p className={styles.pHeader}>Discover, like, and purchase tickets for classes run by Salt City Swing here!</p>
       <div className={styles.classesTopDiv}>
         <div className={styles.createClassDiv}>
           {sessionUser?.superUser ? (

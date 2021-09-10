@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import { useParams } from 'react-router-dom';
 import AccountInformation from './AccountInformation';
 import UpdatePassword from './UpdatePassword';
 import CloseAccount from './CloseAccount';
 import styles from "./UserAccount.module.css";
 
 const UserAccount = () => {
+  const { userId } = useParams();
   const user = useSelector((state) => state.session.user);
   const [view, setView] = useState("Account Information");
 
@@ -24,6 +26,8 @@ const UserAccount = () => {
       displayedForm = <AccountInformation user={user} />;
       break;
   }
+
+  if (user?.id !== +userId) return <h1>404 Page Not Found</h1>
 
   return (
     <div className={styles.accountPageDiv}>

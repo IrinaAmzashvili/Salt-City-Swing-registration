@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import UserLikes from "./UserLikes";
 import UserTickets from "./UserTickets";
@@ -7,6 +8,7 @@ import styles from "./UserPage.module.css";
 const UserPage = () => {
   const { userView, setUserView } = useUserViewContext();
   const { userId } = useParams();
+  const user = useSelector((state) => state.session.user);
 
   let displayedList;
   switch (userView) {
@@ -23,6 +25,8 @@ const UserPage = () => {
       displayedList = <UserTickets userId={userId} dates={"upcoming"} />;
       break;
   }
+
+  if (user.id !== +userId) return <h1>404 Page Not Found</h1>
 
   return (
     <div className={styles.userPageContainer}>
