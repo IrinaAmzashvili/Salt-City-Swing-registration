@@ -111,7 +111,7 @@ Upon navigation to the "Account Settings" page, the user may choose to update an
 ## Conclusion and Next Steps
 As my first solo project, this was a fun change of pace for me. I especially enjoyed being completely in charge of all decision making and implementations. I encountered many road blocks along the way, but ultimately it was a very rewarding experience. If I had a change to do it all over again, I would like to modularize the larger react components by breaking them up into smaller pieces.
 
-**Next Steps:** This website is fully intended to be used by the non-profit, Salt City Swing. In order to be production read, I intend to implement the following features:
+**Next Steps:** This website is fully intended to be used by the non-profit, Salt City Swing. In order to be production ready, I intend to implement the following features:
 - payment system using stripe or paypal libraries / APIs
 - user vaccine card images uploaded to profile
 - ability for super user to access mailing list emails
