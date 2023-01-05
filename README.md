@@ -1,6 +1,6 @@
 # Salt City Swing - Registration
 
-*By Irina Amzashvili - [Visit Salt City Swing - Registration](https://saltcityswing-registration.herokuapp.com/)*
+<!-- *By Irina Amzashvili - [Visit Salt City Swing - Registration](https://saltcityswing-registration.herokuapp.com/)* -->
 
 *[Wiki Pages](https://github.com/IrinaAmzashvili/react-solo-project/wiki)*
 
